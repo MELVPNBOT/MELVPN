@@ -1,5 +1,5 @@
 #profile-title: MELVPN ✈️
-#subscription-userinfo: upload=0; download=0; total=1073741824000; expire=1778264475
+#subscription-userinfo: upload=0; download=0; total=107374182400; expire=1780856475
 #profile-web-page_url: https://t.me/melvpnrobot
 
 vless://4027061f-5369-47fc-872a-4b180affa348@5.42.103.34:443?type=tcp&security=reality&sni=ww.fasssst.online&fp=chrome&pbk=QmR5lTmD5OdO_d2ODRjg-BTPTVX9yntUTtQmmLe5CnQ&sid=4e1bc0410fcdeb&flow=xtls-rprx-vision#MEL | VPN 1 (%F0%9F%92%8E%20%D0%AD%D1%81%D1%82%D0%BE%D0%BD%D0%B8%D1%8F%F0%9F%87%AA%F0%9F%87%AA%F0%9F%94%83%20%7C%201-58)
