@@ -97,11 +97,20 @@
         }, 500);
 
         function importSub() {
-            if(!sub) return alert("Ошибка: Ссылка не найдена!");
-            const v2ray = "v2rayng://install-config?url=" + encodeURIComponent(sub);
-            const hiddify = "hiddify://install-config?url=" + encodeURIComponent(sub);
-            window.location.href = v2ray;
-            setTimeout(() => { window.location.href = hiddify; }, 1000);
+    if(!sub) return alert("Ошибка: Ссылка не найдена!");
+
+    // Формат именно тот, что ты просил: happ://add/{ссылка}
+    const happLink = "happ://add/" + sub;
+
+    // Пытаемся открыть Happ
+    window.location.href = happLink;
+
+    // На случай, если нужно подтверждение или резерв (через 1.5 сек)
+    setTimeout(() => {
+        // Если юзер нажал и ничего не произошло, пробуем обычный импорт
+        window.location.href = "happ://import/" + sub;
+    }, 1500);
+}
         }
     </script>
 </body>
