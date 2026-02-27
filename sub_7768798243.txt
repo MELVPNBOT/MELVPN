@@ -1,5 +1,7 @@
-#profile-title: MELVPN (@melvpnrobot)
-#subscription-userinfo: total=1073741824000; expire=1796403952
+STATUS=📊 Лимит: 1000 GB | До: 26.08
+#profile-title: MELVPN ✈️
+#subscription-userinfo: upload=0; download=0; total=1073741824000; expire=1787766662
+#profile-web-page_url: https://t.me/melvpnrobot
 #profile-announce: РАБОТА ПРИ ОГРАНИЧЕНИИ МОБ ИНТЕРНЕТА НЕ ГАРАНТИРОВАНА! ⚠️🚧
 
 vless://c0e5fa8e-7818-4ea2-8195-1aada8a6b740@test.grey-lance.test-cdn-kkk.com:443?security=reality&type=tcp&headerType=&path=&host=&flow=xtls-rprx-vision&sni=tradingview.com&fp=qq&pbk=-tePObR3oZwGAUOb5kqTYkNWl6rtUKl0RFuzuu06wgw&sid=50#🌐 MEL | VPN 1
