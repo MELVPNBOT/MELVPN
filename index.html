@@ -3,92 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MELVPN | Настройка</title>
+    <title>MELVPN | Личный кабинет</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%); color: white; font-family: 'Inter', sans-serif; }
-        .glass { background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); }
-        .btn-grad { background: linear-gradient(90deg, #0ea5e9 0%, #2563eb 100%); box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4); }
-        .btn-outline { border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
-        .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: #0ea5e9; }
+        body { background: #070a13; color: #f8fafc; font-family: 'Inter', sans-serif; }
+        .neon-card { background: linear-gradient(145deg, #111827, #0f172a); border: 1px solid rgba(14, 165, 233, 0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 28px; }
+        .progress-container { background: rgba(255,255,255,0.03); border-radius: 20px; height: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+        .progress-bar { background: linear-gradient(90deg, #0ea5e9, #6366f1); height: 100%; box-shadow: 0 0 15px rgba(14, 165, 233, 0.5); transition: width 1.5s ease-in-out; }
+        .btn-main { background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%); transition: 0.3s; }
+        .btn-main:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(14, 165, 233, 0.4); }
+        .stat-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen p-6">
+<body class="p-4 flex flex-col items-center min-h-screen">
 
-    <div class="mb-8 text-center">
-        <div class="text-4xl font-black tracking-tighter text-sky-400 mb-1">MELVPN</div>
-        <div class="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-bold">Premium Proxy Service</div>
+    <div class="mt-8 mb-8 text-center">
+        <h1 class="text-5xl font-black italic tracking-tighter text-sky-500 mb-1">MELVPN</h1>
+        <p class="text-[10px] uppercase tracking-[0.4em] text-slate-500 font-bold">Premium Cyber Infrastructure</p>
     </div>
 
-    <div class="glass w-full max-w-sm rounded-3xl p-6 mb-6">
-        <div class="flex items-center justify-between mb-6">
-            <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-2xl bg-sky-500/20 flex items-center justify-center text-sky-400 shadow-inner">
-                    <i class="fas fa-shield-alt text-xl"></i>
+    <div class="neon-card w-full max-w-md p-6 mb-6">
+        <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-2xl bg-sky-500/10 flex items-center justify-center text-sky-400 border border-sky-500/20">
+                    <i class="fas fa-bolt text-2xl"></i>
                 </div>
                 <div>
-                    <div id="userId" class="font-bold text-base text-slate-200">ID: Загрузка...</div>
-                    <div class="text-[11px] text-green-500 flex items-center gap-1.5 font-bold uppercase tracking-wider">
-                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Линия активна
+                    <h2 id="displayId" class="font-black text-xl tracking-tight">ID: Загрузка...</h2>
+                    <div class="flex items-center gap-2 mt-1">
+                        <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span>
+                        <span class="text-[10px] text-green-400 font-bold uppercase tracking-widest">Линия активна</span>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="space-y-2">
-            <div class="flex justify-between text-[11px] p-3 rounded-xl bg-white/5 border border-white/5">
-                <span class="text-slate-400">Протоколы защиты</span>
-                <span class="text-slate-200 font-bold">VLESS / XTLS</span>
+
+        <div class="grid grid-cols-2 gap-4 mb-8">
+            <div class="stat-box p-4">
+                <p class="text-slate-500 text-[10px] uppercase font-bold mb-1">Осталось дней</p>
+                <p id="displayDays" class="text-2xl font-black text-white">--</p>
             </div>
-            <div class="flex justify-between text-[11px] p-3 rounded-xl bg-white/5 border border-white/5">
-                <span class="text-slate-400">Шифрование</span>
-                <span class="text-slate-200 font-bold">AES-256-GCM</span>
+            <div class="stat-box p-4">
+                <p class="text-slate-500 text-[10px] uppercase font-bold mb-1">Трафик (ГБ)</p>
+                <p id="displayGb" class="text-2xl font-black text-white">--</p>
             </div>
         </div>
-    </div>
 
-    <div class="w-full max-w-sm mb-10">
-        <button onclick="importToApp()" class="btn-grad w-full py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3 active:scale-95 transition-all uppercase tracking-wide">
+        <div class="mb-2 flex justify-between items-end">
+            <span class="text-[10px] text-slate-500 font-bold uppercase">Использование данных</span>
+            <span id="percentText" class="text-xs font-bold text-sky-400">0%</span>
+        </div>
+        <div class="progress-container mb-8">
+            <div id="progressBar" class="progress-bar" style="width: 0%"></div>
+        </div>
+
+        <button onclick="importSub()" class="btn-main w-full py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3 uppercase">
             <i class="fas fa-plus-circle"></i> Добавить подписку
         </button>
     </div>
 
-    <div class="w-full max-w-sm">
-        <div class="text-center text-[10px] text-slate-500 uppercase tracking-widest mb-4 font-bold">Нет приложения? Скачай:</div>
-        <div class="grid grid-cols-2 gap-3">
-            <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang" target="_blank" class="btn-outline flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-bold">
-                <i class="fab fa-android text-sky-400"></i> v2rayNG
-            </a>
-            <a href="https://play.google.com/store/apps/details?id=app.hiddify.com" target="_blank" class="btn-outline flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-bold">
-                <i class="fas fa-bolt text-yellow-400"></i> Hiddify
-            </a>
-        </div>
+    <div class="w-full max-w-md grid grid-cols-2 gap-3 mb-8">
+        <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang" class="stat-box p-4 flex items-center justify-center gap-2 hover:bg-white/5 transition">
+            <i class="fab fa-android text-sky-400"></i> <span class="text-xs font-bold">v2rayNG</span>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=app.hiddify.com" class="stat-box p-4 flex items-center justify-center gap-2 hover:bg-white/5 transition">
+            <i class="fas fa-fire text-orange-500"></i> <span class="text-xs font-bold">Hiddify</span>
+        </a>
     </div>
 
-    <footer class="mt-12 text-[10px] text-slate-600 font-bold uppercase tracking-widest">
-        Powered by Admin Sanek
-    </footer>
+    <a href="https://t.me/sanyaz0vrkp" class="text-slate-600 text-[10px] font-bold uppercase tracking-widest hover:text-sky-500 transition">
+        Support: @sanyaz0vrkp
+    </a>
 
     <script>
-        const params = new URLSearchParams(window.location.search);
-        const sub = params.get('sub');
-        const id = params.get('id');
+        const urlParams = new URLSearchParams(window.location.search);
+        const sub = urlParams.get('sub');
+        const id = urlParams.get('id');
+        const days = urlParams.get('days') || 0;
+        const gb = urlParams.get('gb') || 0;
 
-        if(id) document.getElementById('userId').innerText = "ID: " + id;
+        // Эмуляция расхода (на будущее можно тянуть из API)
+        const usedPercent = 35; 
 
-        function importToApp() {
-            if(!sub) {
-                alert("Ошибка: Ссылка на подписку не найдена. Перейдите из бота!");
-                return;
-            }
-            const configUrl = "v2rayng://install-config?url=" + encodeURIComponent(sub);
-            const hiddifyUrl = "hiddify://install-config?url=" + encodeURIComponent(sub);
-            
-            // Пытаемся открыть по очереди
-            window.location.href = configUrl;
-            setTimeout(() => { window.location.href = hiddifyUrl; }, 1200);
+        if(id) document.getElementById('displayId').innerText = "ID: " + id;
+        if(days) document.getElementById('displayDays').innerText = days;
+        if(gb) document.getElementById('displayGb').innerText = gb;
+        
+        // Анимация прогресса
+        setTimeout(() => {
+            document.getElementById('progressBar').style.width = usedPercent + "%";
+            document.getElementById('percentText').innerText = usedPercent + "%";
+        }, 500);
+
+        function importSub() {
+            if(!sub) return alert("Ошибка: Ссылка не найдена!");
+            const v2ray = "v2rayng://install-config?url=" + encodeURIComponent(sub);
+            const hiddify = "hiddify://install-config?url=" + encodeURIComponent(sub);
+            window.location.href = v2ray;
+            setTimeout(() => { window.location.href = hiddify; }, 1000);
         }
     </script>
 </body>
