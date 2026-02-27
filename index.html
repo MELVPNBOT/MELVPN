@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MELVPN | Установка подписки</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background-color: #0f172a; color: white; font-family: sans-serif; }
+        .card { background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; }
+        .btn-primary { background: #0ea5e9; transition: 0.3s; }
+        .btn-primary:hover { background: #0284c7; transform: translateY(-2px); }
+    </style>
+</head>
+<body class="p-4 flex flex-col items-center min-h-screen">
+
+    <div class="mb-8 mt-4 text-2xl font-bold tracking-widest flex items-center">
+        <i class="fas fa-paper-plane mr-2 text-sky-400"></i> MELVPN
+    </div>
+
+    <div class="card w-full max-w-md p-6 mb-6">
+        <div class="flex items-center mb-4">
+            <div class="bg-green-500/20 text-green-400 p-2 rounded-full mr-3">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div>
+                <h2 id="userName" class="text-lg font-bold">Пользователь MELVPN</h2>
+                <p class="text-sm text-gray-400">Подписка активна</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 mt-6 text-sm">
+            <div class="bg-slate-800/50 p-3 rounded-lg border border-white/5">
+                <p class="text-gray-500 mb-1">Статус</p>
+                <p class="text-green-400 font-semibold">Активна</p>
+            </div>
+            <div class="bg-slate-800/50 p-3 rounded-lg border border-white/5">
+                <p class="text-gray-500 mb-1">Трафик</p>
+                <p class="font-semibold">Безлимит</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full max-w-md">
+        <h3 class="text-center mb-4 text-gray-400 uppercase text-xs tracking-widest">Установка подписки</h3>
+        
+        <div class="card p-6 flex flex-col gap-4">
+            <div class="flex items-center text-sm text-gray-300">
+                <i class="fas fa-info-circle mr-2 text-sky-400"></i>
+                Нажмите кнопку ниже, чтобы автоматически импортировать настройки
+            </div>
+
+            <button onclick="importSub()" class="btn-primary w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2">
+                <i class="fas fa-plus"></i> ДОБАВИТЬ ПОДПИСКУ
+            </button>
+
+            <p class="text-[10px] text-center text-gray-500 mt-2">
+                Поддерживает v2rayNG, Hiddify, Streisand и др.
+            </p>
+        </div>
+    </div>
+
+    <div class="card w-full max-w-md p-6 mt-6 opacity-80">
+        <h4 class="font-bold mb-2 text-sm italic">Если кнопка не сработала:</h4>
+        <p class="text-xs text-gray-400 leading-relaxed">
+            1. Скопируйте ссылку на подписку из бота вручную.<br>
+            2. В приложении нажмите кнопку "+" или "Добавить из буфера".
+        </p>
+    </div>
+
+    <script>
+        // Функция для получения параметра из URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        const subUrl = getQueryParam('sub');
+        const userId = getQueryParam('id');
+        
+        if(userId) document.getElementById('userName').innerText = "ID: " + userId;
+
+        function importSub() {
+            if(!subUrl) {
+                alert("Ошибка: Ссылка на подписку не найдена!");
+                return;
+            }
+            
+            // Пытаемся открыть через системную схему v2rayng или hiddify
+            // Формат v2rayng://install-config?url=...
+            const v2rayScheme = "v2rayng://install-config?url=" + encodeURIComponent(subUrl);
+            const hiddifyScheme = "hiddify://install-config?url=" + encodeURIComponent(subUrl);
+
+            // Сначала пробуем v2ray, если нет - просто пробуем универсальный редирект
+            window.location.href = v2rayScheme;
+            
+            // Если через 500мс ничего не произошло, пробуем hiddify
+            setTimeout(() => {
+                window.location.href = hiddifyScheme;
+            }, 500);
+        }
+    </script>
+</body>
+</html>
