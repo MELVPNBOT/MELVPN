@@ -3,153 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MELVPN | Personal Cabinet</title>
+    <title>MELVPN Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;900&display=swap');
-        
-        body { 
-            background: #05070a; 
-            color: #f8fafc; 
-            font-family: 'Outfit', sans-serif; 
-            overflow-x: hidden;
-        }
-        
-        .main-card {
-            background: linear-gradient(165deg, #0f172a 0%, #020617 100%);
-            border: 1px solid rgba(14, 165, 233, 0.15);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            border-radius: 32px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .main-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(14, 165, 233, 0.05) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .progress-bg { 
-            background: rgba(255, 255, 255, 0.03); 
-            border-radius: 100px; 
-            height: 8px; 
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .progress-bar { 
-            background: linear-gradient(90deg, #38bdf8, #818cf8); 
-            border-radius: 100px;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
-            transition: width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .btn-happ {
-            background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
-        }
-
-        .btn-happ:active { transform: scale(0.96); }
-
-        .stat-badge {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-        }
+        body { background: #05070a; color: #f8fafc; font-family: sans-serif; }
+        .card { background: linear-gradient(165deg, #0f172a 0%, #020617 100%); border: 1px solid rgba(14,165,233,0.2); border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .bar-bg { background: rgba(255,255,255,0.05); border-radius: 100px; height: 10px; }
+        .bar-fill { background: linear-gradient(90deg, #38bdf8, #818cf8); border-radius: 100px; transition: 1.5s ease; }
+        .btn-happ { background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%); transform: translateZ(0); transition: 0.3s; }
+        .btn-happ:active { transform: scale(0.95); }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen p-5">
+<body class="flex flex-col items-center justify-center min-h-screen p-6">
 
-    <div class="text-center mb-8">
-        <h1 class="text-4xl font-black tracking-tighter italic text-sky-500 uppercase">Melvpn</h1>
-        <div class="h-1 w-12 bg-sky-500 mx-auto rounded-full mt-1"></div>
-    </div>
+    <h1 class="text-4xl font-black italic text-sky-500 mb-8 uppercase tracking-tighter">Melvpn</h1>
 
-    <div class="main-card w-full max-w-sm p-8">
+    <div class="card w-full max-w-sm p-8 text-center">
+        <p id="displayId" class="text-slate-400 text-xs font-bold uppercase mb-6 tracking-widest">ID: Загрузка...</p>
         
-        <div class="flex items-center justify-between mb-8">
-            <div class="flex flex-col">
-                <span class="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">Client Profile</span>
-                <span id="displayId" class="text-xl font-bold tracking-tight">ID: Загрузка...</span>
+        <div class="grid grid-cols-2 gap-4 mb-8 text-left">
+            <div class="bg-white/5 p-4 rounded-2xl border border-white/5">
+                <p class="text-[9px] text-slate-500 uppercase font-bold mb-1">Срок (дней)</p>
+                <p id="displayDays" class="text-2xl font-black text-white">0</p>
             </div>
-            <div class="bg-green-500/10 px-3 py-1 rounded-full border border-green-500/20">
-                <span class="text-[10px] text-green-400 font-black uppercase tracking-tighter">Active</span>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-4 mb-8">
-            <div class="stat-badge p-4 flex flex-col">
-                <span class="text-[9px] text-slate-500 font-bold uppercase mb-1">Time Left</span>
-                <span class="text-2xl font-black"><span id="displayDays">0</span><span class="text-xs text-slate-400 ml-1">дн.</span></span>
-            </div>
-            <div class="stat-badge p-4 flex flex-col">
-                <span class="text-[9px] text-slate-500 font-bold uppercase mb-1">Traffic Plan</span>
-                <span class="text-2xl font-black"><span id="displayGb">0</span><span class="text-xs text-slate-400 ml-1">GB</span></span>
+            <div class="bg-white/5 p-4 rounded-2xl border border-white/5">
+                <p class="text-[9px] text-slate-500 uppercase font-bold mb-1">Лимит (GB)</p>
+                <p id="displayGb" class="text-2xl font-black text-white">0</p>
             </div>
         </div>
 
-        <div class="mb-8">
-            <div class="flex justify-between items-end mb-2">
-                <span class="text-[9px] text-slate-500 font-bold uppercase">Data Usage</span>
-                <span id="percentText" class="text-[10px] font-bold text-sky-400">0%</span>
-            </div>
-            <div class="progress-bg">
-                <div id="progressBar" class="progress-bar" style="width: 0%"></div>
-            </div>
+        <div class="mb-8 text-left">
+            <div class="flex justify-between mb-2"><span class="text-[9px] text-slate-500 font-bold uppercase">Трафик</span><span id="pct" class="text-[10px] text-sky-400 font-bold">0%</span></div>
+            <div class="bar-bg"><div id="bar" class="bar-fill" style="width: 0%"></div></div>
         </div>
 
-        <button onclick="importSub()" class="btn-happ w-full py-5 rounded-2xl font-black text-sm uppercase tracking-widest flex items-center justify-center gap-3">
-            <i class="fas fa-plus-circle text-lg"></i>
-            Добавить в HAPP
+        <button onclick="importSub()" class="btn-happ w-full py-5 rounded-2xl font-black text-sm uppercase tracking-widest">
+            <i class="fas fa-plus-circle mr-2"></i> Добавить в HAPP
         </button>
     </div>
 
-    <div class="mt-8 flex flex-col items-center gap-4">
-        <a href="https://t.me/sanyaz0vrkp" class="text-[10px] font-bold text-slate-600 uppercase tracking-widest hover:text-sky-500 transition">
-            <i class="fab fa-telegram-plane mr-1"></i> Support Admin
-        </a>
-    </div>
-
     <script>
-        // 1. Получаем данные из URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const sub = urlParams.get('sub');
-        const id = urlParams.get('id');
-        const days = urlParams.get('days') || "0";
-        const gb = urlParams.get('gb') || "0";
+        const params = new URLSearchParams(window.location.search);
+        const encodedData = params.get('data');
+        const id = params.get('id');
+        const days = params.get('days') || "0";
+        const gb = params.get('gb') || "0";
 
-        // 2. Отображаем данные
+        let finalUrl = "";
+        if(encodedData) { try { finalUrl = atob(encodedData); } catch(e) {} }
+
         if(id) document.getElementById('displayId').innerText = "ID: " + id;
-        if(days) document.getElementById('displayDays').innerText = days;
-        if(gb) document.getElementById('displayGb').innerText = gb;
+        document.getElementById('displayDays').innerText = days;
+        document.getElementById('displayGb').innerText = gb;
 
-        // 3. Анимация полоски (поставим 40% для красоты)
         setTimeout(() => {
-            const bar = document.getElementById('progressBar');
-            const txt = document.getElementById('percentText');
-            bar.style.width = "42%";
-            txt.innerText = "42%";
-        }, 600);
+            document.getElementById('bar').style.width = "30%";
+            document.getElementById('pct').innerText = "30%";
+        }, 500);
 
-        // 4. ТА САМАЯ ФУНКЦИЯ (Happ://add/)
         function importSub() {
-            if (!sub) {
-                alert("Ошибка: Ссылка подписки не найдена!");
-                return;
-            }
-
-            // Формат happ://add/{url}
-            const happLink = "happ://add/" + sub;
-
-            // Мгновенный переход
-            window.location.href = happLink;
+            if(!finalUrl) return alert("Ошибка ссылки!");
+            window.location.href = "happ://add/" + finalUrl;
         }
     </script>
 </body>
