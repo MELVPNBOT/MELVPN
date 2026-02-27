@@ -3,102 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MELVPN | Установка подписки</title>
+    <title>MELVPN | Настройка</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #0f172a; color: white; font-family: sans-serif; }
-        .card { background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; }
-        .btn-primary { background: #0ea5e9; transition: 0.3s; }
-        .btn-primary:hover { background: #0284c7; transform: translateY(-2px); }
+        body { background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%); color: white; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); }
+        .btn-grad { background: linear-gradient(90deg, #0ea5e9 0%, #2563eb 100%); box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4); }
+        .btn-outline { border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: #0ea5e9; }
     </style>
 </head>
-<body class="p-4 flex flex-col items-center min-h-screen">
+<body class="flex flex-col items-center justify-center min-h-screen p-6">
 
-    <div class="mb-8 mt-4 text-2xl font-bold tracking-widest flex items-center">
-        <i class="fas fa-paper-plane mr-2 text-sky-400"></i> MELVPN
+    <div class="mb-8 text-center">
+        <div class="text-4xl font-black tracking-tighter text-sky-400 mb-1">MELVPN</div>
+        <div class="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-bold">Premium Proxy Service</div>
     </div>
 
-    <div class="card w-full max-w-md p-6 mb-6">
-        <div class="flex items-center mb-4">
-            <div class="bg-green-500/20 text-green-400 p-2 rounded-full mr-3">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <div>
-                <h2 id="userName" class="text-lg font-bold">Пользователь MELVPN</h2>
-                <p class="text-sm text-gray-400">Подписка активна</p>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-3 mt-6 text-sm">
-            <div class="bg-slate-800/50 p-3 rounded-lg border border-white/5">
-                <p class="text-gray-500 mb-1">Статус</p>
-                <p class="text-green-400 font-semibold">Активна</p>
-            </div>
-            <div class="bg-slate-800/50 p-3 rounded-lg border border-white/5">
-                <p class="text-gray-500 mb-1">Трафик</p>
-                <p class="font-semibold">Безлимит</p>
+    <div class="glass w-full max-w-sm rounded-3xl p-6 mb-6">
+        <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-sky-500/20 flex items-center justify-center text-sky-400 shadow-inner">
+                    <i class="fas fa-shield-alt text-xl"></i>
+                </div>
+                <div>
+                    <div id="userId" class="font-bold text-base text-slate-200">ID: Загрузка...</div>
+                    <div class="text-[11px] text-green-500 flex items-center gap-1.5 font-bold uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Линия активна
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="w-full max-w-md">
-        <h3 class="text-center mb-4 text-gray-400 uppercase text-xs tracking-widest">Установка подписки</h3>
         
-        <div class="card p-6 flex flex-col gap-4">
-            <div class="flex items-center text-sm text-gray-300">
-                <i class="fas fa-info-circle mr-2 text-sky-400"></i>
-                Нажмите кнопку ниже, чтобы автоматически импортировать настройки
+        <div class="space-y-2">
+            <div class="flex justify-between text-[11px] p-3 rounded-xl bg-white/5 border border-white/5">
+                <span class="text-slate-400">Протоколы защиты</span>
+                <span class="text-slate-200 font-bold">VLESS / XTLS</span>
             </div>
-
-            <button onclick="importSub()" class="btn-primary w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2">
-                <i class="fas fa-plus"></i> ДОБАВИТЬ ПОДПИСКУ
-            </button>
-
-            <p class="text-[10px] text-center text-gray-500 mt-2">
-                Поддерживает v2rayNG, Hiddify, Streisand и др.
-            </p>
+            <div class="flex justify-between text-[11px] p-3 rounded-xl bg-white/5 border border-white/5">
+                <span class="text-slate-400">Шифрование</span>
+                <span class="text-slate-200 font-bold">AES-256-GCM</span>
+            </div>
         </div>
     </div>
 
-    <div class="card w-full max-w-md p-6 mt-6 opacity-80">
-        <h4 class="font-bold mb-2 text-sm italic">Если кнопка не сработала:</h4>
-        <p class="text-xs text-gray-400 leading-relaxed">
-            1. Скопируйте ссылку на подписку из бота вручную.<br>
-            2. В приложении нажмите кнопку "+" или "Добавить из буфера".
-        </p>
+    <div class="w-full max-w-sm mb-10">
+        <button onclick="importToApp()" class="btn-grad w-full py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3 active:scale-95 transition-all uppercase tracking-wide">
+            <i class="fas fa-plus-circle"></i> Добавить подписку
+        </button>
     </div>
+
+    <div class="w-full max-w-sm">
+        <div class="text-center text-[10px] text-slate-500 uppercase tracking-widest mb-4 font-bold">Нет приложения? Скачай:</div>
+        <div class="grid grid-cols-2 gap-3">
+            <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang" target="_blank" class="btn-outline flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-bold">
+                <i class="fab fa-android text-sky-400"></i> v2rayNG
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=app.hiddify.com" target="_blank" class="btn-outline flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-bold">
+                <i class="fas fa-bolt text-yellow-400"></i> Hiddify
+            </a>
+        </div>
+    </div>
+
+    <footer class="mt-12 text-[10px] text-slate-600 font-bold uppercase tracking-widest">
+        Powered by Admin Sanek
+    </footer>
 
     <script>
-        // Функция для получения параметра из URL
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
+        const params = new URLSearchParams(window.location.search);
+        const sub = params.get('sub');
+        const id = params.get('id');
 
-        const subUrl = getQueryParam('sub');
-        const userId = getQueryParam('id');
-        
-        if(userId) document.getElementById('userName').innerText = "ID: " + userId;
+        if(id) document.getElementById('userId').innerText = "ID: " + id;
 
-        function importSub() {
-            if(!subUrl) {
-                alert("Ошибка: Ссылка на подписку не найдена!");
+        function importToApp() {
+            if(!sub) {
+                alert("Ошибка: Ссылка на подписку не найдена. Перейдите из бота!");
                 return;
             }
+            const configUrl = "v2rayng://install-config?url=" + encodeURIComponent(sub);
+            const hiddifyUrl = "hiddify://install-config?url=" + encodeURIComponent(sub);
             
-            // Пытаемся открыть через системную схему v2rayng или hiddify
-            // Формат v2rayng://install-config?url=...
-            const v2rayScheme = "v2rayng://install-config?url=" + encodeURIComponent(subUrl);
-            const hiddifyScheme = "hiddify://install-config?url=" + encodeURIComponent(subUrl);
-
-            // Сначала пробуем v2ray, если нет - просто пробуем универсальный редирект
-            window.location.href = v2rayScheme;
-            
-            // Если через 500мс ничего не произошло, пробуем hiddify
-            setTimeout(() => {
-                window.location.href = hiddifyScheme;
-            }, 500);
+            // Пытаемся открыть по очереди
+            window.location.href = configUrl;
+            setTimeout(() => { window.location.href = hiddifyUrl; }, 1200);
         }
     </script>
 </body>
