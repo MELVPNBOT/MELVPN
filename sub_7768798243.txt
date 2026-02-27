@@ -1,5 +1,5 @@
 #profile-title: MELVPN ✈️
-#subscription-userinfo: upload=0; download=0; total=2147483648; expire=1772653114
+#subscription-userinfo: upload=0; download=0; total=107374182400; expire=1772307709
 
 vless://4027061f-5369-47fc-872a-4b180affa348@5.42.103.34:443?type=tcp&security=reality&sni=ww.fasssst.online&fp=chrome&pbk=QmR5lTmD5OdO_d2ODRjg-BTPTVX9yntUTtQmmLe5CnQ&sid=4e1bc0410fcdeb&flow=xtls-rprx-vision# MELVPN | %F0%9F%92%8E%20%D0%AD%D1%81%D1%82%D0%BE%D0%BD%D0%B8%D1%8F%F0%9F%87%AA%F0%9F%87%AA%F0%9F%94%83%20%7C%201-58
 vless://077ace33-e7c4-49c0-9050-3c664b9715c2@51.250.38.204:443?type=tcp&security=reality&sni=ads.x5.ru&fp=chrome&pbk=xaIaHoA_rs_ZkBB550tM58ydsqFDY9lgAArdg3hzBmw&sid=683000261b&flow=xtls-rprx-vision# MELVPN | %F0%9F%92%8E%20%D0%A4%D0%B8%D0%BD%D0%BB%D1%8F%D0%BD%D0%B4%D0%B8%D1%8F%F0%9F%87%AB%F0%9F%87%AE%F0%9F%9F%A2LTE%20%7C%202-50
