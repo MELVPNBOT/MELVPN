@@ -1,7 +1,7 @@
 #!N0:1
 #profile-title: MELVPN Premium
 #profile-web-page-url: https://clck.ru/3S98zs
-#subscription-userinfo: upload=0; download=0; total=536870912000; expire=1774864902
+#subscription-userinfo: upload=0; download=0; total=107374182400; expire=1780912902
 #v2ray-set-hide-settings: true
 #v2ray-set-encrypt-sub: true
 
