@@ -1,0 +1,9 @@
+fetch('users_stats.json')
+  .then(response => response.json())
+  .then(data => {
+    let userId = document.getElementById('user_id_input').value;
+    if(data[userId]) {
+       document.getElementById('status').innerText = "До: " + data[userId].expiry_date;
+       document.getElementById('gb').innerText = "Доступно: " + data[userId].gb_left + " ГБ";
+    }
+  });
