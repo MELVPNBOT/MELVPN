@@ -3,67 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MELVPN Premium</title>
+    <title>MELVPN Profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background: #05070a; color: #f8fafc; font-family: sans-serif; }
-        .card { background: linear-gradient(165deg, #0f172a 0%, #020617 100%); border: 1px solid rgba(14,165,233,0.2); border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        .bar-bg { background: rgba(255,255,255,0.05); border-radius: 100px; height: 10px; }
-        .bar-fill { background: linear-gradient(90deg, #38bdf8, #818cf8); border-radius: 100px; transition: 1.5s ease; }
-        .btn-happ { background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%); transform: translateZ(0); transition: 0.3s; }
-        .btn-happ:active { transform: scale(0.95); }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { background: #0b0e14; color: #fff; font-family: 'Inter', sans-serif; }
+        .card { background: #161b22; border-radius: 24px; border: 1px solid #30363d; position: relative; overflow: hidden; }
+        .m-overlay { background: rgba(11, 14, 20, 0.95); position: absolute; inset: 0; z-index: 50; display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; p: 20px; }
+        .btn-main { background: #238636; border-radius: 12px; font-weight: 900; transition: 0.2s; }
+        .progress-bar { background: #238636; height: 100%; width: 0%; transition: 1s ease-out; }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen p-6">
-
-    <h1 class="text-4xl font-black italic text-sky-500 mb-8 uppercase tracking-tighter">Melvpn</h1>
+<body class="flex items-center justify-center min-h-screen p-6">
 
     <div class="card w-full max-w-sm p-8 text-center">
-        <p id="displayId" class="text-slate-400 text-xs font-bold uppercase mb-6 tracking-widest">ID: Загрузка...</p>
-        
-        <div class="grid grid-cols-2 gap-4 mb-8 text-left">
-            <div class="bg-white/5 p-4 rounded-2xl border border-white/5">
-                <p class="text-[9px] text-slate-500 uppercase font-bold mb-1">Срок (дней)</p>
-                <p id="displayDays" class="text-2xl font-black text-white">0</p>
+        <div id="mScreen" class="m-overlay">
+            <i class="fas fa-tools text-5xl text-yellow-500 mb-4"></i>
+            <h2 class="text-xl font-black uppercase italic mb-2">Технические работы</h2>
+            <p class="text-gray-400 text-xs px-6">Мы обновляем систему. Личный кабинет временно недоступен. Страница обновится автоматически.</p>
+            <div class="mt-6 animate-pulse text-[10px] text-gray-600 uppercase font-bold tracking-widest">Ожидание...</div>
+        </div>
+
+        <h1 class="text-2xl font-black mb-2 text-green-500 uppercase italic">Melvpn</h1>
+        <p id="userId" class="text-gray-500 text-[10px] font-bold tracking-widest uppercase mb-8">ID: ...</p>
+
+        <div class="grid grid-cols-2 gap-4 mb-8">
+            <div class="bg-black/20 p-4 rounded-xl text-left border border-white/5">
+                <p class="text-[8px] text-gray-500 font-bold uppercase mb-1">Дней осталось</p>
+                <p id="userDays" class="text-2xl font-black">0</p>
             </div>
-            <div class="bg-white/5 p-4 rounded-2xl border border-white/5">
-                <p class="text-[9px] text-slate-500 uppercase font-bold mb-1">Лимит (GB)</p>
-                <p id="displayGb" class="text-2xl font-black text-white">0</p>
+            <div class="bg-black/20 p-4 rounded-xl text-left border border-white/5">
+                <p class="text-[8px] text-gray-500 font-bold uppercase mb-1">Трафик (GB)</p>
+                <p id="userGb" class="text-2xl font-black">0</p>
             </div>
         </div>
 
-        <div class="mb-8 text-left">
-            <div class="flex justify-between mb-2"><span class="text-[9px] text-slate-500 font-bold uppercase">Трафик</span><span id="pct" class="text-[10px] text-sky-400 font-bold">0%</span></div>
-            <div class="bar-bg"><div id="bar" class="bar-fill" style="width: 0%"></div></div>
+        <div class="text-left mb-8">
+            <div class="flex justify-between mb-2">
+                <span class="text-[8px] text-gray-500 font-bold uppercase">Загрузка трафика</span>
+                <span id="pct" class="text-[10px] text-green-500 font-bold">0%</span>
+            </div>
+            <div style="background: #30363d; border-radius: 10px; height: 10px; overflow: hidden;">
+                <div id="bar" class="progress-bar"></div>
+            </div>
         </div>
 
-        <button onclick="importSub()" class="btn-happ w-full py-5 rounded-2xl font-black text-sm uppercase tracking-widest">
-            <i class="fas fa-plus-circle mr-2"></i> Добавить в HAPP
+        <button onclick="copyToHapp()" class="btn-main w-full py-4 text-sm uppercase tracking-widest mb-4">
+            Добавить в Happ
         </button>
+        
+        <p class="text-[8px] text-gray-600 uppercase font-bold">Powered by Melvpn Team</p>
     </div>
 
     <script>
-        const params = new URLSearchParams(window.location.search);
-        const encodedData = params.get('data');
-        const id = params.get('id');
-        const days = params.get('days') || "0";
-        const gb = params.get('gb') || "0";
+        const urlParams = new URLSearchParams(window.location.search);
+        const maintenance = urlParams.get('m'); // Смотрим параметр техработ
+        const encodedData = urlParams.get('data');
+        const id = urlParams.get('id');
+        const days = urlParams.get('days') || "0";
+        const gb = urlParams.get('gb') || "0";
+
+        // Если m=1, показываем экран блокировки и обновляем страницу через 30 сек
+        if (maintenance === "1") {
+            document.getElementById('mScreen').style.display = 'flex';
+            setTimeout(() => { location.reload(); }, 30000); 
+        }
+
+        document.getElementById('userId').innerText = "ID: " + (id || "Unknown");
+        document.getElementById('userDays').innerText = days;
+        document.getElementById('userGb').innerText = gb;
 
         let finalUrl = "";
-        if(encodedData) { try { finalUrl = atob(encodedData); } catch(e) {} }
-
-        if(id) document.getElementById('displayId').innerText = "ID: " + id;
-        document.getElementById('displayDays').innerText = days;
-        document.getElementById('displayGb').innerText = gb;
+        if (encodedData) {
+            try { finalUrl = atob(encodedData); } catch (e) {}
+        }
 
         setTimeout(() => {
-            document.getElementById('bar').style.width = "30%";
-            document.getElementById('pct').innerText = "30%";
-        }, 500);
+            if(maintenance !== "1") {
+                document.getElementById('bar').style.width = "40%";
+                document.getElementById('pct').innerText = "40%";
+            }
+        }, 300);
 
-        function importSub() {
-            if(!finalUrl) return alert("Ошибка ссылки!");
+        function copyToHapp() {
+            if (!finalUrl) return alert("Ошибка ссылки!");
             window.location.href = "happ://add/" + finalUrl;
         }
     </script>
