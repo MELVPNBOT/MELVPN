@@ -2,80 +2,122 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MELVPN Cabinet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MELVPN | Кабинет</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { background: #0b0e14; color: #fff; font-family: 'Inter', sans-serif; }
-        .card { background: #161b22; border-radius: 28px; border: 1px solid #30363d; position: relative; overflow: hidden; }
-        .m-overlay { background: rgba(11, 14, 20, 0.98); position: absolute; inset: 0; z-index: 100; display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        .btn-main { background: #238636; border-radius: 16px; font-weight: 900; transition: 0.2s; }
-        .progress-bar { background: #238636; height: 100%; border-radius: 10px; width: 0%; transition: 1.5s; }
+        body { background: #0a0a0a; color: #eee; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); }
+        .accent-gradient { background: linear-gradient(135deg, #007aff 0%, #00c6ff 100%); }
+        .status-badge { padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+        .loader { border: 3px solid rgba(255,255,255,0.1); border-top: 3px solid #007aff; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen p-4">
+<body class="p-4 flex flex-col items-center min-h-screen">
 
-    <div class="card w-full max-w-sm p-8 text-center">
-        <div id="mScreen" class="m-overlay">
-            <i class="fas fa-tools text-4xl text-yellow-500 mb-4 animate-bounce"></i>
-            <h2 class="text-xl font-black uppercase italic mb-2 text-white">Техработы</h2>
-            <p class="text-gray-500 text-[10px] px-8 uppercase font-bold italic">Мы скоро вернемся. Страница обновится автоматически.</p>
-        </div>
+    <div class="w-full max-w-md flex justify-between items-center mb-8">
+        <h1 class="text-2xl font-black tracking-tighter">MEL<span class="text-blue-500">VPN</span></h1>
+        <div id="status-indicator" class="status-badge bg-green-500/20 text-green-500">ONLINE</div>
+    </div>
 
-        <h1 class="text-3xl font-black mb-1 text-green-500 uppercase italic tracking-tighter">Melvpn</h1>
-        <p id="userId" class="text-gray-600 text-[10px] font-bold tracking-widest uppercase mb-8">ID: ...</p>
-
-        <div class="grid grid-cols-2 gap-4 mb-8">
-            <div class="bg-black/30 p-4 rounded-2xl text-left border border-white/5">
-                <p class="text-[9px] text-gray-500 font-bold uppercase mb-1">Дней осталось</p>
-                <p id="userDays" class="text-3xl font-black tracking-tighter">0</p>
+    <div class="w-full max-w-md glass rounded-3xl p-6 shadow-2xl mb-6">
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <p class="text-gray-400 text-sm">Ваш ID</p>
+                <p id="user-id" class="text-xl font-mono font-bold">--------</p>
             </div>
-            <div class="bg-black/30 p-4 rounded-2xl text-left border border-white/5">
-                <p class="text-[9px] text-gray-500 font-bold uppercase mb-1">Лимит (GB)</p>
-                <p id="userGb" class="text-3xl font-black tracking-tighter">0</p>
+            <div class="h-12 w-12 accent-gradient rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20">
+                <i class="fas fa-shield-alt text-white text-xl"></i>
             </div>
         </div>
 
-        <div class="text-left mb-10">
-            <div class="flex justify-between items-end mb-2">
-                <span class="text-[9px] text-gray-500 font-bold uppercase italic">Трафик</span>
-                <span id="pct" class="text-[11px] text-green-500 font-black">40%</span>
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="glass rounded-2xl p-4">
+                <p class="text-gray-500 text-xs uppercase mb-1">Осталось</p>
+                <p id="days-val" class="text-2xl font-bold">--</p>
+                <p class="text-gray-400 text-[10px]">дней</p>
             </div>
-            <div style="background: #30363d; border-radius: 10px; height: 12px;">
-                <div id="bar" class="progress-bar"></div>
+            <div class="glass rounded-2xl p-4">
+                <p class="text-gray-500 text-xs uppercase mb-1">Трафик</p>
+                <p id="gb-val" class="text-2xl font-bold">--</p>
+                <p class="text-gray-400 text-[10px]">ГБ доступно</p>
             </div>
         </div>
 
-        <button onclick="copyToHapp()" class="btn-main w-full py-5 text-sm uppercase tracking-widest">
-            Добавить в Happ
+        <div class="w-full bg-white/5 h-2 rounded-full mb-2">
+            <div id="progress-bar" class="accent-gradient h-full rounded-full" style="width: 0%"></div>
+        </div>
+        <p class="text-[10px] text-gray-500 text-center mb-6">Подписка активна до <span id="expire-date">--.--.----</span></p>
+
+        <button onclick="copyLink()" class="w-full accent-gradient hover:opacity-90 transition py-4 rounded-2xl font-bold text-white shadow-lg mb-3 flex items-center justify-center gap-2">
+            <i class="fas fa-copy"></i> КОПИРОВАТЬ ССЫЛКУ
         </button>
-        <p class="mt-6 text-[8px] text-gray-700 uppercase font-black">© MELVPN TEAM</p>
+        
+        <a id="happ-btn" href="#" class="w-full bg-white/5 hover:bg-white/10 transition py-4 rounded-2xl font-bold text-white flex items-center justify-center gap-2">
+            <i class="fas fa-plus-circle"></i> ДОБАВИТЬ В HAPP
+        </a>
+    </div>
+
+    <div id="m-overlay" class="fixed inset-0 bg-black z-50 flex-col items-center justify-center hidden">
+        <i class="fas fa-tools text-6xl text-blue-500 mb-4"></i>
+        <h2 class="text-2xl font-bold">ТЕХРАБОТЫ</h2>
+        <p class="text-gray-400">Вернемся совсем скоро...</p>
     </div>
 
     <script>
-        const u = new URLSearchParams(window.location.search);
-        const m = u.get('m'), d = u.get('data'), id = u.get('id'), days = u.get('days'), gb = u.get('gb');
+        // Парсим параметры из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const encodedData = urlParams.get('data');
+        const uid = urlParams.get('id');
+        const isMaint = urlParams.get('m');
 
-        if(m === "1") {
-            document.getElementById('mScreen').style.display = 'flex';
-            setTimeout(() => location.reload(), 30000);
+        if (isMaint === '1') document.getElementById('m-overlay').classList.remove('hidden');
+
+        if (encodedData && uid) {
+            // Декодируем ссылку на файл подписки
+            const rawSubUrl = atob(encodedData);
+            document.getElementById('user-id').innerText = uid;
+
+            // Загружаем данные из файла подписки напрямую
+            fetch(rawSubUrl)
+                .then(res => res.text())
+                .then(data => {
+                    // Вытаскиваем инфо из заголовка #subscription-userinfo
+                    const infoMatch = data.match(/total=(\d+); expire=(\d+)/);
+                    if (infoMatch) {
+                        const totalBytes = infoMatch[1];
+                        const expireTs = infoMatch[2];
+                        
+                        const gb = Math.floor(totalBytes / (1024*1024*1024));
+                        const expireDate = new Date(expireTs * 1000);
+                        const today = new Date();
+                        const diffDays = Math.max(0, Math.ceil((expireDate - today) / (1000*60*60*24)));
+
+                        // Обновляем UI
+                        document.getElementById('gb-val').innerText = gb;
+                        document.getElementById('days-val').innerText = diffDays;
+                        document.getElementById('expire-date').innerText = expireDate.toLocaleDateString();
+                        
+                        // Прогресс бар (на 30 дней макс)
+                        const prog = Math.min(100, (diffDays / 30) * 100);
+                        document.getElementById('progress-bar').style.width = prog + '%';
+
+                        // Настройка кнопок
+                        const subLink = "https://happ-link-format.com/?url=" + rawSubUrl; // Формат для Happ
+                        document.getElementById('happ-btn').href = "vless-sub://" + btoa(rawSubUrl); // Прямой импорт
+                        window.currentSub = rawSubUrl;
+                    }
+                })
+                .catch(err => console.error("Ошибка загрузки данных подписки"));
         }
 
-        document.getElementById('userId').innerText = "ID: " + (id || "UNDEFINED");
-        document.getElementById('userDays').innerText = days || "0";
-        document.getElementById('userGb').innerText = gb || "0";
-
-        setTimeout(() => {
-            if(m !== "1") {
-                document.getElementById('bar').style.width = "40%";
+        function copyLink() {
+            if (window.currentSub) {
+                navigator.clipboard.writeText(window.currentSub);
+                alert("Ссылка скопирована!");
             }
-        }, 500);
-
-        function copyToHapp() {
-            if(!d) return alert("Ошибка!");
-            window.location.href = "happ://add/" + atob(d);
         }
     </script>
 </body>
