@@ -3,34 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MELVPN Profile</title>
+    <title>MELVPN Cabinet</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { background: #0b0e14; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .card { background: #161b22; border-radius: 28px; border: 1px solid #30363d; box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
-        .m-overlay { background: rgba(11, 14, 20, 0.98); position: absolute; inset: 0; z-index: 100; display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-radius: 28px; }
-        .btn-main { background: #238636; border-radius: 16px; font-weight: 900; transition: 0.2s; box-shadow: 0 5px 15px rgba(35, 134, 54, 0.3); }
-        .btn-main:active { transform: scale(0.96); }
-        .progress-bar { background: #238636; height: 100%; border-radius: 10px; width: 0%; transition: 1.5s ease-in-out; }
+        body { background: #0b0e14; color: #fff; font-family: 'Inter', sans-serif; }
+        .card { background: #161b22; border-radius: 28px; border: 1px solid #30363d; position: relative; overflow: hidden; }
+        .m-overlay { background: rgba(11, 14, 20, 0.98); position: absolute; inset: 0; z-index: 100; display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .btn-main { background: #238636; border-radius: 16px; font-weight: 900; transition: 0.2s; }
+        .progress-bar { background: #238636; height: 100%; border-radius: 10px; width: 0%; transition: 1.5s; }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4">
 
-    <div class="card w-full max-w-sm p-8 relative">
+    <div class="card w-full max-w-sm p-8 text-center">
         <div id="mScreen" class="m-overlay">
-            <i class="fas fa-hammer text-4xl text-yellow-500 mb-4 animate-bounce"></i>
-            <h2 class="text-xl font-black uppercase italic mb-2">Техработы</h2>
-            <p class="text-gray-500 text-[10px] px-8 uppercase font-bold tracking-widest">Обновляем сервера... Страница обновится сама.</p>
+            <i class="fas fa-tools text-4xl text-yellow-500 mb-4 animate-bounce"></i>
+            <h2 class="text-xl font-black uppercase italic mb-2 text-white">Техработы</h2>
+            <p class="text-gray-500 text-[10px] px-8 uppercase font-bold italic">Мы скоро вернемся. Страница обновится автоматически.</p>
         </div>
 
-        <h1 class="text-3xl font-black mb-1 text-green-500 uppercase italic italic tracking-tighter">Melvpn</h1>
-        <p id="userId" class="text-gray-600 text-[10px] font-bold tracking-widest uppercase mb-8 italic">ID: ...</p>
+        <h1 class="text-3xl font-black mb-1 text-green-500 uppercase italic tracking-tighter">Melvpn</h1>
+        <p id="userId" class="text-gray-600 text-[10px] font-bold tracking-widest uppercase mb-8">ID: ...</p>
 
         <div class="grid grid-cols-2 gap-4 mb-8">
             <div class="bg-black/30 p-4 rounded-2xl text-left border border-white/5">
-                <p class="text-[9px] text-gray-500 font-bold uppercase mb-1">Осталось дней</p>
+                <p class="text-[9px] text-gray-500 font-bold uppercase mb-1">Дней осталось</p>
                 <p id="userDays" class="text-3xl font-black tracking-tighter">0</p>
             </div>
             <div class="bg-black/30 p-4 rounded-2xl text-left border border-white/5">
@@ -41,19 +40,18 @@
 
         <div class="text-left mb-10">
             <div class="flex justify-between items-end mb-2">
-                <span class="text-[9px] text-gray-500 font-bold uppercase">Использовано</span>
-                <span id="pct" class="text-[11px] text-green-500 font-black">0%</span>
+                <span class="text-[9px] text-gray-500 font-bold uppercase italic">Трафик</span>
+                <span id="pct" class="text-[11px] text-green-500 font-black">40%</span>
             </div>
-            <div style="background: #30363d; border-radius: 10px; height: 12px; padding: 2px;">
+            <div style="background: #30363d; border-radius: 10px; height: 12px;">
                 <div id="bar" class="progress-bar"></div>
             </div>
         </div>
 
-        <button onclick="copyToHapp()" class="btn-main w-full py-5 text-sm uppercase tracking-widest flex items-center justify-center gap-2">
-            <i class="fas fa-bolt"></i> Добавить в Happ
+        <button onclick="copyToHapp()" class="btn-main w-full py-5 text-sm uppercase tracking-widest">
+            Добавить в Happ
         </button>
-        
-        <p class="mt-6 text-[8px] text-gray-700 uppercase font-black tracking-widest">© 2026 Melvpn System</p>
+        <p class="mt-6 text-[8px] text-gray-700 uppercase font-black">© MELVPN TEAM</p>
     </div>
 
     <script>
@@ -62,7 +60,7 @@
 
         if(m === "1") {
             document.getElementById('mScreen').style.display = 'flex';
-            setTimeout(() => location.reload(), 20000);
+            setTimeout(() => location.reload(), 30000);
         }
 
         document.getElementById('userId').innerText = "ID: " + (id || "UNDEFINED");
@@ -71,13 +69,12 @@
 
         setTimeout(() => {
             if(m !== "1") {
-                document.getElementById('bar').style.width = "42%";
-                document.getElementById('pct').innerText = "42%";
+                document.getElementById('bar').style.width = "40%";
             }
-        }, 400);
+        }, 500);
 
         function copyToHapp() {
-            if(!d) return alert("Error!");
+            if(!d) return alert("Ошибка!");
             window.location.href = "happ://add/" + atob(d);
         }
     </script>
