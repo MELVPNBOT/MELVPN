@@ -3,116 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MELVPN | Dashboard</title>
+    <title>MELVPN | Control Panel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;900&display=swap');
-        body { background: #050505; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Inter:wght@400;800&display=swap');
+        
+        :root { --accent: #007aff; }
+        body { 
+            background: #050505; 
+            color: #fff; 
+            font-family: 'Inter', sans-serif; 
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 32px 32px;
+        }
         .mono { font-family: 'JetBrains Mono', monospace; }
-        .glass { background: rgba(20, 20, 20, 0.6); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.08); }
-        .accent-bg { background: linear-gradient(135deg, #007aff 0%, #0049ff 100%); }
-        .neon-text { text-shadow: 0 0 15px rgba(0, 122, 255, 0.5); }
+        .glass { background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); }
+        .tab-active { background: var(--accent); color: white; box-shadow: 0 0 15px rgba(0,122,255,0.4); }
+        .app-card { transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.05); }
+        .app-card:hover { border-color: var(--accent); background: rgba(0,122,255,0.05); }
+        .neon-title { text-shadow: 0 0 20px rgba(0, 122, 255, 0.3); }
     </style>
 </head>
-<body class="p-4 flex flex-col items-center min-h-screen">
+<body class="p-4 flex flex-col items-center min-h-screen pb-10">
 
-    <div class="w-full max-w-md glass rounded-2xl p-4 mb-4 flex justify-between items-center text-[11px] uppercase tracking-widest text-gray-400 font-bold">
-        <div class="flex flex-col items-start">
-            <span class="text-blue-500">Осталось</span>
-            <span id="days-val" class="text-lg text-white mono">-- дн.</span>
+    <div class="w-full max-w-lg flex justify-between items-center mb-6 px-2">
+        <div class="flex flex-col">
+            <span class="text-[10px] text-blue-500 font-black uppercase tracking-tighter">Status: Active</span>
+            <span id="days-val" class="text-xl font-black mono text-white">-- DAYS</span>
         </div>
-        <div class="flex flex-col items-center">
-            <span class="text-blue-500">Трафик</span>
-            <span id="gb-val" class="text-lg text-white mono">-- GB</span>
-        </div>
-        <div class="flex flex-col items-end">
-            <span class="text-blue-500">До</span>
-            <span id="expire-date" class="text-lg text-white mono">--.--.--</span>
+        <div class="text-right">
+            <span class="text-[10px] text-gray-500 font-bold uppercase">Until</span>
+            <div id="expire-date" class="text-sm font-bold text-gray-300">--.--.----</div>
         </div>
     </div>
 
-    <div class="w-full max-w-md glass rounded-xl py-2 px-4 mb-6 flex justify-center items-center gap-2">
-        <span class="text-[10px] text-gray-500 font-bold uppercase">Your IP:</span>
-        <span id="user-ip" class="text-sm text-blue-400 mono">detecting...</span>
-    </div>
-
-    <div class="mb-10 text-center">
-        <h1 class="text-6xl font-black italic tracking-tighter neon-text">MEL<span class="text-blue-600">VPN</span></h1>
-        <p class="text-[10px] text-gray-500 tracking-[0.5em] uppercase mt-2">Premium Secure Tunnel</p>
-    </div>
-
-    <div class="w-full max-w-md space-y-3">
-        <button onclick="copyLink()" class="w-full accent-bg hover:scale-[1.02] active:scale-[0.98] transition-all py-5 rounded-2xl font-black text-sm tracking-widest shadow-xl shadow-blue-900/20 flex items-center justify-center gap-3">
-            <i class="fas fa-copy text-lg"></i> КОПИРОВАТЬ ССЫЛКУ
-        </button>
-        
-        <a id="happ-btn" href="#" class="w-full glass hover:bg-white/5 transition-all py-5 rounded-2xl font-bold text-sm tracking-widest flex items-center justify-center gap-3 border border-white/10">
-            <i class="fas fa-bolt text-blue-500"></i> ИМПОРТ В HAPP
-        </a>
-    </div>
-
-    <p class="mt-auto pt-10 text-[10px] text-gray-600 font-mono uppercase tracking-widest">Client Auth ID: <span id="user-id">---------</span></p>
-
-    <div id="m-overlay" class="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center hidden">
-        <div class="p-8 glass rounded-3xl text-center">
-            <i class="fas fa-cog fa-spin text-5xl text-blue-600 mb-4"></i>
-            <h2 class="text-xl font-black">SYSTEM UPDATE</h2>
-            <p class="text-gray-500 text-sm mt-2">Вернемся через несколько минут...</p>
+    <div class="w-full max-w-lg glass rounded-3xl p-6 mb-6 relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-4 opacity-10">
+            <i class="fas fa-microchip text-4xl"></i>
+        </div>
+        <div class="flex justify-between items-end mb-4">
+            <h1 class="text-4xl font-black italic neon-title">MEL<span class="text-blue-500">VPN</span></h1>
+            <div class="text-right">
+                <p class="text-[9px] text-gray-500 uppercase">Traffic Limit</p>
+                <p id="gb-val" class="text-lg font-bold mono text-blue-400">-- GB</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-2 pt-4 border-t border-white/5">
+            <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+            <span class="text-[11px] text-gray-400 mono" id="user-ip">Checking connection...</span>
         </div>
     </div>
+
+    <div class="w-full max-w-lg mb-4 text-center">
+        <p class="text-[10px] text-gray-500 font-bold uppercase tracking-[0.3em] mb-4">Выберите устройство</p>
+        <div class="flex bg-white/5 p-1 rounded-2xl gap-1">
+            <button onclick="setPlatform('android')" id="btn-android" class="flex-1 py-3 rounded-xl text-xs font-bold transition-all"><i class="fab fa-android mr-1"></i> ANDROID</button>
+            <button onclick="setPlatform('ios')" id="btn-ios" class="flex-1 py-3 rounded-xl text-xs font-bold transition-all"><i class="fab fa-apple mr-1"></i> IOS</button>
+            <button onclick="setPlatform('tv')" id="btn-tv" class="flex-1 py-3 rounded-xl text-xs font-bold transition-all"><i class="fas fa-tv mr-1"></i> TV/PC</button>
+        </div>
+    </div>
+
+    <div id="app-container" class="w-full max-w-lg space-y-3">
+        </div>
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const encodedData = urlParams.get('data');
         const uid = urlParams.get('id');
-        const isMaint = urlParams.get('m');
+        let currentSub = "";
 
-        if (isMaint === '1') document.getElementById('m-overlay').classList.remove('hidden');
+        const apps = {
+            android: [
+                { name: "Happ", icon: "bolt", link: "https://play.google.com/store/apps/details?id=com.happ.vpn", schema: "vless-sub://" },
+                { name: "v2rayTun", icon: "rocket", link: "https://play.google.com/store/apps/details?id=com.v2raytun.android", schema: "v2raytun://install-sub?url=" }
+            ],
+            ios: [
+                { name: "Streisand", icon: "paper-plane", link: "https://apps.apple.com/app/streisand/id6443535278", schema: "streisand://import/" },
+                { name: "V2Box", icon: "box-open", link: "https://apps.apple.com/app/v2box/id1640151303", schema: "v2box://install-sub?url=" }
+            ],
+            tv: [
+                { name: "v2rayNG (TV)", icon: "tv", link: "https://github.com/2dust/v2rayNG/releases", schema: "copy" },
+                { name: "Nekoray (PC)", icon: "laptop", link: "https://github.com/MatsuriDayo/nekoray/releases", schema: "copy" }
+            ]
+        };
 
-        // Получение IP пользователя
-        fetch('https://api.ipify.org?format=json')
-            .then(res => res.json())
-            .then(data => document.getElementById('user-ip').innerText = data.ip)
-            .catch(() => document.getElementById('user-ip').innerText = 'Unknown');
+        function setPlatform(plat) {
+            document.querySelectorAll('[id^="btn-"]').forEach(b => b.classList.remove('tab-active'));
+            document.getElementById('btn-' + plat).classList.add('tab-active');
+            
+            const container = document.getElementById('app-container');
+            container.innerHTML = '';
 
-        if (encodedData && uid) {
-            document.getElementById('user-id').innerText = uid;
-            const rawSubUrl = atob(encodedData);
+            apps[plat].forEach(app => {
+                const card = document.createElement('div');
+                card.className = "glass rounded-2xl p-5 flex flex-col gap-4 app-card";
+                
+                let actionBtn = '';
+                if(app.schema === 'copy') {
+                    actionBtn = `<button onclick="copyLink()" class="bg-white/10 py-3 rounded-xl text-[11px] font-bold hover:bg-white/20 transition">СКОПИРОВАТЬ ССЫЛКУ</button>`;
+                } else {
+                    actionBtn = `<button onclick="importApp('${app.schema}')" class="bg-blue-600 py-3 rounded-xl text-[11px] font-bold shadow-lg shadow-blue-600/20">ДОБАВИТЬ В ${app.name.toUpperCase()}</button>`;
+                }
 
-            fetch(rawSubUrl)
-                .then(res => res.text())
-                .then(data => {
-                    const infoMatch = data.match(/total=(\d+); expire=(\d+)/);
-                    if (infoMatch) {
-                        const totalBytes = infoMatch[1];
-                        const expireTs = infoMatch[2];
-                        
-                        const gb = Math.floor(totalBytes / (1024*1024*1024));
-                        const expireDate = new Date(expireTs * 1000);
-                        const today = new Date();
-                        const diffDays = Math.max(0, Math.ceil((expireDate - today) / (1000*60*60*24)));
+                card.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-blue-500">
+                                <i class="fas fa-${app.icon} text-lg"></i>
+                            </div>
+                            <span class="font-bold tracking-tight">${app.name}</span>
+                        </div>
+                        <a href="${app.link}" target="_blank" class="text-[10px] text-gray-500 border-b border-gray-700">СКАЧАТЬ APP</a>
+                    </div>
+                    ${actionBtn}
+                `;
+                container.appendChild(card);
+            });
+        }
 
-                        // Заполнение данных
-                        document.getElementById('gb-val').innerText = gb + ' GB';
-                        document.getElementById('days-val').innerText = diffDays + ' дн.';
-                        document.getElementById('expire-date').innerText = expireDate.toLocaleDateString('ru-RU');
-                        
-                        document.getElementById('happ-btn').href = "vless-sub://" + btoa(rawSubUrl);
-                        window.currentSub = rawSubUrl;
-                    }
-                });
+        function importApp(schema) {
+            if(!currentSub) return alert("Данные не загружены");
+            const finalUrl = schema.includes('vless-sub') ? schema + btoa(currentSub) : schema + encodeURIComponent(currentSub);
+            window.location.href = finalUrl;
         }
 
         function copyLink() {
-            if (window.currentSub) {
-                navigator.clipboard.writeText(window.currentSub);
-                const btn = event.currentTarget;
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '<i class="fas fa-check"></i> ГОТОВО';
-                setTimeout(() => btn.innerHTML = originalText, 2000);
-            }
+            navigator.clipboard.writeText(currentSub);
+            alert("Ссылка скопирована для ручной вставки!");
         }
+
+        // INIT DATA
+        fetch('https://api.ipify.org?format=json').then(r => r.json()).then(d => document.getElementById('user-ip').innerText = "IP: " + d.ip);
+
+        if (encodedData) {
+            currentSub = atob(encodedData);
+            fetch(currentSub).then(r => r.text()).then(data => {
+                const info = data.match(/total=(\d+); expire=(\d+)/);
+                if (info) {
+                    document.getElementById('gb-val').innerText = Math.floor(info[1]/1073741824) + " GB";
+                    const exp = new Date(info[2]*1000);
+                    document.getElementById('days-val').innerText = Math.max(0, Math.ceil((exp - new Date())/86400000)) + " DAYS";
+                    document.getElementById('expire-date').innerText = exp.toLocaleDateString();
+                }
+            });
+        }
+        
+        setPlatform('android'); // Default platform
     </script>
 </body>
 </html>
