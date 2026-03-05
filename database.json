@@ -1,11 +1,12 @@
 {
-    "7768798243": {
-        "username": "@sanyaz0vRKP",
-        "expiry": "2026-05-04",
-        "link": "https://clck.ru/3SLWRp",
-        "agreed": true,
-        "referrer": null,
-        "ref_count": 0,
-        "is_trial": false
-    }
+  "7768798243": {
+    "username": "@sanyaz0vRKP",
+    "expiry": "2026-04-14",
+    "link": "https://clck.ru/3SLWRp",
+    "agreed": true,
+    "referrer": null,
+    "ref_count": 0,
+    "is_trial": false,
+    "url": "https://raw.githubusercontent.com/MELVPNBOT/MELVPN/main/users/7768798243.txt"
+  }
 }
