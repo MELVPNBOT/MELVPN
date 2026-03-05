@@ -1,6 +1,6 @@
 #profile-title: MELVPN | PREMIUM
 #profile-update-interval: 1
-#subscription-userinfo: total=0; expire=1777906553
+#subscription-userinfo: total=0; expire=1777852800
 
 vless://4027061f-5369-47fc-872a-4b180affa348@5.42.103.34:443?type=tcp&security=reality&sni=ww.fasssst.online&fp=chrome&pbk=QmR5lTmD5OdO_d2ODRjg-BTPTVX9yntUTtQmmLe5CnQ&sid=4e1bc0410fcdeb&flow=xtls-rprx-vision#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MELVPN | VPN 1
 vless://80c27c0e-327f-4158-b630-e248a08d4a49@usa.vpnspacev.com:443?type=tcp&security=reality&sni=vpnspacev.com&pbk=zjv3djnsCKDqP7zZFIrJ9ImzgdPE3zFMCYrOvdWqkEE&sid=bc8ceae578236c#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MELVPN | VPN 2
