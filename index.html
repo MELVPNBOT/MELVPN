@@ -1,108 +1,84 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MELVPN Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>MELVPN | Premium Service</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class' };</script>
     <style>
-        :root { --primary: #00ff88; --dark: #0f172a; }
-        body { background-color: var(--dark); color: #e2e8f0; font-family: 'Segoe UI', sans-serif; }
-        .card { background: #1e293b; border: 1px solid #334155; transition: 0.3s; }
-        .card:hover { border-color: var(--primary); }
-        .nav-link { color: var(--primary); font-weight: bold; }
-        .nav-link.active { background-color: var(--primary) !important; color: #000 !important; }
-        .ping-box { font-size: 0.8em; color: #facc15; }
-        @media (max-width: 600px) { .container { padding: 10px; } }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
     </style>
 </head>
-<body>
-<div class="container py-4">
-    <h1 class="text-center mb-4">MELVPN</h1>
-    
-    <ul class="nav nav-tabs justify-content-center mb-4">
-        <li class="nav-item"><a class="nav-link active" onclick="show('home')">Главная</a></li>
-        <li class="nav-item"><a class="nav-link" onclick="show('servers')">Сервера</a></li>
-        <li class="nav-item"><a class="nav-link" onclick="show('sub')">Подписка</a></li>
-    </ul>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
 
-    <div id="home" class="content">
-        <div class="card p-4">
-            <h2>Почему бесплатно?</h2>
-            <p>Я не люблю тратить деньги на впн, и тарифы по 1к — это глупо, ведь интернет всё равно глушат. Мы используем открытые конфиги с GitHub, чтобы каждый мог оставаться на связи.</p>
+<nav class="flex justify-center gap-4 p-6 sticky top-0 z-50 glass">
+    <button onclick="show('home')" class="px-4 py-2 hover:text-emerald-400 font-bold transition">Главная</button>
+    <button onclick="show('servers')" class="px-4 py-2 hover:text-emerald-400 font-bold transition">Сервера</button>
+    <button onclick="show('sub')" class="px-4 py-2 hover:text-emerald-400 font-bold transition">Подписка</button>
+</nav>
+
+<main class="container mx-auto px-4 max-w-4xl">
+    <section id="home" class="tab-content py-10">
+        <h1 class="text-5xl font-extrabold mb-6 text-emerald-400">MELVPN</h1>
+        <div class="glass p-8 rounded-2xl">
+            <p class="text-xl mb-4">Бесплатный и надежный доступ к сети.</p>
+            <p class="text-slate-400 leading-relaxed">В эпоху, когда интернет ограничивают, а платные сервисы за тысячи рублей перестают работать — мы предлагаем альтернативу. MELVPN построен на открытых конфигах сообщества.</p>
         </div>
-    </div>
+    </section>
 
-    <div id="servers" class="content" style="display:none;">
-        <div id="server-list" class="row">Загрузка серверов...</div>
-    </div>
-
-    <div id="sub" class="content" style="display:none;">
-        <div class="card p-4">
-            <h3>Подписка для всех серверов</h3>
-            <p>Скопируйте ссылку ниже и вставьте в настройки вашего VPN-клиента для импорта всего списка:</p>
-            <textarea id="sub-link" class="form-control mb-3" rows="3" readonly></textarea>
-            <button class="btn btn-success" onclick="copySub()">Скопировать подписку</button>
+    <section id="servers" class="tab-content py-10 hidden">
+        <div id="server-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <p class="col-span-full text-center py-20">Загрузка серверов...</p>
         </div>
-    </div>
-</div>
+    </section>
+
+    <section id="sub" class="tab-content py-10 hidden">
+        <div class="glass p-8 rounded-2xl">
+            <h2 class="text-2xl font-bold mb-4">Ссылка на подписку</h2>
+            <textarea id="sub-link" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl mb-4" rows="3" readonly></textarea>
+            <button onclick="copySub()" class="bg-emerald-500 hover:bg-emerald-600 text-black font-bold px-6 py-3 rounded-lg w-full transition">Скопировать всё</button>
+        </div>
+    </section>
+</main>
 
 <script>
-const CONFIG_URL = 'https://raw.githubusercontent.com/MELVPNBOT/MELVPN/refs/heads/main/configs.txt';
-
 function show(id) {
-    document.querySelectorAll('.content').forEach(c => c.style.display = 'none');
-    document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
-    document.getElementById(id).style.display = 'block';
-    event.target.classList.add('active');
+    document.querySelectorAll('.tab-content').forEach(s => s.classList.add('hidden'));
+    document.getElementById(id).classList.remove('hidden');
 }
 
 async function load() {
+    const list = document.getElementById('server-list');
     try {
-        const response = await fetch(CONFIG_URL + '?t=' + Date.now());
-        const text = await response.text();
+        const r = await fetch('https://corsproxy.io/?' + encodeURIComponent('https://raw.githubusercontent.com/MELVPNBOT/MELVPN/refs/heads/main/configs.txt'));
+        const text = await r.text();
         document.getElementById('sub-link').value = btoa(text);
-        
-        const list = document.getElementById('server-list');
         list.innerHTML = '';
         
-        text.split('\n').filter(line => line.startsWith('vless')).forEach((line, i) => {
-            const url = new URL(line);
-            const name = url.hash.substring(1);
-            const col = document.createElement('div');
-            col.className = 'col-md-6 col-lg-4 mb-3';
-            col.innerHTML = `
-                <div class="card p-3">
-                    <div class="d-flex justify-content-between">
-                        <h5 class="mb-0">${name}</h5>
-                        <span id="p-${i}" class="ping-box">ping...</span>
-                    </div>
-                    <div class="mt-2" style="font-size:0.8em">
-                        <div><b>IP:</b> ${url.hostname}</div>
-                        <div><b>Port:</b> ${url.port}</div>
-                        <div><b>SNI:</b> ${url.searchParams.get('sni')}</div>
-                    </div>
-                    <a href="happ://add/${encodeURIComponent(line)}" class="btn btn-outline-light btn-sm mt-3">Добавить в VPN</a>
+        text.split('\n').filter(l => l.startsWith('vless')).forEach((l, i) => {
+            const url = new URL(l);
+            list.innerHTML += `
+            <div class="glass p-5 rounded-xl border border-slate-700">
+                <div class="flex justify-between items-center mb-3">
+                    <span class="font-bold text-emerald-400">${url.hash.substring(1)}</span>
+                    <span id="p-${i}" class="text-xs bg-slate-800 px-2 py-1 rounded">ping...</span>
                 </div>
-            `;
-            list.appendChild(col);
-            
-            // Пинг-тест
-            const start = Date.now();
+                <div class="text-xs text-slate-400 space-y-1 mb-4 font-mono">
+                    <div>IP: ${url.hostname}</div>
+                    <div>PORT: ${url.port}</div>
+                    <div>SNI: ${url.searchParams.get('sni')}</div>
+                </div>
+                <a href="happ://add/${encodeURIComponent(l)}" class="block text-center bg-slate-800 hover:bg-slate-700 py-2 rounded-lg text-sm font-bold transition">Добавить сервер</a>
+            </div>`;
             fetch(`https://${url.hostname}`, {mode:'no-cors'}).then(() => {
-                document.getElementById(`p-${i}`).innerText = (Date.now() - start) + 'ms';
+                document.getElementById(`p-${i}`).innerText = 'Online';
             }).catch(() => document.getElementById(`p-${i}`).innerText = 'Offline');
         });
-    } catch(e) { document.getElementById('server-list').innerText = 'Ошибка загрузки конфигов.'; }
+    } catch(e) { list.innerHTML = 'Ошибка загрузки.'; }
 }
 load();
-
-function copySub() {
-    const el = document.getElementById("sub-link");
-    el.select();
-    document.execCommand("copy");
-    alert("Ссылка скопирована!");
-}
+function copySub() { document.getElementById("sub-link").select(); document.execCommand("copy"); }
 </script>
 </body>
 </html>
