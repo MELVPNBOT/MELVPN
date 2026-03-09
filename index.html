@@ -2,85 +2,94 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MELVPN | Свободный и безопасный интернет</title>
+    <title>MELVPN Dashboard</title>
     <style>
-        :root { --primary: #00ff88; --dark: #0f172a; --card: rgba(30, 41, 59, 0.7); }
-        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #0f172a, #1e293b); color: #e2e8f0; margin: 0; padding: 20px; min-height: 100vh; }
-        .container { max-width: 850px; margin: auto; }
-        
-        /* Навигация */
-        nav { display: flex; gap: 15px; margin-bottom: 30px; }
-        nav button { background: var(--card); border: 1px solid #334155; color: white; padding: 12px 25px; cursor: pointer; border-radius: 8px; transition: 0.3s; }
-        nav button:hover { border-color: var(--primary); color: var(--primary); }
-        
-        /* Контент */
-        .tab-content { display: none; animation: fadeIn 0.5s; }
-        .active { display: block; }
-        
-        /* Карточки серверов */
-        .card { background: var(--card); backdrop-filter: blur(10px); padding: 20px; border-radius: 15px; margin-bottom: 15px; border: 1px solid #334155; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); border-color: var(--primary); }
-        .btn-add { display: inline-block; background: var(--primary); color: #000; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 15px; }
-        
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        :root { --primary: #00ff88; --bg: #0f172a; --card: rgba(30, 41, 59, 0.8); }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: #e2e8f0; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: auto; }
+        .card { background: var(--card); padding: 15px; border-radius: 12px; margin-bottom: 10px; border: 1px solid #334155; }
+        .details { display: none; font-size: 0.9em; color: #94a3b8; margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155; }
+        button { cursor: pointer; background: var(--primary); border: none; padding: 10px 15px; border-radius: 6px; font-weight: bold; }
+        .ping { color: #facc15; font-weight: bold; }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>MELVPN</h1>
-            <p>Бесплатный, безопасный и всегда актуальный VPN</p>
-        </header>
-
+        <h1>MELVPN</h1>
         <nav>
-            <button onclick="showTab('home')">Главная</button>
-            <button onclick="showTab('servers')">Сервера</button>
+            <button onclick="show('home')">Главная</button>
+            <button onclick="show('servers')">Сервера</button>
+            <button onclick="show('sub')">Подписка</button>
         </nav>
 
         <div id="home" class="tab-content active">
-            <h2>О нашем проекте</h2>
-            <p>Мы создали MELVPN, потому что считаем, что платить за интернет, который постоянно блокируют — бессмысленно. Мы собрали этот сервис для тех, кто хочет оставаться на связи.</p>
-            <h3>Почему бесплатно?</h3>
-            <p>Я сам не люблю тратить деньги на сомнительные тарифы. Все конфиги берутся из открытых источников (GitHub), поэтому мы предоставляем их бесплатно. Список серверов обновляется автоматически каждый день.</p>
+            <h2>О MELVPN</h2>
+            <p>Бесплатный VPN на базе открытых исходников.</p>
         </div>
 
         <div id="servers" class="tab-content">
-            <h2>Список доступных серверов</h2>
-            <div id="server-list">Загрузка актуальных конфигов...</div>
+            <div id="server-list">Загрузка...</div>
+        </div>
+
+        <div id="sub" class="tab-content">
+            <h2>Полная подписка</h2>
+            <p>Скопируйте эту ссылку в ваш клиент для импорта всех серверов сразу:</p>
+            <input type="text" id="sub-link" readonly style="width:100%; padding:10px; background:#1e293b; color:white; border:none;">
+            <button onclick="copySub()">Копировать подписку</button>
         </div>
     </div>
 
     <script>
-        function showTab(id) {
+        const SUB_URL = 'https://raw.githubusercontent.com/MELVPNBOT/MELVPN/refs/heads/main/configs.txt';
+
+        function show(id) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
             document.getElementById(id).classList.add('active');
         }
 
         async function fetchServers() {
+            const res = await fetch(SUB_URL);
+            const text = await res.text();
             const list = document.getElementById('server-list');
-            try {
-                const res = await fetch('https://raw.githubusercontent.com/MELVPNBOT/MELVPN/refs/heads/main/configs.txt');
-                const text = await res.text();
-                list.innerHTML = '';
-                
-                text.split('\n').forEach(line => {
-                    if (line.trim().startsWith('vless://')) {
-                        const div = document.createElement('div');
-                        div.className = 'card';
-                        
-                        // Извлекаем имя из ссылки
-                        const name = line.split('#')[1] || 'Сервер';
-                        
-                        div.innerHTML = `<h3>${name}</h3>
-                                         <a href="happ://add/${encodeURIComponent(line)}" class="btn-add">Добавить в приложение</a>`;
-                        list.appendChild(div);
-                    }
-                });
-            } catch (e) {
-                list.innerHTML = '<p style="color:red">Ошибка: не удалось загрузить сервера. Проверьте подключение.</p>';
-            }
+            
+            // Генерация ссылки подписки (Base64)
+            document.getElementById('sub-link').value = btoa(text);
+
+            text.split('\n').filter(line => line.startsWith('vless')).forEach((line, i) => {
+                const url = new URL(line);
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <h3 onclick="this.nextElementSibling.style.display = (this.nextElementSibling.style.display === 'block' ? 'none' : 'block')">
+                        ${url.hash.substring(1)} <span class="ping" id="p-${i}">...ping</span>
+                    </h3>
+                    <div class="details">
+                        <p>IP: ${url.hostname}</p>
+                        <p>Port: ${url.port}</p>
+                        <p>SNI: ${url.searchParams.get('sni')}</p>
+                        <a href="happ://add/${encodeURIComponent(line)}">Добавить сервер</a>
+                    </div>
+                `;
+                list.appendChild(card);
+                ping(url.hostname, i);
+            });
         }
+
+        async function ping(host, id) {
+            const start = Date.now();
+            try {
+                await fetch(`https://${host}`, { mode: 'no-cors' });
+                document.getElementById(`p-${id}`).innerText = (Date.now() - start) + 'ms';
+            } catch { document.getElementById(`p-${id}`).innerText = 'Offline'; }
+        }
+
+        function copySub() {
+            const copyText = document.getElementById("sub-link");
+            copyText.select();
+            document.execCommand("copy");
+            alert("Ссылка скопирована!");
+        }
+
         fetchServers();
     </script>
 </body>
