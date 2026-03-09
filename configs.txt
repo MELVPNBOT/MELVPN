@@ -4,6 +4,13 @@
 #support-url: https://t.me/melvpntop
 #announce: Лучший Бесплатный,быстрый впн по обходу белых списков!
 
+vless://80c27c0e-327f-4158-b630-e248a08d4a49@109.120.189.188:443?type=tcp&security=reality&sni=eh.vk.com&pbk=zjv3djnsCKDqP7zZFIrJ9ImzgdPE3zFMCYrOvdWqkEE&sid=06bf5b24acb9&flow=xtls-rprx-vision#🇷🇺 MELVPN|VPN 1 RU
+vless://f8c5b018-f51a-4137-be8a-50a451630589@nl18.tcpdoor.net:443?type=tcp&security=reality&sni=www.deepl.com&fp=firefox&pbk=_AOJzF5benw33O7Le3OXfVhGf7crZZCTep4O4vI8gms&sid=699446a9#🇳🇱 MELVPN|VPN 2 NL
+vless://f8c5b018-f51a-4137-be8a-50a451630589@nl46.tcpdoor.net:443?type=tcp&security=reality&sni=nl46.tcpdoor.net&fp=firefox&pbk=LqynVfAjnMUlYGKRYjIXT-pj-E64SwbenXWsnr0ApXc&sid=75157a70#🇳🇱 MELVPN|VPN 3 NL
+vless://f8c5b018-f51a-4137-be8a-50a451630589@alb03.tcpdoor.net:443?type=xhttp&security=tls&sni=alb03.tcpdoor.net&fp=random&path=c1a7c061-bf4d-4a96-b10f-64f484aa2a9a#🇦🇱 MELVPN|VPN 4 AL
+vless://a6fc413f-37ca-4b11-a3fd-fb9e272da82e@vk-lt.asbndx.com:443?type=tcp&security=reality&sni=max.ru&fp=qq&pbk=vrBTRg3Wz1K_fxfk8B-lWS7ZUGwxCbeBUgTcWOkSqRY&sid=0fdfdcf08722a04f&flow=xtls-rprx-vision#🇱🇹 MELVPN|VPN 5 LT
+vless://f8c5b018-f51a-4137-be8a-50a451630589@usa25.tcpdoor.net:443?type=xhttp&security=tls&sni=usa25.tcpdoor.net&fp=firefox&path=/c55c28b6-5ffd-4398-8d1d-54ceef97333d/#🇺🇸 MELVPN|VPN 6 US
+vless://00000000-0000-0000-0000-000000000000@127.0.0.1:0?type=tcp&security=none# ДЛЯ БЕЛЫХ СПИСКОВ↓↓↓
 vless://ce89c63c-b30f-467e-968a-cd0292ac9a6b@37.139.34.106:53825?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=qq&sni=api.tau.vk.ru&pbk=aXMQhLjeAAcWkwlaSe5g8Kc30VjqQ0tavdLa9D40ejU#🇷🇺MELVPN|LTE 1
 vless://ce89c63c-b30f-467e-968a-cd0292ac9a6b@5.188.140.3:8718?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=firefox&sni=receive-sentry.lmru.tech&pbk=OOqB9mFan3ucg0FLHOdmgNgh7jdIc1wAy6AuU5dehxU#🇷🇺MELVPN|LTE 2
 vless://ce89c63c-b30f-467e-968a-cd0292ac9a6b@5.188.140.3:8718?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=chrome&sni=receive-sentry.lmru.tech&pbk=OOqB9mFan3ucg0FLHOdmgNgh7jdIc1wAy6AuU5dehxU#🇷🇺MELVPN|LTE 3
