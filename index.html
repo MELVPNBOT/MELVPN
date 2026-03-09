@@ -3,41 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MELVPN | Premium Service</title>
+    <title>MELVPN Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config = { darkMode: 'class' };</script>
     <style>
-        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+        .glass { background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen">
 
 <nav class="flex justify-center gap-4 p-6 sticky top-0 z-50 glass">
-    <button onclick="show('home')" class="px-4 py-2 hover:text-emerald-400 font-bold transition">Главная</button>
-    <button onclick="show('servers')" class="px-4 py-2 hover:text-emerald-400 font-bold transition">Сервера</button>
-    <button onclick="show('sub')" class="px-4 py-2 hover:text-emerald-400 font-bold transition">Подписка</button>
+    <button onclick="show('home')" class="hover:text-emerald-400 font-bold transition">Главная</button>
+    <button onclick="show('servers')" class="hover:text-emerald-400 font-bold transition">Сервера</button>
+    <button onclick="show('sub')" class="hover:text-emerald-400 font-bold transition">Подписка</button>
 </nav>
 
 <main class="container mx-auto px-4 max-w-4xl">
     <section id="home" class="tab-content py-10">
-        <h1 class="text-5xl font-extrabold mb-6 text-emerald-400">MELVPN</h1>
-        <div class="glass p-8 rounded-2xl">
-            <p class="text-xl mb-4">Бесплатный и надежный доступ к сети.</p>
-            <p class="text-slate-400 leading-relaxed">В эпоху, когда интернет ограничивают, а платные сервисы за тысячи рублей перестают работать — мы предлагаем альтернативу. MELVPN построен на открытых конфигах сообщества.</p>
+        <h1 class="text-4xl font-black mb-6 text-emerald-400">MELVPN</h1>
+        <div class="glass p-6 rounded-2xl">
+            <p>Бесплатный, быстрый и актуальный VPN.</p>
         </div>
     </section>
 
     <section id="servers" class="tab-content py-10 hidden">
         <div id="server-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <p class="col-span-full text-center py-20">Загрузка серверов...</p>
+            <p class="text-center py-10">Подключаемся к серверам...</p>
         </div>
     </section>
 
     <section id="sub" class="tab-content py-10 hidden">
-        <div class="glass p-8 rounded-2xl">
-            <h2 class="text-2xl font-bold mb-4">Ссылка на подписку</h2>
-            <textarea id="sub-link" class="w-full bg-slate-900 border border-slate-700 p-4 rounded-xl mb-4" rows="3" readonly></textarea>
-            <button onclick="copySub()" class="bg-emerald-500 hover:bg-emerald-600 text-black font-bold px-6 py-3 rounded-lg w-full transition">Скопировать всё</button>
+        <div class="glass p-6 rounded-2xl">
+            <h2 class="text-xl font-bold mb-4">Полная подписка</h2>
+            <textarea id="sub-link" class="w-full bg-slate-900 border border-slate-700 p-3 rounded-lg mb-3" rows="3" readonly></textarea>
+            <button onclick="copy()" class="bg-emerald-500 w-full py-2 rounded-lg text-black font-bold">Скопировать</button>
         </div>
     </section>
 </main>
@@ -51,34 +49,32 @@ function show(id) {
 async function load() {
     const list = document.getElementById('server-list');
     try {
-        const r = await fetch('https://corsproxy.io/?' + encodeURIComponent('https://raw.githubusercontent.com/MELVPNBOT/MELVPN/refs/heads/main/configs.txt'));
-        const text = await r.text();
+        // Добавляем CORS-прокси, чтобы GitHub не блокировал запрос
+        const url = 'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://raw.githubusercontent.com/MELVPNBOT/MELVPN/refs/heads/main/configs.txt');
+        const res = await fetch(url);
+        const text = await res.text();
         document.getElementById('sub-link').value = btoa(text);
         list.innerHTML = '';
         
         text.split('\n').filter(l => l.startsWith('vless')).forEach((l, i) => {
-            const url = new URL(l);
+            const u = new URL(l);
             list.innerHTML += `
-            <div class="glass p-5 rounded-xl border border-slate-700">
-                <div class="flex justify-between items-center mb-3">
-                    <span class="font-bold text-emerald-400">${url.hash.substring(1)}</span>
-                    <span id="p-${i}" class="text-xs bg-slate-800 px-2 py-1 rounded">ping...</span>
+            <div class="glass p-4 rounded-xl border border-slate-700">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-emerald-400 font-bold">${u.hash.substring(1)}</span>
+                    <span id="p-${i}" class="text-xs bg-slate-800 px-2 rounded">ping...</span>
                 </div>
-                <div class="text-xs text-slate-400 space-y-1 mb-4 font-mono">
-                    <div>IP: ${url.hostname}</div>
-                    <div>PORT: ${url.port}</div>
-                    <div>SNI: ${url.searchParams.get('sni')}</div>
-                </div>
-                <a href="happ://add/${encodeURIComponent(l)}" class="block text-center bg-slate-800 hover:bg-slate-700 py-2 rounded-lg text-sm font-bold transition">Добавить сервер</a>
+                <div class="text-xs opacity-70 mb-3">IP: ${u.hostname} | SNI: ${u.searchParams.get('sni')}</div>
+                <a href="happ://add/${encodeURIComponent(l)}" class="block text-center bg-emerald-600 py-2 rounded-lg text-sm font-bold">Добавить</a>
             </div>`;
-            fetch(`https://${url.hostname}`, {mode:'no-cors'}).then(() => {
+            fetch(`https://${u.hostname}`, {mode:'no-cors'}).then(() => {
                 document.getElementById(`p-${i}`).innerText = 'Online';
             }).catch(() => document.getElementById(`p-${i}`).innerText = 'Offline');
         });
-    } catch(e) { list.innerHTML = 'Ошибка загрузки.'; }
+    } catch(e) { list.innerHTML = '<p class="text-red-500">Ошибка: проверьте сеть.</p>'; }
 }
 load();
-function copySub() { document.getElementById("sub-link").select(); document.execCommand("copy"); }
+function copy() { document.getElementById("sub-link").select(); document.execCommand("copy"); }
 </script>
 </body>
 </html>
