@@ -1,1 +1,6 @@
+#profile-title: 🇷🇺 MELVPN|VPN|WIFI
+#profile-update-interval: 1
+#subscription-userinfo: total=0; expire=0; total=0; download=0
+#support-url: https://t.me/melvpntop
+#announce: Лучший Бесплатный,быстрый впн для вайфая!
 
