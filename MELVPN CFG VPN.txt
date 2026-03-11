@@ -2,5 +2,12 @@
 #profile-update-interval: 1
 #subscription-userinfo: total=0; expire=0; total=0; download=0
 #support-url: https://t.me/melvpntop
-#announce: Лучший Бесплатный,быстрый впн для вайфая!
+#announce: Игровой бесплатный впн! разнве страны!
 
+vless://034a8ae2-9565-474c-9e91-c0f3a53326cc@ruhip.vles.space:18771?type=tcp&security=reality&flow=xtls-rprx-vision&fp=chrome&pbk=DPZKjPPf98W3z9BwfO5qVPHmhJkEUbA9OrqiKRBTZGQ&sid=&sni=cloudcdn-m9-12.cdn.yandex.net&path=&host=#%F0%9F%87%B7%F0%9F%87%BA%20Russia%20%5BSNI-RU%5D%20cloudcdn-m9-12.cdn.yandex.net
+vless://034a8ae2-9565-474c-9e91-c0f3a53326cc@ruhip.vles.space:18771?type=tcp&security=reality&flow=xtls-rprx-vision&fp=chrome&pbk=DPZKjPPf98W3z9BwfO5qVPHmhJkEUbA9OrqiKRBTZGQ&sid=&sni=cloudcdn-m9-12.cdn.yandex.net&path=&host=#1096 | 🌐 Unknown | VLESS | TG: @YoutubeUnBlockRu
+vless://034a8ae2-9565-474c-9e91-c0f3a53326cc@ruhip.vles.space:8779?type=grpc&security=reality&fp=chrome&pbk=Hc4aTC6Ml7XLIhdKgizmFw6dcHRv2bl2JP3Ng6K2YVM&sid=aabbccdd&sni=ozon.ru&mode=multi&serviceName=ozon&authority=#1345 | 🌐 Unknown | VLESS | TG: @YoutubeUnBlockRu
+vless://034a8ae2-9565-474c-9e91-c0f3a53326cc@ruhip.vles.space:8779?type=grpc&security=reality&fp=chrome&pbk=Hc4aTC6Ml7XLIhdKgizmFw6dcHRv2bl2JP3Ng6K2YVM&sid=aabbccdd&sni=ozon.ru&mode=multi&serviceName=ozon&authority=#%F0%9F%87%B7%F0%9F%87%BA%20Russia%20%5BSNI-RU%5D%20ozon.ru%20t.me%2Frjsxrd
+vless://c6be0a05-6105-4c0a-8af5-3e227f10735f@144.31.54.35:37016?encryption=none&type=tcp&security=reality&fp=chrome&sni=www.nvidia.com&pbk=YlwO0m3fxSkKzi0RqOadx0fDPUyDTmUEmHP97bvV7QQ&sid=6d37bd51&spx=%2F#%F0%9F%87%BA%F0%9F%87%B8%20United%20States%20%E2%80%94%20%231367
+vless://c6be0a05-6105-4c0a-8af5-3e227f10735f@144.31.54.35:37016?encryption=none&type=tcp&security=reality&fp=chrome&sni=www.nvidia.com&pbk=YlwO0m3fxSkKzi0RqOadx0fDPUyDTmUEmHP97bvV7QQ&sid=6d37bd51&spx=%2F#%F0%9F%87%BA%F0%9F%87%B8%20United%20States%20%E2%80%94%20%231262
+vless://dc1b85fd-a08e-42d7-ae2b-0a320f3399b7@de.kv.prod.n7.homes:8443?type=tcp&security=reality&encryption=none&fp=chrome&pbk=upDCW94g-pSYQrmXvOrTVYlwBUrSKhYFF9QwrqObdVo&sid=3ca620a7ed5f3196&sni=sun6-21.userapi.com#1094 | 🇩🇪 Germany | 🏳️ SNI-VK | VLESS | 📺 YT | TG: @YoutubeUnBlockRu%20t.me%2Frjsxrd
