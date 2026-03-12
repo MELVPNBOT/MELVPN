@@ -1,102 +1,118 @@
 <!DOCTYPE html>
-<html lang="ru" class="dark">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MELVPN Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Добавить подписку</title>
     <style>
-        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
-        .tab-content { display: none; }
-        .active { display: block; }
-    </style>
-</head>
-<body class="bg-slate-950 text-slate-100 min-h-screen">
-
-<nav class="flex justify-center gap-4 p-6 glass sticky top-0 z-50">
-    <button onclick="showTab('home')" class="font-bold hover:text-emerald-400">Главная</button>
-    <button onclick="showTab('servers')" class="font-bold hover:text-emerald-400">Сервера</button>
-    <button onclick="showTab('sub')" class="font-bold hover:text-emerald-400">Подписка</button>
-</nav>
-
-<main class="container mx-auto px-4 max-w-4xl py-10">
-    <section id="home" class="tab-content active glass p-8 rounded-2xl">
-        <h1 class="text-4xl font-black text-emerald-400 mb-4">MELVPN</h1>
-        <p>Бесплатный и безопасный VPN. Мы используем только открытые конфиги.</p>
-    </section>
-
-    <section id="servers" class="tab-content">
-        <div id="server-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <p class="text-center col-span-full">Загрузка серверов...</p>
-        </div>
-    </section>
-
-    <section id="sub" class="tab-content glass p-8 rounded-2xl">
-        <h2 class="text-xl font-bold mb-4">Ссылка на подписку</h2>
-        <textarea id="sub-data" class="w-full bg-slate-900 p-4 rounded-lg mb-4 text-xs font-mono" rows="3" readonly></textarea>
-        <button onclick="copySub()" class="bg-emerald-600 w-full py-2 rounded-lg font-bold">Скопировать</button>
-    </section>
-</main>
-
-<script>
-function showTab(id) {
-    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-}
-
-async function load() {
-    const list = document.getElementById('server-list');
-    try {
-        const res = await fetch('https://raw.githubusercontent.com/MELVPNBOT/MELVPN/refs/heads/main/configs.txt?t=' + Date.now());
-        const text = await res.text();
-        
-        // Создаем подписку только из валидных vless ссылок
-        const vlessLines = text.split('\n').filter(l => l.trim().startsWith('vless://'));
-        document.getElementById('sub-data').value = btoa(vlessLines.join('\n'));
-        
-        list.innerHTML = '';
-        if (vlessLines.length === 0) {
-            list.innerHTML = '<p class="text-center col-span-full">Серверы не найдены.</p>';
-            return;
+        /* Основные стили страницы */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000; /* Черный фон */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        vlessLines.forEach((line, i) => {
-            try {
-                const u = new URL(line);
-                const name = u.hash.substring(1) || "Сервер " + (i + 1);
-                
-                list.innerHTML += `
-                <div class="glass p-4 rounded-xl border border-slate-700">
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-emerald-400 font-bold truncate">${name}</span>
-                        <span id="p-${i}" class="text-[10px] bg-slate-800 px-2 rounded">Ping...</span>
-                    </div>
-                    <div class="text-[11px] text-slate-400 mb-4 truncate">IP: ${u.hostname} | SNI: ${u.searchParams.get('sni')}</div>
-                    <a href="happ://add/${encodeURIComponent(line)}" class="block bg-slate-700 hover:bg-slate-600 text-center py-2 rounded-md text-sm font-bold">Добавить</a>
-                </div>`;
-                
-                fetch(`https://${u.hostname}`, {mode:'no-cors'}).then(() => {
-                    const el = document.getElementById(`p-${i}`);
-                    if(el) el.innerText = 'Online';
-                }).catch(() => {
-                    const el = document.getElementById(`p-${i}`);
-                    if(el) el.innerText = 'Offline';
-                });
-            } catch(e) {}
-        });
-    } catch(e) {
-        list.innerHTML = '<p class="text-center text-red-400">Ошибка при загрузке.</p>';
-    }
-}
+        /* Контейнер для снежинок */
+        #snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
 
-function copySub() {
-    const el = document.getElementById("sub-data");
-    el.select();
-    document.execCommand("copy");
-    alert("Скопировано!");
-}
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: #fff;
+            user-select: none;
+            z-index: 1;
+            filter: blur(1px);
+        }
 
-load();
-</script>
+        /* Кнопка */
+        .btn-container {
+            z-index: 10;
+        }
+
+        .subscribe-button {
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(45deg, #2c3e50, #000);
+            border: 2px solid #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subscribe-button:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* Анимация падения */
+        @keyframes fall {
+            to {
+                transform: translateY(105vh);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="snow-container"></div>
+
+    <div class="btn-container">
+        <a href="https://happ://add/https://clck.ru/3SPWky" class="subscribe-button">
+            Добавить подписку
+        </a>
+    </div>
+
+    <script>
+        const container = document.getElementById('snow-container');
+        const snowflakeCount = 100; // Количество снежинок
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            const size = Math.random() * 5 + 2 + 'px';
+            
+            snowflake.classList.add('snowflake');
+            snowflake.innerText = '•'; // Можно заменить на '❄', если нужны крупные снежинки
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.fontSize = size;
+            snowflake.style.opacity = Math.random();
+            
+            // Продолжительность анимации от 5 до 15 секунд
+            const duration = Math.random() * 10 + 5 + 's';
+            snowflake.style.animation = `fall ${duration} linear infinite`;
+            
+            // Задержка начала
+            snowflake.style.animationDelay = Math.random() * -20 + 's';
+
+            container.appendChild(snowflake);
+        }
+
+        // Создаем снежинки при загрузке
+        for (let i = 0; i < snowflakeCount; i++) {
+            createSnowflake();
+        }
+    </script>
 </body>
 </html>
