@@ -5,57 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MelVPN | Подписка</title>
     <style>
-        body { margin: 0; background: #000; color: #fff; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }
-        
-        /* Верхняя панель */
-        .top-bar { position: absolute; top: 20px; width: 90%; display: flex; justify-content: space-between; align-items: center; z-index: 10; }
-        .left-menu { display: flex; gap: 15px; align-items: center; }
-        .icon { width: 30px; height: 30px; cursor: pointer; filter: invert(1); }
-        .time { font-family: monospace; font-size: 1.2rem; }
-
-        /* Центр */
-        .content { text-align: center; z-index: 10; }
-        .subscribe-button { padding: 15px 30px; background: #fff; color: #000; border-radius: 25px; text-decoration: none; font-weight: bold; display: inline-block; }
-        .sub-text { margin-top: 15px; color: #888; font-size: 0.9rem; }
-        
-        /* Футер */
-        .footer { position: absolute; bottom: 20px; color: #555; font-size: 0.8rem; }
+        body { 
+            margin: 0; background: #000; color: #fff; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            display: flex; flex-direction: column; align-items: center; 
+            justify-content: center; height: 100vh; text-align: center;
+        }
+        .container { padding: 20px; width: 90%; max-width: 400px; }
+        .hidden { display: none; }
+        input { 
+            padding: 12px; border-radius: 8px; border: 1px solid #444; 
+            background: #222; color: #fff; width: 60px; text-align: center; font-size: 1.2rem;
+        }
+        button { 
+            padding: 12px 25px; border-radius: 8px; border: none; 
+            background: #444; color: #fff; cursor: pointer; font-weight: bold; margin-left: 10px;
+        }
+        .subscribe-button { 
+            background: #fff; color: #000; text-decoration: none; 
+            padding: 15px 30px; border-radius: 25px; display: inline-block; 
+            font-weight: bold; margin-top: 20px;
+        }
+        .footer { margin-top: 40px; color: #555; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <div class="left-menu">
-            <a href="https://t.me/melvpntop"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" class="icon"></a>
-            <img src="https://cdn-icons-png.flaticon.com/512/126/126472.png" class="icon" onclick="toggleLang()" style="cursor:pointer">
-        </div>
-        <div class="time" id="msk-time">--:--</div>
+    <div class="container" id="captcha-box">
+        <h3>Подтвердите, что вы не робот</h3>
+        <p id="question" style="font-size: 1.5rem; margin: 20px 0;"></p>
+        <input type="number" id="answer" placeholder="?">
+        <button onclick="checkCaptcha()">Проверить</button>
     </div>
 
-    <div class="content">
-        <a href="javascript:void(0)" onclick="openHapp()" class="subscribe-button">Добавить подписку</a>
-        <p class="sub-text">Строго добавление в Happ</p>
+    <div id="link-box" class="hidden">
+        <h3>Доступ разрешен</h3>
+        <a href="happ://add/https://clck.ru/3SPWky" class="subscribe-button">Добавить подписку</a>
+        <p style="margin-top: 20px; color: #888; font-size: 0.9rem;">Строго для приложения Happ</p>
     </div>
 
-    <div class="footer">Спасибо! что пользуетесь нашим впн!</div>
+    <div class="footer">Спасибо, что пользуетесь MelVPN!</div>
 
     <script>
-        // Время по МСК
-        function updateTime() {
-            const now = new Date().toLocaleString("ru-RU", {timeZone: "Europe/Moscow", hour: '2-digit', minute: '2-digit'});
-            document.getElementById('msk-time').innerText = now;
-        }
-        setInterval(updateTime, 1000);
-        updateTime();
+        // Генерация примера
+        const a = Math.floor(Math.random() * 10) + 1;
+        const b = Math.floor(Math.random() * 10) + 1;
+        document.getElementById('question').innerText = `${a} + ${b} = ?`;
 
-        // Логика перехода
-        function openHapp() {
-            window.location.href = "happ://add/https://clck.ru/3SPWky";
-        }
-
-        // Заглушка для языка
-        function toggleLang() {
-            alert("Функция смены языка в разработке");
+        function checkCaptcha() {
+            const userAns = document.getElementById('answer').value;
+            if (parseInt(userAns) === (a + b)) {
+                document.getElementById('captcha-box').classList.add('hidden');
+                document.getElementById('link-box').classList.remove('hidden');
+            } else {
+                alert("Неверно, попробуйте еще раз.");
+            }
         }
     </script>
 </body>
