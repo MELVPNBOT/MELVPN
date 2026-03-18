@@ -2,11 +2,7 @@
 #profile-update-interval: 1
 #subscription-userinfo: total=0; expire=0; total=0; download=0
 #support-url: https://t.me/melvpntop
-#announce: 8J+SlyAqKmRldiZmcmVlKiogfCBgYWxsIHVzZXJgIHwg4pyUIEFjdGl2ZQrwn5S7INCd
-ZSD00LDQsdC+0YLQsNC10YI/INCW0JzQmCDwn5SORfCfkYYg0JjRgdC/0L7Qu9GM0LfR
-g9C50YLQtSDQvtCx0YXQvtC0INGC0L7Qu9GM0LrQviDQtdGB0LvQuCDQvtCx0YvRh9C9
-0YvQtSDRgdC10YDQstC10YDRiyDQvdC10LTQvtGB0YLRg9C/0L3Riy4=
-
+#announce:base64:8J+SlyBkZXYmZnJlZSB8IGFsbCB1c2VyIHwg4pyUIEFjdGl2ZQrwn5SuINCdZSD00LDQsdC+0YLQsNC10YI/INCW0JzQmCDwn5SORfCfkYYg0JjRgdC/0L7Qu9GM0LfRg9C50YLQtSDQvtCx0YXQvtC0INGC0L7Qu9GM0LrQviDQtdGB0LvQuCDQvtCx0YvRh9C90YvQtSDRgdC10YDQstC10YDRiyDQvdC10LTQvtGB0YLRg9C/0L3Riy4=
 
 vless://f8c5b018-f51a-4137-be8a-50a451630589@45.12.136.48:443?security=reality&type=tcp&fp=firefox&sni=mirror.yandex.ru&pbk=E-fIlniARgucl-Y8wctxQr4wPuDibRYnOCHCYAEVbws&sid=0cfdd64c&spx=/#%F0%9F%87%B1%F0%9F%87%B9%20Литва%20
 vless://f8c5b018-f51a-4137-be8a-50a451630589@alb03.tcpdoor.net:443?security=tls&type=xhttp&fp=random&sni=alb03.tcpdoor.net&host=alb03.tcpdoor.net&path=c1a7c061-bf4d-4a96-b10f-64f484aa2a9a&mode=auto&alpn=h2&allowInsecure=0#%F0%9F%87%A6%F0%9F%87%B1%20Албания%20
