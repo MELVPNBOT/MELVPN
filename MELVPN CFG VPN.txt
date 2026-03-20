@@ -1,5 +1,2 @@
-#profile-title: Мэл ВПН+БС|🆓
-#profile-update-interval: 1
-#subscription-userinfo: total=0; expire=0; download=0; upload=0
-#support-url: https://t.me/melvpntop
+
 #announce:base64:777fU3ViOkZSRUV8VlBOK1dMfOKAWOfvv58K4pqg0KDQsNCx0L7RgtCwINCy0L/QvSDQv9GA0NC4INC+0LPRgNCw0L3QuNGH0LXQvdC40Y/RhSDRgtC1INCz0LDRgNCw0L3RgtC40YDQvtCy0LDQvdCw4pqgCuKch1N1Yi3QkdC10LvRi9C1INGB0L/QuNGB0LrQuCsrRlJFRdinhwrina7QodC/0LDRgdC40LHQviDQt9CwINC/0L7Qu9GM0LfQvtCy0LDQvdC40LUgTUVMVlBOina7
