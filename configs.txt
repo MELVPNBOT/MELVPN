@@ -2,8 +2,7 @@
 #profile-update-interval: 1
 #subscription-userinfo: total=0; expire=0; total=0; download=0
 #support-url: https://t.me/melvpntop
-#announce:base64:777fU3ViOkZSRUV8VlBOK1dMfOKAWOfvv58KICAgICAg4pqgUmFib3RhIHZwbiBwcmkgb2dyYW5pY2hlbml5YWtoIG5lIGdhcmFudGlyb3ZhbmHimqAKICAgICAgICAgICAgICAg4pyYU3ViLdCR0LXQu9GL0LUg0YHQv9C40YHQutC4KytGUkVV4pyYCiAgICAgICAgICAgICAgIOKch9Ch0L/0LDRgdC40LHQviDQt9CwINC/0L7Qu9GM0LfQvtCy0LDQvdC40LUgTUVMVlBO4pyH
-
+#announce:SUB:FREE|VPN+БС|50%WORK!
 vless://6ad51558-76cf-4865-8da4-c91fff28b158@telegram.private-networks-zk.com:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=chrome&pbk=-tePObR3oZwGAUOb5kqTYkNWl6rtUKl0RFuzuu06wgw&sid=50&type=tcp&headerType=none#TG%20%D0%91%D0%A3%D0%A1%D0%A2%D0%95%D0%A0%20%F0%9F%9A%80
 vless://fee1d27a-5b94-48e1-9f70-540ae3d77ad1@138.124.241.248:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=github.com&fp=chrome&pbk=WLorHRQzHtiXR2Afc5D8IFOEFl-MFRyOFDKfNGmdUSY&sid=&type=tcp&headerType=none#VPN|бравл%20старс
 vless://fee1d27a-5b94-48e1-9f70-540ae3d77ad1@138.124.115.129:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=google.com&fp=chrome&pbk=L-RxJSQQNZx8H4PRM6lUkRbCNJfpMz69tqHM_nzsDzQ&sid=&type=tcp&headerType=none#VPN|Игры
