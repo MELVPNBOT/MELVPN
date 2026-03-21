@@ -3,64 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MelVPN | Подписка</title>
+    <title>MELVPN — Свобода и Безопасность</title>
     <style>
-        body { 
-            margin: 0; background: #000; color: #fff; 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            display: flex; flex-direction: column; align-items: center; 
-            justify-content: center; height: 100vh; text-align: center;
+        :root { --accent: #00ff88; --bg: #0a0a0a; --card: #161616; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: #eee; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* Шапка */
+        header { 
+            display: flex; align-items: center; padding: 15px 5%; 
+            background: rgba(20, 20, 20, 0.8); backdrop-filter: blur(10px);
+            position: sticky; top: 0; border-bottom: 1px solid #333; z-index: 100;
         }
-        .container { padding: 20px; width: 90%; max-width: 400px; }
-        .hidden { display: none; }
-        input { 
-            padding: 12px; border-radius: 8px; border: 1px solid #444; 
-            background: #222; color: #fff; width: 60px; text-align: center; font-size: 1.2rem;
-        }
-        button { 
-            padding: 12px 25px; border-radius: 8px; border: none; 
-            background: #444; color: #fff; cursor: pointer; font-weight: bold; margin-left: 10px;
-        }
-        .subscribe-button { 
-            background: #fff; color: #000; text-decoration: none; 
-            padding: 15px 30px; border-radius: 25px; display: inline-block; 
-            font-weight: bold; margin-top: 20px;
-        }
-        .footer { margin-top: 40px; color: #555; font-size: 0.8rem; }
+        header img { width: 45px; height: 45px; border-radius: 8px; margin-right: 15px; border: 1px solid var(--accent); }
+        header h1 { font-size: 22px; letter-spacing: 1px; color: var(--accent); margin: 0; text-transform: uppercase; }
+
+        .container { max-width: 800px; margin: 40px auto; padding: 20px; flex-grow: 1; }
+        .hidden { display: none !important; }
+
+        /* Стиль Капчи */
+        .captcha-wrapper { background: var(--card); padding: 40px; border-radius: 20px; border: 1px solid #222; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        input { background: #222; border: 1px solid #444; color: white; padding: 12px; border-radius: 8px; width: 80%; margin: 10px 0; font-size: 16px; outline: none; transition: 0.3s; }
+        input:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(0, 255, 136, 0.2); }
+        button { background: var(--accent); color: #000; border: none; padding: 15px 40px; border-radius: 10px; font-weight: 800; cursor: pointer; margin-top: 20px; transition: 0.3s; width: 100%; max-width: 300px; }
+        button:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4); }
+
+        /* Текст на главной */
+        .promo-section h2 { color: var(--accent); font-size: 32px; }
+        .benefit { background: var(--card); padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid var(--accent); text-align: left; }
+        .benefit h3 { margin-top: 0; color: #fff; }
+
+        /* Страница подписки */
+        .device-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 30px 0; }
+        .device-btn { background: #222; padding: 25px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: 0.3s; }
+        .device-btn:hover { border-color: var(--accent); }
+        .selected { border-color: var(--accent); background: #1a2a22; }
     </style>
 </head>
 <body>
 
-    <div class="container" id="captcha-box">
-        <h3>Подтвердите, что вы не робот</h3>
-        <p id="question" style="font-size: 1.5rem; margin: 20px 0;"></p>
-        <input type="number" id="answer" placeholder="?">
-        <button onclick="checkCaptcha()">Проверить</button>
-    </div>
+    <header>
+        <img src="https://cdn.jsdelivr.net/gh/MELVPNBOT/MELVPN@main/pic.png" alt="MELVPN Logo">
+        <h1>MELVPN</h1>
+    </header>
 
-    <div id="link-box" class="hidden">
-        <h3>Доступ разрешен</h3>
-        <a href="happ://add/https://clck.ru/3SPWky" class="subscribe-button">Добавить подписку</a>
-        <p style="margin-top: 20px; color: #888; font-size: 0.9rem;">Строго для приложения Happ</p>
-    </div>
+    <div class="container">
+        <div id="captcha-box" class="captcha-wrapper">
+            <h3>Подтвердите, что вы не робот</h3>
+            <p id="math-label" style="font-size: 1.2rem; margin-bottom: 5px;"></p>
+            <input type="number" id="math-input" placeholder="Введите ответ">
+            <p style="margin-top: 20px;">Введите проверочное слово: <b id="word-label" style="color: var(--accent);"></b></p>
+            <input type="text" id="word-input" placeholder="Текст отсюда">
+            <br>
+            <button onclick="checkCaptcha()">Продолжить</button>
+            <p style="font-size: 12px; color: #666; margin-top: 15px;">Для работы сайта решите 2 капчи</p>
+        </div>
 
-    <div class="footer">Спасибо, что пользуетесь MelVPN!</div>
+        <div id="main-site" class="hidden">
+            <div class="promo-section">
+                <h2>Почему MELVPN?</h2>
+                <div class="benefit">
+                    <h3>Абсолютно Бесплатно</h3>
+                    <p>Мы не продаем подписки и не ограничиваем трафик. Наша цель — обеспечить каждого качественным инструментом для обхода цензуры без скрытых платежей и рекламы.</p>
+                </div>
+                <div class="benefit">
+                    <h3>Приватность 100%</h3>
+                    <p>Мы используем современные протоколы (VLESS, Reality), которые маскируют ваш трафик под обычное посещение сайтов. Провайдер даже не узнает, что вы используете прокси.</p>
+                </div>
+                <div class="benefit">
+                    <h3>Стабильные обходы</h3>
+                    <p>Наши конфигурации проходят через любые фильтры. Плавный стриминг 4K, низкий пинг в играх и мгновенная загрузка мессенджеров — всё это доступно в один клик.</p>
+                </div>
+                <p style="color: #888;">С нами вы забудете про "Ошибка подключения" и медленную загрузку. Качественные узлы в Европе и Азии уже ждут вас.</p>
+            </div>
+        </div>
+
+        <div id="free-page" class="hidden">
+            <h2>Активация подписки</h2>
+            <p>Выберите вашу платформу для автоматической настройки конфигурации:</p>
+            <div class="device-grid">
+                <div class="device-btn" onclick="select(this)">Android</div>
+                <div class="device-btn" onclick="select(this)">iPhone / iPad</div>
+                <div class="device-btn" onclick="select(this)">Windows PC</div>
+            </div>
+            <button onclick="window.location.href='happ://add/https://clck.ru/3SPWky'">Добавить подписку</button>
+        </div>
+    </div>
 
     <script>
-        // Генерация примера
-        const a = Math.floor(Math.random() * 10) + 1;
-        const b = Math.floor(Math.random() * 10) + 1;
-        document.getElementById('question').innerText = `${a} + ${b} = ?`;
+        let correctMath;
+        let correctWord;
+        const wordsArr = ['secure', 'privacy', 'fast', 'proxy', 'freedom', 'bypass'];
+
+        function initCaptcha() {
+            const n1 = Math.floor(Math.random() * 20) + 10;
+            const n2 = Math.floor(Math.random() * 10) + 5;
+            correctMath = n1 + n2;
+            document.getElementById('math-label').innerText = `${n1} + ${n2} = ?`;
+
+            correctWord = wordsArr[Math.floor(Math.random() * wordsArr.length)];
+            document.getElementById('word-label').innerText = correctWord;
+        }
 
         function checkCaptcha() {
-            const userAns = document.getElementById('answer').value;
-            if (parseInt(userAns) === (a + b)) {
+            const valMath = document.getElementById('math-input').value;
+            const valWord = document.getElementById('word-input').value.trim().toLowerCase();
+
+            if (parseInt(valMath) === correctMath && valWord === correctWord) {
                 document.getElementById('captcha-box').classList.add('hidden');
-                document.getElementById('link-box').classList.remove('hidden');
+                
+                // Проверяем URL: если в конце /add/free (через хеш для удобства)
+                if (window.location.hash === '#/add/free') {
+                    document.getElementById('free-page').classList.remove('hidden');
+                } else {
+                    document.getElementById('main-site').classList.remove('hidden');
+                }
             } else {
-                alert("Неверно, попробуйте еще раз.");
+                alert('Неверно! Попробуйте еще раз.');
+                initCaptcha();
             }
         }
+
+        function select(el) {
+            document.querySelectorAll('.device-btn').forEach(b => b.classList.remove('selected'));
+            el.classList.add('selected');
+        }
+
+        window.onload = initCaptcha;
     </script>
 </body>
 </html>
