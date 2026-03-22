@@ -1,6 +1,8 @@
-#profile-title: Мэл ВПН+БС|🆓
+#profile-title: Подписка не работает!
 #profile-update-interval: 1
 #subscription-userinfo: total=0; expire=0; total=0; download=0
-#support-url: https://t.me/melvpntop
-#announce:SUB:FREE|VPN+БС|50%WORK!
+#support-url:posholnaxyi.com
+#announce:SUB NO WORK!Подписка не работает!
 vless://6ad51558-76cf-4865-8da4-c91fff28b158@1488:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=pizda.com&fp=chrome&pbk=#Подписка отключена!
+vless://6ad51558-76cf-4865-8da4-c91fff28b158@1488:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=pizda.com&fp=chrome&pbk=#MELVPN больше не работает
+vless://6ad51558-76cf-4865-8da4-c91fff28b158@1488:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=pizda.com&fp=chrome&pbk=#РКН ИДИТЕ НАХУЙ!
