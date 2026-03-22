@@ -1,0 +1,6 @@
+#profile-title: 💻DeveloperVPN💻
+#profile-update-interval: 1
+#subscription-userinfo: total=0; expire=0; total=0; download=0
+#announce:developer version! testing subs!
+
+vless://ff070b89-7bfc-4a53-b4f0-8b34bvggvvdy1c5591a@84.300.103.167:443?encryption=none&security=reality&sni=www.sonny.com&fp=chrome&pbk=sTfH8AT_JL6qvlM05tRVfjeFoCKWOL9nusNDgfWILwE&sid=c27886c7c38e&type5B%D0%9E%D0%91%D0%A5%D0%9E%D0%94%20LTE/Wi%E2%
