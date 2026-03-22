@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MELVPN — Свобода и Безопасность</title>
+    <title>Сайт отключен</title>
     <style>
         :root { --accent: #00ff88; --bg: #0a0a0a; --card: #161616; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: #eee; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
@@ -43,92 +43,26 @@
 
     <header>
         <img src="https://cdn.jsdelivr.net/gh/MELVPNBOT/MELVPN@main/pic.png" alt="MELVPN Logo">
-        <h1>MELVPN</h1>
+        <h1>MELVPN сайт отключен</h1>
     </header>
 
-    <div class="container">
-        <div id="captcha-box" class="captcha-wrapper">
-            <h3>Подтвердите, что вы не робот</h3>
-            <p id="math-label" style="font-size: 1.2rem; margin-bottom: 5px;"></p>
-            <input type="number" id="math-input" placeholder="Введите ответ">
-            <p style="margin-top: 20px;">Введите проверочное слово: <b id="word-label" style="color: var(--accent);"></b></p>
-            <input type="text" id="word-input" placeholder="Текст отсюда">
-            <br>
-            <button onclick="checkCaptcha()">Продолжить</button>
-            <p style="font-size: 12px; color: #666; margin-top: 15px;">Для работы сайта решите 2 капчи</p>
-        </div>
-
+    
         <div id="main-site" class="hidden">
             <div class="promo-section">
                 <h2>Почему MELVPN?</h2>
                 <div class="benefit">
-                    <h3>Абсолютно Бесплатно</h3>
-                    <p>Мы не продаем подписки и не ограничиваем трафик. Наша цель — обеспечить каждого качественным инструментом для обхода цензуры без скрытых платежей и рекламы.</p>
+                    <h3></h3>
+                    <p>.</p>
                 </div>
                 <div class="benefit">
-                    <h3>Приватность 100%</h3>
-                    <p>Мы используем современные протоколы (VLESS, Reality), которые маскируют ваш трафик под обычное посещение сайтов. Провайдер даже не узнает, что вы используете прокси.</p>
-                </div>
+                    <h3></h3>
+                    <p>
                 <div class="benefit">
-                    <h3>Стабильные обходы</h3>
-                    <p>Наши конфигурации проходят через любые фильтры. Плавный стриминг 4K, низкий пинг в играх и мгновенная загрузка мессенджеров — всё это доступно в один клик.</p>
-                </div>
-                <p style="color: #888;">С нами вы забудете про "Ошибка подключения" и медленную загрузку. Качественные узлы в Европе и Азии уже ждут вас.</p>
+                    <h3>сайт отключен</h3>
+                    <p>
+                <p style="color: #888;">Сайт отключен</p>
             </div>
         </div>
 
-        <div id="free-page" class="hidden">
-            <h2>Активация подписки</h2>
-            <p>Выберите вашу платформу для автоматической настройки конфигурации:</p>
-            <div class="device-grid">
-                <div class="device-btn" onclick="select(this)">Android</div>
-                <div class="device-btn" onclick="select(this)">iPhone / iPad</div>
-                <div class="device-btn" onclick="select(this)">Windows PC</div>
-            </div>
-            <button onclick="window.location.href='happ://add/https://clck.ru/3SPWky'">Добавить подписку</button>
-        </div>
-    </div>
-
-    <script>
-        let correctMath;
-        let correctWord;
-        const wordsArr = ['secure', 'privacy', 'fast', 'proxy', 'freedom', 'bypass'];
-
-        function initCaptcha() {
-            const n1 = Math.floor(Math.random() * 20) + 10;
-            const n2 = Math.floor(Math.random() * 10) + 5;
-            correctMath = n1 + n2;
-            document.getElementById('math-label').innerText = `${n1} + ${n2} = ?`;
-
-            correctWord = wordsArr[Math.floor(Math.random() * wordsArr.length)];
-            document.getElementById('word-label').innerText = correctWord;
-        }
-
-        function checkCaptcha() {
-            const valMath = document.getElementById('math-input').value;
-            const valWord = document.getElementById('word-input').value.trim().toLowerCase();
-
-            if (parseInt(valMath) === correctMath && valWord === correctWord) {
-                document.getElementById('captcha-box').classList.add('hidden');
-                
-                // Проверяем URL: если в конце /add/free (через хеш для удобства)
-                if (window.location.hash === '#/add/free') {
-                    document.getElementById('free-page').classList.remove('hidden');
-                } else {
-                    document.getElementById('main-site').classList.remove('hidden');
-                }
-            } else {
-                alert('Неверно! Попробуйте еще раз.');
-                initCaptcha();
-            }
-        }
-
-        function select(el) {
-            document.querySelectorAll('.device-btn').forEach(b => b.classList.remove('selected'));
-            el.classList.add('selected');
-        }
-
-        window.onload = initCaptcha;
-    </script>
 </body>
 </html>
