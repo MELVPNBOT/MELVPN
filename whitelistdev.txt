@@ -1,16 +1,27 @@
-#profile-title: KitVpnReborn🤟
+#profile-title: 🛠️KitVpnReborn🛠️
 #profile-update-interval: 12
-#subscription-userinfo: upload=0; download=0; total=536870912000; expire=1801947600
-#support-url:
-#announce:КитВПН-Лучший впн на века|бесплатный                              !Не используйте гос сервисы с включеным впн на белые списки!
+#subscription-userinfo: upload=0; download=0; total=536870912000; expire=1777064400
+#support-url:https://t.me/KitVpnReborn
+#announce:KitVpnReborn|test|❗Подписка в тестовом режиме❗|⚠Не используйте Гос.Сервесы на обходах белых списках⚠|😲Тестовый режим на Один месяц😲|
 vless://ff070b89-7bfc-4a53-b4f0-8b34b1c5591a@84.32.103.167:443?encryption=none&security=reality&sni=www.sony.com&fp=chrome&pbk=sTfH8AT_JL6qvlM05tRVfjeFoCKWOL9nusNDgfWILwE&sid=c27886c7c389fe&spx=%2F&type=tcp#🇺🇸 KitVpnReborn[VPN 0]
 vless://48380aca-b595-4444-97b1-9c3223dc10ed@213.165.58.203:443?encryption=none&security=reality&sni=rbc.ru&fp=random&pbk=3ZkV5iuUZAxag318uKf3lRdZ1x7I65kIrYbkPt8YNG8&sid=21&spx=%2F&type=tcp#🇫🇮 KitVpnReborn[VPN 1]
 vless://ff070b89-7bfc-4a53-b4f0-8b34b1c5591a@84.32.103.167:443?encryption=none&security=reality&sni=www.sony.com&fp=chrome&pbk=sTfH8AT_JL6qvlM05tRVfjeFoCKWOL9nusNDgfWILwE&sid=c27886c7c389fe&spx=%2F&type=tcp#🇳🇱 KitVpnReborn[VPN 2]
 vless://a3157d8b-ad4d-421d-8795-8e76be29eea3@80.253.251.194:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=remna.whitenet.online&pbk=K_KJZ7WEArD5OvIpcmGfnh7gHDikcy1e6YKamTgagz4&spx=%2F&type=tcp#🇩🇪 KitVpnReborn[VPN 3]
 vless://a3157d8b-ad4d-421d-8795-8e76be29eea3@84.23.55.148:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ir.ozone.ru&fp=chrome&pbk=k-nVexuxF24g21V0sez3aaeGAoCHqYUFOAhM1ysRwgE&type=tcp#⬇️⬇️Белые списки⬇️⬇️
-vless://a3157d8b-ad4d-421d-8795-8e76be29eea3@84.23.55.148:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ir.ozone.ru&fp=chrome&pbk=k-nVexuxF24g21V0sez3aaeGAoCHqYUFOAhM1ysRwgE&type=tcp#🇪🇺 KitVpnReborn[LTE 0]
-vless://a3157d8b-ad4d-421d-8795-8e76be29eea3@84.23.53.83:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ir.ozone.ru&pbk=k-nVexuxF24g21V0sez3aaeGAoCHqYUFOAhM1ysRwgE&type=tcp#🇷🇺 KitVpnReborn[LTE 1]
-vless://a3157d8b-ad4d-421d-8795-8e76be29eea3@84.23.53.82:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ir.ozone.ru&pbk=k-nVexuxF24g21V0sez3aaeGAoCHqYUFOAhM1ysRwgE&type=tcp#🇷🇺 KitVpnReborn[LTE 2]
-vless://a3157d8b-ad4d-421d-8795-8e76be29eea3@46.149.68.236:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ir.ozone.ru&pbk=KrdRa3hUCFN2pYeSUsf9DOnAQJyQsg2p0B7FWcN1oSU&type=tcp#🇷🇺 KitVpnReborn[LTE 3]
-vless://a3157d8b-ad4d-421d-8795-8e76be29eea3@213.219.214.73:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ir.ozone.ru&pbk=k-nVexuxF24g21V0sez3aaeGAoCHqYUFOAhM1ysRwgE&type=tcp#🇷🇺 KitVpnReborn[LTE 4]
-vless://a3157d8b-ad4d-421d-8795-8e76be29eea3@213.219.214.73:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ir.ozone.ru&pbk=k-nVexuxF24g21V0sez3aaeGAoCHqYUFOAhM1ysRwgE&type=tcp#🇷🇺 KitVpnReborn[LTE 5]
+vless://5f1e1d49-e14e-41d9-b242-329bdce1a783@84.201.181.82:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=chrome&pbk=DaIRouGSxxQDEv9WKRxD79b2Vt0fsw4yQOTeAmXUYCM&sid=96962fed&type=tcp#🇷🇺 KitVpnReborn[LTE 1]
+vless://5f1e1d49-e14e-41d9-b242-329bdce1a783@158.160.209.207:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=firefox&pbk=DaIRouGSxxQDEv9WKRxD79b2Vt0fsw4yQOTeAmXUYCM&sid=c05d4c564d2bcd&type=tcp#🇷🇺 KitVpnReborn[LTE 2]
+vless://5f1e1d49-e14e-41d9-b242-329bdce1a783@212.233.76.234:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.eh.vk.com&fp=chrome&pbk=DaIRouGSxxQDEv9WKRxD79b2Vt0fsw4yQOTeAmXUYCM&sid=6a608eaf9117&type=tcp#🇷🇺 KitVpnReborn[LTE 3]
+vless://5f1e1d49-e14e-41d9-b242-329bdce1a783@37.139.41.181:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=max.ru&fp=qq&pbk=DaIRouGSxxQDEv9WKRxD79b2Vt0fsw4yQOTeAmXUYCM&sid=825867&type=tcp#🇷🇺 KitVpnReborn[LTE 4]
+vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@fastcon.harknmav.fun:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=chrome&pbk=sMMDn89-fJAD7VgeTJbdQTmyyUoyRucoMLMvVMm8hAM&sid=cfdbaa7f996dd0e9&type=tcp#🇷🇺 KitVpnReborn[LTE 5]
+vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@95-1.harknmav.fun:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=chrome&pbk=sMMDn89-fJAD7VgeTJbdQTmyyUoyRucoMLMvVMm8hAM&sid=cfdbaa7f996dd0e9&type=tcp#🇷🇺 KitVpnReborn[LTE 6]
+vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@95-2.harknmav.fun:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=chrome&pbk=sMMDn89-fJAD7VgeTJbdQTmyyUoyRucoMLMvVMm8hAM&sid=cfdbaa7f996dd0e9&type=tcp#🇷🇺 KitVpnReborn[LTE 7]
+vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@95-3.harknmav.fun:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=chrome&pbk=sMMDn89-fJAD7VgeTJbdQTmyyUoyRucoMLMvVMm8hAM&sid=cfdbaa7f996dd0e9&type=tcp#🇷🇺 KitVpnReborn[LTE 8]
+vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@95-4.harknmav.fun:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=chrome&pbk=sMMDn89-fJAD7VgeTJbdQTmyyUoyRucoMLMvVMm8hAM&sid=cfdbaa7f996dd0e9&type=tcp#🇷🇺 KitVpnReborn[LTE 9]
+vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@95-5.harknmav.fun:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=chrome&pbk=sMMDn89-fJAD7VgeTJbdQTmyyUoyRucoMLMvVMm8hAM&sid=cfdbaa7f996dd0e9&type=tcp#🇷🇺 KitVpnReborn[LTE 10]
+vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@95-6.harknmav.fun:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=chrome&pbk=sMMDn89-fJAD7VgeTJbdQTmyyUoyRucoMLMvVMm8hAM&sid=cfdbaa7f996dd0e9&type=tcp#🇷🇺 KitVpnReborn[LTE 11]
+vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@95-7.harknmav.fun:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=chrome&pbk=sMMDn89-fJAD7VgeTJbdQTmyyUoyRucoMLMvVMm8hAM&sid=cfdbaa7f996dd0e9&type=tcp#🇷🇺 KitVpnReborn[LTE 12]
+vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@95-8.harknmav.fun:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=chrome&pbk=sMMDn89-fJAD7VgeTJbdQTmyyUoyRucoMLMvVMm8hAM&sid=cfdbaa7f996dd0e9&type=tcp#🇷🇺 KitVpnReborn[LTE 13]
+vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@95-9.harknmav.fun:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=chrome&pbk=sMMDn89-fJAD7VgeTJbdQTmyyUoyRucoMLMvVMm8hAM&sid=cfdbaa7f996dd0e9&type=tcp#🇷🇺 KitVpnReborn[LTE 14]
+vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@95-10.harknmav.fun:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=chrome&pbk=sMMDn89-fJAD7VgeTJbdQTmyyUoyRucoMLMvVMm8hAM&sid=cfdbaa7f996dd0e9&type=tcp#🇷🇺 KitVpnReborn[LTE 15]
+vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@95-11.harknmav.fun:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=chrome&pbk=sMMDn89-fJAD7VgeTJbdQTmyyUoyRucoMLMvVMm8hAM&sid=cfdbaa7f996dd0e9&type=tcp#🇷🇺 KitVpnReborn[LTE 16]
+vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@95-12.harknmav.fun:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=chrome&pbk=sMMDn89-fJAD7VgeTJbdQTmyyUoyRucoMLMvVMm8hAM&sid=cfdbaa7f996dd0e9&type=tcp#🇷🇺 KitVpnReborn[LTE 17]
