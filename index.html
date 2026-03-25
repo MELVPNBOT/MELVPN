@@ -3,66 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сайт отключен</title>
+    <title>KitVpnReborn - Установка</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --accent: #00ff88; --bg: #0a0a0a; --card: #161616; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: #eee; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
-        
-        /* Шапка */
-        header { 
-            display: flex; align-items: center; padding: 15px 5%; 
-            background: rgba(20, 20, 20, 0.8); backdrop-filter: blur(10px);
-            position: sticky; top: 0; border-bottom: 1px solid #333; z-index: 100;
+        :root {
+            --bg-color: #0d141c;
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --accent-color: #00d2ff;
+            --text-main: #ffffff;
+            --text-secondary: #94a3b8;
         }
-        header img { width: 45px; height: 45px; border-radius: 8px; margin-right: 15px; border: 1px solid var(--accent); }
-        header h1 { font-size: 22px; letter-spacing: 1px; color: var(--accent); margin: 0; text-transform: uppercase; }
 
-        .container { max-width: 800px; margin: 40px auto; padding: 20px; flex-grow: 1; }
-        .hidden { display: none !important; }
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at 50% 50%, #16222e 0%, #0d141c 100%);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
 
-        /* Стиль Капчи */
-        .captcha-wrapper { background: var(--card); padding: 40px; border-radius: 20px; border: 1px solid #222; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        input { background: #222; border: 1px solid #444; color: white; padding: 12px; border-radius: 8px; width: 80%; margin: 10px 0; font-size: 16px; outline: none; transition: 0.3s; }
-        input:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(0, 255, 136, 0.2); }
-        button { background: var(--accent); color: #000; border: none; padding: 15px 40px; border-radius: 10px; font-weight: 800; cursor: pointer; margin-top: 20px; transition: 0.3s; width: 100%; max-width: 300px; }
-        button:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4); }
+        .container { max-width: 550px; width: 100%; }
 
-        /* Текст на главной */
-        .promo-section h2 { color: var(--accent); font-size: 32px; }
-        .benefit { background: var(--card); padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid var(--accent); text-align: left; }
-        .benefit h3 { margin-top: 0; color: #fff; }
+        /* Header */
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .logo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 22px; }
+        .header-btns { display: flex; gap: 12px; }
+        .icon-btn { background: var(--card-bg); border: 1px solid var(--card-border); color: white; padding: 10px; border-radius: 10px; text-decoration: none; transition: 0.2s; }
+        .icon-btn:hover { background: rgba(255,255,255,0.1); }
 
-        /* Страница подписки */
-        .device-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 30px 0; }
-        .device-btn { background: #222; padding: 25px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: 0.3s; }
-        .device-btn:hover { border-color: var(--accent); }
-        .selected { border-color: var(--accent); background: #1a2a22; }
+        /* Status Block */
+        .sub-status {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
+            border-radius: 18px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .status-dot {
+            width: 32px; height: 32px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: #22c55e; margin-right: 15px;
+        }
+
+        /* Main Card */
+        .main-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 30px;
+        }
+
+        /* Platform Selector */
+        .platform-select {
+            position: relative;
+            background: rgba(0,0,0,0.2);
+            padding: 8px 15px;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .tabs {
+            display: flex;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 4px;
+            margin: 20px 0 30px 0;
+            border: 1px solid var(--card-border);
+        }
+        .tab { flex: 1; padding: 10px; text-align: center; border-radius: 8px; cursor: pointer; color: var(--text-secondary); transition: 0.3s; }
+        .tab.active { background: rgba(255, 255, 255, 0.05); color: var(--accent-color); }
+
+        /* Steps */
+        .step { position: relative; padding-left: 55px; margin-bottom: 40px; }
+        .step::before { content: ''; position: absolute; left: 19px; top: 40px; bottom: -50px; width: 1px; background: linear-gradient(to bottom, var(--accent-color), transparent); }
+        .step:last-of-type::before { display: none; }
+        .step-icon { position: absolute; left: 0; top: 0; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--accent-color); display: flex; align-items: center; justify-content: center; color: var(--accent-color); background: var(--bg-color); }
+
+        .step-title { font-weight: 600; margin-bottom: 8px; font-size: 16px; }
+        .step-desc { color: var(--text-secondary); font-size: 13.5px; line-height: 1.5; margin-bottom: 15px; }
+
+        /* Buttons */
+        .btn { display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--card-border); color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; font-size: 14px; transition: 0.2s; }
+        .btn-primary { background: rgba(0, 210, 255, 0.08); border: 1px solid var(--accent-color); color: var(--accent-color); }
+        .btn:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-1px); }
+
+        .footer { margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--card-border); }
     </style>
 </head>
 <body>
 
-    <header>
-        <img src="https://cdn.jsdelivr.net/gh/MELVPNBOT/MELVPN@main/pic.png" alt="MELVPN Logo">
-        <h1>MELVPN сайт отключен</h1>
-    </header>
-
-    
-        <div id="main-site" class="hidden">
-            <div class="promo-section">
-                <h2>Почему MELVPN?</h2>
-                <div class="benefit">
-                    <h3></h3>
-                    <p>.</p>
-                </div>
-                <div class="benefit">
-                    <h3></h3>
-                    <p>
-                <div class="benefit">
-                    <h3>сайт отключен</h3>
-                    <p>
-                <p style="color: #888;">Сайт отключен</p>
-            </div>
+<div class="container">
+    <div class="header">
+        <div class="logo">
+            <i class="fa-solid fa-shield-virus" style="color: var(--accent-color);"></i>
+            KitVpnReborn
         </div>
+        <div class="header-btns">
+            <a href="#" class="icon-btn"><i class="fa-solid fa-link"></i></a>
+            <a href="https://t.me/KitVpnReborn" class="icon-btn"><i class="fa-brands fa-telegram"></i></a>
+        </div>
+    </div>
+
+    <div class="sub-status">
+        <div class="status-dot"><i class="fa-solid fa-check"></i></div>
+        <div>
+            <div style="font-weight: 600;">KitVpnRebornTest</div>
+            <div style="font-size: 12px; color: var(--text-secondary);">Истекает через месяц</div>
+        </div>
+    </div>
+
+    <div class="main-card">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2 style="font-size: 18px; margin: 0;">Установка</h2>
+            <select class="platform-select" id="platformSelector" onchange="updatePlatform()">
+                <option value="windows">Windows</option>
+                <option value="android">Android</option>
+                <option value="ios">iOS / macOS</option>
+            </select>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active">Happ</div>
+            <div class="tab">Prizrak-Box</div>
+        </div>
+
+        <div class="step">
+            <div class="step-icon"><i class="fa-solid fa-download" id="appIcon"></i></div>
+            <div class="step-title">Установка приложения</div>
+            <div class="step-desc" id="step1Desc">Скачайте и установите официальный клиент для вашей системы.</div>
+            <a href="#" class="btn" id="downloadBtn"><i class="fa-brands fa-windows"></i> Windows</a>
+        </div>
+
+        <div class="step">
+            <div class="step-icon"><i class="fa-solid fa-plus"></i></div>
+            <div class="step-title">Добавление подписки</div>
+            <div class="step-desc">Нажмите кнопку ниже, чтобы автоматически импортировать настройки KitVpnReborn.</div>
+            <a href="happ://add/https://clck.ru/3ShEPU" class="btn btn-primary">
+                <i class="fa-solid fa-link"></i> Добавить подписку
+            </a>
+        </div>
+
+        <div class="step">
+            <div class="step-icon"><i class="fa-solid fa-power-off"></i></div>
+            <div class="step-title">Подключение</div>
+            <div class="step-desc" id="step3Desc">Выберите лучший сервер и нажмите на кнопку в центре для активации защиты.</div>
+        </div>
+
+        <div class="footer">
+            <div class="step-title"><span style="margin-right:8px;">🐱</span>Тех поддержка</div>
+            <div class="step-desc">По любым вопросам настройки пишите нашему специалисту.</div>
+            <a href="https://t.me/your_support" class="btn"><i class="fa-solid fa-headset"></i> Связаться</a>
+        </div>
+    </div>
+</div>
+
+<script>
+function updatePlatform() {
+    const platform = document.getElementById('platformSelector').value;
+    const btn = document.getElementById('downloadBtn');
+    const step1 = document.getElementById('step1Desc');
+    const step3 = document.getElementById('step3Desc');
+
+    if (platform === 'windows') {
+        btn.innerHTML = '<i class="fa-brands fa-windows"></i> Windows';
+        step1.innerText = 'Скачайте установщик .exe и следуйте инструкциям на экране.';
+        step3.innerText = 'В главном меню выберите сервер и нажмите кнопку подключения.';
+    } else if (platform === 'android') {
+        btn.innerHTML = '<i class="fa-brands fa-android"></i> Android (APK)';
+        step1.innerText = 'Скачайте APK файл и разрешите установку из неизвестных источников.';
+        step3.innerText = 'Откройте приложение, предоставьте доступ к VPN-профилю и подключайтесь.';
+    } else if (platform === 'ios') {
+        btn.innerHTML = '<i class="fa-brands fa-apple"></i> App Store';
+        step1.innerText = 'Установите приложение из App Store для вашего iPhone или Mac.';
+        step3.innerText = 'Нажмите "Дозволить" при запросе на добавление конфигурации VPN.';
+    }
+}
+</script>
 
 </body>
 </html>
