@@ -3,6 +3,13 @@
 #subscription-userinfo: upload=0; download=0; total=536870912000; expire=
 #support-url:https://t.me/KitVpnReborn
 #announce:Если ВПН плохо работает, то нажмите на 🔄️,не используйте госюсервисы на обходах!,Лучшая быстрая подписка!
+
+vless://5f1e1d49-e14e-41d9-b242-329bdce1a783@api.video-upload.rutube.info:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=tradingview.com&fp=qq&pbk=-AdhgMZeNHR2zAmGWa5peg7Ni0-e4IVMoSzydC9n7C4&sid=08&type=tcp#🇳🇱 Нидерланды 1
+vless://5f1e1d49-e14e-41d9-b242-329bdce1a783@api1.maxonelove.com:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=pl.maxonelove.com&fp=qq&pbk=o_ZQuEx_ealt_YkqgtYRqFhee0pzFkg9ObUhODLTAB8&sid=c05d4c564d2bcd&type=tcp#🇵🇱 Польша 2
+vless://5f1e1d49-e14e-41d9-b242-329bdce1a783@8smwwqjr1n.vk-maps.net:52006?encryption=none&flow=xtls-rprx-vision&security=reality&sni=api2.vk-maps.net&fp=qq&pbk=o_ZQuEx_ealt_YkqgtYRqFhee0pzFkg9ObUhODLTAB8&sid=28a059440d3d5ba1&type=tcp#🇩🇪 Германия 3
+vless://5f1e1d49-e14e-41d9-b242-329bdce1a783@us.maxonelove.com:8444?encryption=none&flow=xtls-rprx-vision&security=reality&sni=us.maxonelove.com&fp=edge&pbk=0avHPgwKcQEgcKbhMAoO6NR8vj90Gw2NGzWqg37cMkQ&sid=63cac0be40563df9&type=tcp#🇺🇸 США 4
+vless://5f1e1d49-e14e-41d9-b242-329bdce1a783@32kj3votry.brod-studio.ru:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=watch.brod-studio.ru&fp=qq&pbk=o_ZQuEx_ealt_YkqgtYRqFhee0pzFkg9ObUhODLTAB8&sid=825867&type=tcp#🇫🇷 Франция 5
+vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@fastcon.harknmav.fun:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=max.ru&fp=chrome&pbk=bzX8l1h-ze1eML9stiVhe0DsotjtW4WOkjkk4eri9BM&sid=dfdbaa7f996dd0e9&type=tcp#🇷🇺 ⬇⬇Белые списки⬇⬇
 vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@fastcon.harknmav.fun:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=max.ru&fp=chrome&pbk=bzX8l1h-ze1eML9stiVhe0DsotjtW4WOkjkk4eri9BM&sid=dfdbaa7f996dd0e9&type=tcp#🇷🇺 Обход глушилки 1
 vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@fastcon.harknmav.fun:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=chrome&pbk=sMMDn89-fJAD7VgeTJbdQTmyyUoyRucoMLMvVMm8hAM&sid=cfdbaa7f996dd0e9&type=tcp#🇷🇺 Обход глушилки 2
 vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@all95.harknmav.fun:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=firefox&pbk=sMMDn89-fJAD7VgeTJbdQTmyyUoyRucoMLMvVMm8hAM&sid=cfdbaa7f996dd0e9&type=tcp#🇷🇺 Обход глушилки 3
