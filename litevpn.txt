@@ -1,4 +1,4 @@
-#profile-title: @lol_vpn_robot |free
+#profile-title: @lol_vpn_robotfree|Lite ver
 #profile-update-interval: 12
 #subscription-userinfo: upload=0; download=0; total=536870912000; expire=
 #support-url:https://t.me/KitVpnReborn
