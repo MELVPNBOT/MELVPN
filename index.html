@@ -3,368 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VPN Service with Snow</title>
+    <title>VPN Service - MELVPN</title>
     <style>
         :root {
-            --bg-color: #0b0b0c;
-            --card-bg: #161618;
-            --text-color: #ffffff;
-            --accent-gradient: linear-gradient(45deg, #0088cc, #00ffcc, #0088cc);
-            --border-radius-main: 16px;
-            --border-radius-btn: 30px;
+            --bg-color: #0b0b0e;
+            --card-bg: #111116;
+            --accent-blue: #0088cc;
+            --accent-gradient: linear-gradient(45deg, #4b6ef5, #a35ef5);
+            --text-main: #ffffff;
+            --text-dim: #94949c;
         }
 
         body {
             background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* --- Эффект снега --- */
-        .snowflakes {
-            position: fixed;
-            top: -10px;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
+        /* Эффект снега */
         .snowflake {
-            position: absolute;
-            background-color: #fff;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: fall linear infinite;
+            position: fixed; top: -10px; background: #fff; border-radius: 50%; opacity: 0.4; pointer-events: none; animation: fall linear infinite; z-index: 0;
         }
+        @keyframes fall { to { transform: translateY(105vh) translateX(40px); } }
 
-        @keyframes fall {
-            0% { transform: translateY(0) translateX(0); }
-            100% { transform: translateY(100vh) translateX(50px); }
-        }
+        .container { position: relative; z-index: 1; width: 90%; max-width: 1100px; padding: 20px; }
 
-        .snowflake:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-duration: 5s; animation-delay: 1s; }
-        .snowflake:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-duration: 7s; animation-delay: 2s; }
-        .snowflake:nth-child(3) { width: 3px; height: 3px; left: 30%; animation-duration: 4s; animation-delay: 0s; }
-        .snowflake:nth-child(4) { width: 5px; height: 5px; left: 40%; animation-duration: 8s; animation-delay: 3s; }
-        .snowflake:nth-child(5) { width: 4px; height: 4px; left: 50%; animation-duration: 6s; animation-delay: 1s; }
-        .snowflake:nth-child(6) { width: 6px; height: 6px; left: 60%; animation-duration: 9s; animation-delay: 4s; }
-        .snowflake:nth-child(7) { width: 3px; height: 3px; left: 70%; animation-duration: 5s; animation-delay: 2s; }
-        .snowflake:nth-child(8) { width: 5px; height: 5px; left: 80%; animation-duration: 7s; animation-delay: 0s; }
-        .snowflake:nth-child(9) { width: 4px; height: 4px; left: 90%; animation-duration: 6s; animation-delay: 3s; }
-        .snowflake:nth-child(10) { width: 3px; height: 3px; left: 95%; animation-duration: 8s; animation-delay: 1s; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+        .avatar { width: 50px; height: 50px; border-radius: 50%; cursor: pointer; border: 1px solid #333; transition: 0.3s; }
+        .avatar:hover { transform: scale(1.1); border-color: var(--accent-blue); }
 
-        /* --- Основной контент --- */
-        .content-wrapper {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        .tg-btn { background: var(--accent-gradient); padding: 1px; border-radius: 20px; text-decoration: none; }
+        .tg-btn-inner { background: #111; padding: 8px 18px; border-radius: 19px; color: white; display: flex; align-items: center; gap: 8px; font-size: 14px; transition: 0.3s; }
+        .tg-btn-inner:hover { background: transparent; }
 
-        header {
-            width: 90%;
-            max-width: 1000px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
+        .hero { text-align: center; margin-top: 50px; margin-bottom: 50px; }
+        .badge { background: rgba(75, 110, 245, 0.1); color: #4b6ef5; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; display: inline-block; margin-bottom: 15px; }
+        h1 { font-size: 42px; margin: 0; font-weight: 800; letter-spacing: -1px; }
 
-        .avatar {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 2px solid transparent;
-            /* Добавим фон на случай, если картинка долго грузится */
-            background-color: #333; 
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; justify-content: center; }
+        .card { background: var(--card-bg); padding: 30px; border-radius: 28px; border: 1px solid #1f1f27; transition: 0.3s; }
+        .card:hover { border-color: #333; transform: translateY(-5px); }
+        
+        .card-icon { background: rgba(0, 204, 136, 0.1); width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #00cc88; font-size: 20px; margin-bottom: 20px; }
+        .card h3 { margin: 0 0 10px 0; font-size: 26px; }
+        .card p { color: var(--text-dim); font-size: 15px; line-height: 1.6; margin-bottom: 25px; }
 
-        .avatar:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
-        }
+        .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .btn { padding: 12px 5px; border-radius: 14px; border: none; cursor: pointer; font-weight: 600; text-align: center; text-decoration: none; font-size: 13px; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        
+        .btn-accent { background: var(--accent-gradient); color: white; }
+        .btn-rezerv { background: #1a1a22; color: #a35ef5; border: 1px solid #333; }
+        .btn-copy { background: #1a1a22; color: white; border: 1px solid #333; }
 
-        .gradient-border {
-            text-decoration: none;
-            color: white;
-            padding: 2px;
-            background: var(--accent-gradient);
-            background-size: 200% auto;
-            border-radius: var(--border-radius-btn);
-            display: inline-block;
-            transition: background-position 0.5s;
-        }
+        /* Прокси */
+        .proxy-section { margin-top: 80px; text-align: center; }
+        .proxy-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 30px; }
+        .proxy-item { background: #1a1a22; border: 1px solid #333; padding: 12px 20px; border-radius: 16px; color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 14px; transition: 0.2s; }
+        .proxy-item:hover { border-color: var(--accent-blue); background: #22222a; }
 
-        .gradient-border:hover {
-            background-position: right center;
-        }
-
-        .gradient-border-inner {
-            background: var(--bg-color);
-            padding: 10px 24px;
-            border-radius: calc(var(--border-radius-btn) - 2px);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-        }
-
-        .hero {
-            text-align: center;
-            margin-top: 60px;
-            margin-bottom: 40px;
-        }
-
-        .badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 12px 28px;
-            border-radius: 50px;
-            margin: 10px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            backdrop-filter: blur(5px);
-        }
-
-        .app-section {
-            width: 90%;
-            max-width: 350px;
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: var(--border-radius-main);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            margin-bottom: 50px;
-        }
-
-        .app-select-wrapper {
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-
-        .app-select {
-            width: 100%;
-            padding: 12px;
-            background: #252528;
-            color: white;
-            border: 1px solid #3a3a3d;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            outline: none;
-        }
-
-        .app-select:focus {
-            border-color: #0088cc;
-        }
-
-        .subs-header {
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            color: #888;
-            margin-bottom: 15px;
-        }
-
-        .subscription-card-gradient {
-            background: var(--accent-gradient);
-            background-size: 200% auto;
-            padding: 2px;
-            border-radius: var(--border-radius-main);
-            margin-bottom: 20px;
-            animation: gradient-animation 4s infinite linear;
-        }
-
-        @keyframes gradient-animation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .subscription-card-inner {
-            background: #1a1a1d;
-            padding: 20px;
-            border-radius: calc(var(--border-radius-main) - 2px);
-            text-align: center;
-        }
-
-        .sub-name {
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin: 0;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .btns-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .btn {
-            cursor: pointer;
-            border: none;
-            padding: 14px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            text-align: center;
-            display: block;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .btn-add {
-            background: var(--accent-gradient);
-            color: white;
-            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
-        }
-
-        .btn-add:hover {
-            box-shadow: 0 6px 20px rgba(0, 136, 204, 0.5);
-            transform: translateY(-2px);
-        }
-
-        .btn-copy {
-            background: #2a2a2d;
-            color: white;
-            border: 1px solid #3a3a3d;
-        }
-
-        .btn-copy:hover {
-            background: #3a3a3d;
-        }
-
-        #other-content {
-            display: none;
-        }
     </style>
 </head>
 <body>
 
-    <div class="snowflakes" aria-hidden="true">
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-    </div>
-
-    <div class="content-wrapper">
+    <div class="container">
         <header>
-            <a href="index.html">
-                <img src="https://raw.githubusercontent.com/MELVPNBOT/MELVPN/main/ava.png" alt="Ava" class="avatar">
-            </a>
-            
-            <a href="https://t.me/lol_vpn_robot" class="gradient-border" target="_blank">
-                <div class="gradient-border-inner">
-                    <span>✈️</span> Telegram Bot
-                </div>
+            <a href="index.html"><img src="https://raw.githubusercontent.com/MELVPNBOT/MELVPN/main/ava.png" class="avatar"></a>
+            <a href="https://t.me/lol_vpn_robot" class="tg-btn">
+                <div class="tg-btn-inner">✈️ Telegram Bot</div>
             </a>
         </header>
 
         <div class="hero">
-            <div class="badge">Полностью бесплатно ⚡</div>
-            <br>
-            <div class="badge">30+ серверов</div>
+            <div class="badge">⚡ Полностью бесплатно</div>
+            <h1>Свободный интернет</h1>
         </div>
 
-        <div class="app-section">
-            <div class="app-select-wrapper">
-                <label for="app">Выбрать приложение:</label>
-                <select id="app" class="app-select">
-                    <option value="happ">Happ</option>
-                    <option value="other">Другое</option>
-                </select>
-            </div>
-
-            <div id="happ-content">
-                <div class="subs-header">Доступные подписки</div>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">🛡️</div>
+                <h3>LTE LITE</h3>
+                <p>Обход белых списков и глушилок. Скоростные сервера с автообновлением конфигурации.</p>
                 
-                <div class="subscription-card-gradient">
-                    <div class="subscription-card-inner">
-                        <p class="sub-name">Подписка Lte</p>
-                    </div>
-                </div>
-
-                <div class="btns-group">
-                    <a href="happ://add/https://raw.githubusercontent.com/MELVPNBOT/MELVPN/refs/heads/main/litevpn.txt" class="btn btn-add">Добавить в App</a>
-                    <button onclick="copyLink()" class="btn btn-copy">Копировать URL</button>
+                <div class="btn-group">
+                    <a href="happ://add/https://raw.githubusercontent.com/MELVPNBOT/MELVPN/refs/heads/main/litevpn.txt" class="btn btn-accent">➕ Добавить</a>
+                    <button onclick="copy('https://raw.githubusercontent.com/MELVPNBOT/MELVPN/refs/heads/main/litevpn.txt')" class="btn btn-copy">🔗 Копировать</button>
+                    
+                    <a href="happ://add/https://storage.yandexcloud.net/12434343434/lol.txt" class="btn btn-rezerv">🔄 Добавить резерв</a>
+                    <button onclick="copy('https://storage.yandexcloud.net/12434343434/lol.txt')" class="btn btn-copy">🛡️ Резерв URL</button>
                 </div>
             </div>
+        </div>
 
-            <div id="other-content">
-                <div class="subs-header">Прямая ссылка</div>
-                <button onclick="copyLink()" class="btn btn-copy">Копировать ссылку</button>
+        <div class="proxy-section">
+            <h2>🚀 Прокси для Telegram</h2>
+            <div class="proxy-grid">
+                <a href="tg://proxy?server=84.201.175.61&port=443&secret=eead24ce88888cf6231e908ca911628e" class="proxy-item">🇩🇪 Германия</a>
+                <a href="tg://proxy?server=185.86.147.201&port=443&secret=e13a803e33fc25129e083d2bf3a81dcf" class="proxy-item">🇳🇱 Нидерланды</a>
+                <a href="tg://proxy?server=51.250.39.11&port=443&secret=c8d206c7720ee8d02b932e14a3714d88" class="proxy-item">🇷🇺 Россия</a>
+                <a href="tg://proxy?server=94.139.245.4&port=443&secret=faffb4eec19f3fce5f63acc248ce1c09" class="proxy-item">🇫🇮 Финляндия</a>
             </div>
         </div>
     </div>
 
     <script>
-        const link = "https://raw.githubusercontent.com/MELVPNBOT/MELVPN/refs/heads/main/litevpn.txt";
-
-        function copyLink() {
-            navigator.clipboard.writeText(link).then(() => {
-                alert("Ссылка скопирована в буфер обмена!");
-            }).catch(err => {
-                console.error('Ошибка копирования: ', err);
-                const textArea = document.createElement("textarea");
-                textArea.value = link;
-                document.body.appendChild(textArea);
-                textArea.select();
-                try {
-                    document.execCommand('copy');
-                    alert("Ссылка скопирована!");
-                } catch (ignore) {}
-                document.body.removeChild(textArea);
+        function copy(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Ссылка скопирована!");
             });
         }
 
-        const select = document.getElementById('app');
-        const happContent = document.getElementById('happ-content');
-        const otherContent = document.getElementById('other-content');
-        
-        select.addEventListener('change', () => {
-            if (select.value === 'happ') {
-                happContent.style.display = 'block';
-                otherContent.style.display = 'none';
-            } else {
-                happContent.style.display = 'none';
-                otherContent.style.display = 'block';
+        function createSnow() {
+            for (let i = 0; i < 40; i++) {
+                let snow = document.createElement('div');
+                snow.className = 'snowflake';
+                snow.style.left = Math.random() * 100 + 'vw';
+                snow.style.width = snow.style.height = Math.random() * 4 + 2 + 'px';
+                snow.style.animationDuration = Math.random() * 3 + 5 + 's';
+                snow.style.animationDelay = Math.random() * 5 + 's';
+                document.body.appendChild(snow);
             }
-        });
+        }
+        createSnow();
     </script>
-
 </body>
 </html>
