@@ -3,196 +3,368 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KitVpnReborn - Установка</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>VPN Service with Snow</title>
     <style>
         :root {
-            --bg-color: #0d141c;
-            --card-bg: rgba(255, 255, 255, 0.02);
-            --card-border: rgba(255, 255, 255, 0.08);
-            --accent-color: #00d2ff;
-            --text-main: #ffffff;
-            --text-secondary: #94a3b8;
+            --bg-color: #0b0b0c;
+            --card-bg: #161618;
+            --text-color: #ffffff;
+            --accent-gradient: linear-gradient(45deg, #0088cc, #00ffcc, #0088cc);
+            --border-radius-main: 16px;
+            --border-radius-btn: 30px;
         }
 
         body {
             background-color: var(--bg-color);
-            background-image: radial-gradient(circle at 50% 50%, #16222e 0%, #0d141c 100%);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
-            padding: 20px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        .container { max-width: 550px; width: 100%; }
+        /* --- Эффект снега --- */
+        .snowflakes {
+            position: fixed;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-        /* Header */
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-        .logo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 22px; }
-        .header-btns { display: flex; gap: 12px; }
-        .icon-btn { background: var(--card-bg); border: 1px solid var(--card-border); color: white; padding: 10px; border-radius: 10px; text-decoration: none; transition: 0.2s; }
-        .icon-btn:hover { background: rgba(255,255,255,0.1); }
+        .snowflake {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
 
-        /* Status Block */
-        .sub-status {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(10px);
-            border-radius: 18px;
-            padding: 18px;
+        @keyframes fall {
+            0% { transform: translateY(0) translateX(0); }
+            100% { transform: translateY(100vh) translateX(50px); }
+        }
+
+        .snowflake:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-duration: 5s; animation-delay: 1s; }
+        .snowflake:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-duration: 7s; animation-delay: 2s; }
+        .snowflake:nth-child(3) { width: 3px; height: 3px; left: 30%; animation-duration: 4s; animation-delay: 0s; }
+        .snowflake:nth-child(4) { width: 5px; height: 5px; left: 40%; animation-duration: 8s; animation-delay: 3s; }
+        .snowflake:nth-child(5) { width: 4px; height: 4px; left: 50%; animation-duration: 6s; animation-delay: 1s; }
+        .snowflake:nth-child(6) { width: 6px; height: 6px; left: 60%; animation-duration: 9s; animation-delay: 4s; }
+        .snowflake:nth-child(7) { width: 3px; height: 3px; left: 70%; animation-duration: 5s; animation-delay: 2s; }
+        .snowflake:nth-child(8) { width: 5px; height: 5px; left: 80%; animation-duration: 7s; animation-delay: 0s; }
+        .snowflake:nth-child(9) { width: 4px; height: 4px; left: 90%; animation-duration: 6s; animation-delay: 3s; }
+        .snowflake:nth-child(10) { width: 3px; height: 3px; left: 95%; animation-duration: 8s; animation-delay: 1s; }
+
+        /* --- Основной контент --- */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 90%;
+            max-width: 1000px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .avatar {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+            /* Добавим фон на случай, если картинка долго грузится */
+            background-color: #333; 
+        }
+
+        .avatar:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+        }
+
+        .gradient-border {
+            text-decoration: none;
+            color: white;
+            padding: 2px;
+            background: var(--accent-gradient);
+            background-size: 200% auto;
+            border-radius: var(--border-radius-btn);
+            display: inline-block;
+            transition: background-position 0.5s;
+        }
+
+        .gradient-border:hover {
+            background-position: right center;
+        }
+
+        .gradient-border-inner {
+            background: var(--bg-color);
+            padding: 10px 24px;
+            border-radius: calc(var(--border-radius-btn) - 2px);
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
-        }
-        .status-dot {
-            width: 32px; height: 32px;
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: #22c55e; margin-right: 15px;
+            gap: 10px;
+            font-weight: 600;
         }
 
-        /* Main Card */
-        .main-card {
+        .hero {
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 40px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 28px;
+            border-radius: 50px;
+            margin: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .app-section {
+            width: 90%;
+            max-width: 350px;
             background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 30px;
+            padding: 25px;
+            border-radius: var(--border-radius-main);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            margin-bottom: 50px;
         }
 
-        /* Platform Selector */
-        .platform-select {
-            position: relative;
-            background: rgba(0,0,0,0.2);
-            padding: 8px 15px;
-            border-radius: 10px;
-            border: 1px solid var(--card-border);
+        .app-select-wrapper {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .app-select {
+            width: 100%;
+            padding: 12px;
+            background: #252528;
+            color: white;
+            border: 1px solid #3a3a3d;
+            border-radius: 8px;
+            font-size: 1rem;
             cursor: pointer;
-            font-size: 14px;
+            outline: none;
         }
 
-        .tabs {
+        .app-select:focus {
+            border-color: #0088cc;
+        }
+
+        .subs-header {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .subscription-card-gradient {
+            background: var(--accent-gradient);
+            background-size: 200% auto;
+            padding: 2px;
+            border-radius: var(--border-radius-main);
+            margin-bottom: 20px;
+            animation: gradient-animation 4s infinite linear;
+        }
+
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .subscription-card-inner {
+            background: #1a1a1d;
+            padding: 20px;
+            border-radius: calc(var(--border-radius-main) - 2px);
+            text-align: center;
+        }
+
+        .sub-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin: 0;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btns-group {
             display: flex;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            padding: 4px;
-            margin: 20px 0 30px 0;
-            border: 1px solid var(--card-border);
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
         }
-        .tab { flex: 1; padding: 10px; text-align: center; border-radius: 8px; cursor: pointer; color: var(--text-secondary); transition: 0.3s; }
-        .tab.active { background: rgba(255, 255, 255, 0.05); color: var(--accent-color); }
 
-        /* Steps */
-        .step { position: relative; padding-left: 55px; margin-bottom: 40px; }
-        .step::before { content: ''; position: absolute; left: 19px; top: 40px; bottom: -50px; width: 1px; background: linear-gradient(to bottom, var(--accent-color), transparent); }
-        .step:last-of-type::before { display: none; }
-        .step-icon { position: absolute; left: 0; top: 0; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--accent-color); display: flex; align-items: center; justify-content: center; color: var(--accent-color); background: var(--bg-color); }
+        .btn {
+            cursor: pointer;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-        .step-title { font-weight: 600; margin-bottom: 8px; font-size: 16px; }
-        .step-desc { color: var(--text-secondary); font-size: 13.5px; line-height: 1.5; margin-bottom: 15px; }
+        .btn-add {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+        }
 
-        /* Buttons */
-        .btn { display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--card-border); color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; font-size: 14px; transition: 0.2s; }
-        .btn-primary { background: rgba(0, 210, 255, 0.08); border: 1px solid var(--accent-color); color: var(--accent-color); }
-        .btn:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-1px); }
+        .btn-add:hover {
+            box-shadow: 0 6px 20px rgba(0, 136, 204, 0.5);
+            transform: translateY(-2px);
+        }
 
-        .footer { margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--card-border); }
+        .btn-copy {
+            background: #2a2a2d;
+            color: white;
+            border: 1px solid #3a3a3d;
+        }
+
+        .btn-copy:hover {
+            background: #3a3a3d;
+        }
+
+        #other-content {
+            display: none;
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
-        <div class="logo">
-            <i class="fa-solid fa-shield-virus" style="color: var(--accent-color);"></i>
-            KitVpnReborn
-        </div>
-        <div class="header-btns">
-            <a href="#" class="icon-btn"><i class="fa-solid fa-link"></i></a>
-            <a href="https://t.me/KitVpnReborn" class="icon-btn"><i class="fa-brands fa-telegram"></i></a>
-        </div>
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
     </div>
 
-    <div class="sub-status">
-        <div class="status-dot"><i class="fa-solid fa-check"></i></div>
-        <div>
-            <div style="font-weight: 600;">KitVpnRebornTest</div>
-            <div style="font-size: 12px; color: var(--text-secondary);">Истекает через месяц</div>
-        </div>
-    </div>
-
-    <div class="main-card">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h2 style="font-size: 18px; margin: 0;">Установка</h2>
-            <select class="platform-select" id="platformSelector" onchange="updatePlatform()">
-                <option value="windows">Windows</option>
-                <option value="android">Android</option>
-                <option value="ios">iOS / macOS</option>
-            </select>
-        </div>
-
-        <div class="tabs">
-            <div class="tab active">Happ</div>
-            <div class="tab">Prizrak-Box</div>
-        </div>
-
-        <div class="step">
-            <div class="step-icon"><i class="fa-solid fa-download" id="appIcon"></i></div>
-            <div class="step-title">Установка приложения</div>
-            <div class="step-desc" id="step1Desc">Скачайте и установите официальный клиент для вашей системы.</div>
-            <a href="#" class="btn" id="downloadBtn"><i class="fa-brands fa-windows"></i> Windows</a>
-        </div>
-
-        <div class="step">
-            <div class="step-icon"><i class="fa-solid fa-plus"></i></div>
-            <div class="step-title">Добавление подписки</div>
-            <div class="step-desc">Нажмите кнопку ниже, чтобы автоматически импортировать настройки KitVpnReborn.</div>
-            <a href="happ://add/https://clck.ru/3ShEPU" class="btn btn-primary">
-                <i class="fa-solid fa-link"></i> Добавить подписку
+    <div class="content-wrapper">
+        <header>
+            <a href="index.html">
+                <img src="https://raw.githubusercontent.com/MELVPNBOT/MELVPN/main/ava.png" alt="Ava" class="avatar">
             </a>
+            
+            <a href="https://t.me/lol_vpn_robot" class="gradient-border" target="_blank">
+                <div class="gradient-border-inner">
+                    <span>✈️</span> Telegram Bot
+                </div>
+            </a>
+        </header>
+
+        <div class="hero">
+            <div class="badge">Полностью бесплатно ⚡</div>
+            <br>
+            <div class="badge">30+ серверов</div>
         </div>
 
-        <div class="step">
-            <div class="step-icon"><i class="fa-solid fa-power-off"></i></div>
-            <div class="step-title">Подключение</div>
-            <div class="step-desc" id="step3Desc">Выберите лучший сервер и нажмите на кнопку в центре для активации защиты.</div>
-        </div>
+        <div class="app-section">
+            <div class="app-select-wrapper">
+                <label for="app">Выбрать приложение:</label>
+                <select id="app" class="app-select">
+                    <option value="happ">Happ</option>
+                    <option value="other">Другое</option>
+                </select>
+            </div>
 
-        <div class="footer">
-            <div class="step-title"><span style="margin-right:8px;">🐱</span>Тех поддержка</div>
-            <div class="step-desc">По любым вопросам настройки пишите нашему специалисту.</div>
-            <a href="https://t.me/your_support" class="btn"><i class="fa-solid fa-headset"></i> Связаться</a>
+            <div id="happ-content">
+                <div class="subs-header">Доступные подписки</div>
+                
+                <div class="subscription-card-gradient">
+                    <div class="subscription-card-inner">
+                        <p class="sub-name">Подписка Lte</p>
+                    </div>
+                </div>
+
+                <div class="btns-group">
+                    <a href="happ://add/https://raw.githubusercontent.com/MELVPNBOT/MELVPN/refs/heads/main/litevpn.txt" class="btn btn-add">Добавить в App</a>
+                    <button onclick="copyLink()" class="btn btn-copy">Копировать URL</button>
+                </div>
+            </div>
+
+            <div id="other-content">
+                <div class="subs-header">Прямая ссылка</div>
+                <button onclick="copyLink()" class="btn btn-copy">Копировать ссылку</button>
+            </div>
         </div>
     </div>
-</div>
 
-<script>
-function updatePlatform() {
-    const platform = document.getElementById('platformSelector').value;
-    const btn = document.getElementById('downloadBtn');
-    const step1 = document.getElementById('step1Desc');
-    const step3 = document.getElementById('step3Desc');
+    <script>
+        const link = "https://raw.githubusercontent.com/MELVPNBOT/MELVPN/refs/heads/main/litevpn.txt";
 
-    if (platform === 'windows') {
-        btn.innerHTML = '<i class="fa-brands fa-windows"></i> Windows';
-        step1.innerText = 'Скачайте установщик .exe и следуйте инструкциям на экране.';
-        step3.innerText = 'В главном меню выберите сервер и нажмите кнопку подключения.';
-    } else if (platform === 'android') {
-        btn.innerHTML = '<i class="fa-brands fa-android"></i> Android (APK)';
-        step1.innerText = 'Скачайте APK файл и разрешите установку из неизвестных источников.';
-        step3.innerText = 'Откройте приложение, предоставьте доступ к VPN-профилю и подключайтесь.';
-    } else if (platform === 'ios') {
-        btn.innerHTML = '<i class="fa-brands fa-apple"></i> App Store';
-        step1.innerText = 'Установите приложение из App Store для вашего iPhone или Mac.';
-        step3.innerText = 'Нажмите "Дозволить" при запросе на добавление конфигурации VPN.';
-    }
-}
-</script>
+        function copyLink() {
+            navigator.clipboard.writeText(link).then(() => {
+                alert("Ссылка скопирована в буфер обмена!");
+            }).catch(err => {
+                console.error('Ошибка копирования: ', err);
+                const textArea = document.createElement("textarea");
+                textArea.value = link;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    alert("Ссылка скопирована!");
+                } catch (ignore) {}
+                document.body.removeChild(textArea);
+            });
+        }
+
+        const select = document.getElementById('app');
+        const happContent = document.getElementById('happ-content');
+        const otherContent = document.getElementById('other-content');
+        
+        select.addEventListener('change', () => {
+            if (select.value === 'happ') {
+                happContent.style.display = 'block';
+                otherContent.style.display = 'none';
+            } else {
+                happContent.style.display = 'none';
+                otherContent.style.display = 'block';
+            }
+        });
+    </script>
 
 </body>
 </html>
