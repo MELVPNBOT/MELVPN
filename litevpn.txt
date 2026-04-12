@@ -2,6 +2,7 @@
 #profile-update-interval: 12
 #subscription-userinfo: upload=0; download=0; total=536870912000; expire=1798761600
 #support-url:https://t.me/lol_vpn_robot
+#profile-web-page-url: https://lolvpn.vercel.app/
 #announce:base64:0JXRgdC70Lgg0JLQn9CdINC/0LvQvtGF0L4g0YDQsNCx0L7RgtCw0LXRgiwg0YLQviDQvdCw0L/QuNGI0LjRgtC1INCyINCx0L7RgtCwIEBsb2xfdnBuX3JvYm90CtCd0LUg0LjRgdC/0L7Qu9GM0LfRg9C50YLQtSDQk9C+0YEu0YHQtdGA0LLQuNGB0Ysg0L3QsCDQvtCx0YXQvtC00LDRhSEK0KHQvtCy0LXRgjrQndCw0YHRgtGA0L7QudC60Lgt0L/QvtC00L/QuNGB0LrQuC3RgdC+0YDRgtC40YDQvtCy0LDRgtGMINC/0L4g0L/QuNC90LPRgwpGcmVlfNCR0LXRgdC/0LvQsNGC0L3QvtGPCuKaoS3Ql9C90LDRh9C40YIg0YHQtdGA0LLQtdGAINCx0YvRgdGC0YDRi9C5IQ==
 
 vless://5f1e1d49-e14e-41d9-b242-329bdce1a783@api.video-upload.rutube.info:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=tradingview.com&fp=qq&pbk=-AdhgMZeNHR2zAmGWa5peg7Ni0-e4IVMoSzydC9n7C4&sid=08&type=tcp#🇳🇱 Нидерланды 1
