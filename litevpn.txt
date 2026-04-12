@@ -1,7 +1,7 @@
-#profile-title: tg:@lol_vpn_robot|Lite ver
+#profile-title:⚡ЛолВПН||Free⚡
 #profile-update-interval: 12
-#subscription-userinfo: upload=0; download=0; total=536870912000; expire=
-#support-url:https://t.me/KitVpnReborn
+#subscription-userinfo: upload=0; download=0; total=536870912000; expire=1798761600
+#support-url:https://t.me/lol_vpn_robot
 #announce:base64:0JXRgdC70Lgg0JLQn9CdINC/0LvQvtGF0L4g0YDQsNCx0L7RgtCw0LXRgiwg0YLQviDQvdCw0LbQvNC40YLQtSDQvdCwIO2gve20hO+4jwrQndC1INC40YHQv9C+0LvRjNC30YPQudGC0LUg0JPQvtGBLtGB0LXRgNCy0LjRgdGLINC90LAg0L7QsdGF0L7QtNCw0YUhCtCh0L7QstC10YI60J3QsNGB0YLRgNC+0LnQutC4LdC/0L7QtNC/0LjRgdC60Lgt0YHQvtGA0YLQuNGA0L7QstCw0YLRjCDQv9C+INC/0LjQvdCz0YMKRnJlZXzQkdC10YHQv9C70LDRgtC90L7RjwrimqEt0JfQvdCw0YfQuNGCINGB0LXRgNCy0LXRgCDQsdGL0YHRgtGA0YvQuSE=
 
 vless://5f1e1d49-e14e-41d9-b242-329bdce1a783@api.video-upload.rutube.info:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=tradingview.com&fp=qq&pbk=-AdhgMZeNHR2zAmGWa5peg7Ni0-e4IVMoSzydC9n7C4&sid=08&type=tcp#🇳🇱 Нидерланды 1
