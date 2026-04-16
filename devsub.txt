@@ -1,6 +1,410 @@
-to#profile-title: 💻DeveloperVPN💻
-#profile-update-interval: 1
-#subscription-userinfo: total=0; expire=0; total=0; download=0
-#announce:developer version! testing subs!
+#profile-title: ⚡ЛолВПН||Free⚡
+#profile-update-interval: 12
+#subscription-userinfo: upload=0; download=0; total=536870912000; expire=1798761600
+#support-url: https://t.me/lol_vpn_robot
+#profile-web-page-url: https://lolvpn.vercel.app/
+#announce: base64:0JXRgdC70Lgg0JLQn9CdINC/0LvQvtGF0L4g0YDQsNCx0L7RgtCw0LXRgiwg0YLQviDQvdCw0L/QuNGI0LjRgtC1INCyINCx0L7RgtCwIEBsb2xfdnBuX3JvYm90CtCd0LUg0LjRgdC/0L7Qu9GM0LfRg9C50YLQtSDQk9C+0YEu0YHQtdGA0LLQuNGB0Ysg0L3QsCDQvtCx0YXQvtC00LDRhSEK0KHQvtCy0LXRgjrQndCw0YHRgtGA0L7QudC60Lgt0L/QvtC00L/QuNGB0LrQuC3RgdC+0YDRgtC40YDQvtCy0LDRgtGMINC/0L4g0L/QuNC90LPRgwpGcmVlfNCR0LXRgdC/0LvQsNGC0L3QvtGPCuKaoS3Ql9C90LDRh9C40YIg0YHQtdGA0LLQuNGB0YtdGAINCx0YvRgdGC0YDRi9C5IQ==
 
-vless://ff070b89-7bfc-4a53-b4f0-8b34bvggvvdy1c5591a@84.300.103.167:443?encryption=none&security=reality&sni=www.sonny.com&fp=chrome&pbk=sTfH8AT_JL6qvlM05tRVfjeFoCKWOL9nusNDgfWILwE&sid=c27886c7c38e&type5B%D0%9E%D0%91%D0%A5%D0%9E%D0%94%20LTE/Wi%E2%
+{
+  "burstObservatory": {
+    "pingConfig": {
+      "connectivity": "",
+      "destination": "http://www.gstatic.com/generate_204",
+      "httpMethod": "HEAD",
+      "interval": "30s",
+      "sampling": 3,
+      "timeout": "5s"
+    },
+    "subjectSelector": [
+      "proxy-"
+    ]
+  },
+  "dns": {
+    "queryStrategy": "UseIP",
+    "servers": [
+      "1.1.1.1",
+      "1.0.0.1"
+    ]
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": 10808,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true
+      },
+      "tag": "socks"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 10809,
+      "protocol": "http",
+      "settings": {
+        "allowTransparent": false
+      },
+      "tag": "http"
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "most-kl.harknmav.fun",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "ddcac6f4-e994-4b74-86e2-6723c36e6c9f"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "nPcXUDCqEWg5qfSXaSVa_8nuszqZPX3xuVz80HhUgQo",
+          "serverName": "max.ru",
+          "shortId": "4e732b0d4d15e0f9"
+        },
+        "security": "reality"
+      },
+      "tag": "proxy-RU-KGD"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "most-cloud-gaming.harknmav.fun",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "ddcac6f4-e994-4b74-86e2-6723c36e6c9f"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "fingerprint": "firefox",
+          "publicKey": "ZJcIRk3tkkvpe-n4Zzz7938AQG4FmBSzN9gwXcJ8mg4",
+          "serverName": "max.ru",
+          "shortId": "4a752b0d4d15e0f7"
+        },
+        "security": "reality"
+      },
+      "tag": "proxy-RU-GAME"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "api.video-upload.rutube.info",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "5f1e1d49-e14e-41d9-b242-329bdce1a783"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "fingerprint": "qq",
+          "publicKey": "-AdhgMZeNHR2zAmGWa5peg7Ni0-e4IVMoSzydC9n7C4",
+          "serverName": "tradingview.com",
+          "shortId": "08"
+        },
+        "security": "reality"
+      },
+      "tag": "proxy-NL-1"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "api1.maxonelove.com",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "5f1e1d49-e14e-41d9-b242-329bdce1a783"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "fingerprint": "qq",
+          "publicKey": "o_ZQuEx_ealt_YkqgtYRqFhee0pzFkg9ObUhODLTAB8",
+          "serverName": "pl.maxonelove.com",
+          "shortId": "c05d4c564d2bcd"
+        },
+        "security": "reality"
+      },
+      "tag": "proxy-PL-2"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "8smwwqjr1n.vk-maps.net",
+            "port": 52006,
+            "users": [
+              {
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "5f1e1d49-e14e-41d9-b242-329bdce1a783"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "fingerprint": "qq",
+          "publicKey": "o_ZQuEx_ealt_YkqgtYRqFhee0pzFkg9ObUhODLTAB8",
+          "serverName": "api2.vk-maps.net",
+          "shortId": "28a059440d3d5ba1"
+        },
+        "security": "reality"
+      },
+      "tag": "proxy-DE-3"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "all95.harknmav.fun",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "ddcac6f4-e994-4b74-86e2-6723c36e6c9f"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "fingerprint": "firefox",
+          "publicKey": "sMMDn89-fJAD7VgeTJbdQTmyyUoyRucoMLMvVMm8hAM",
+          "serverName": "ads.x5.ru",
+          "shortId": "cfdbaa7f996dd0e9"
+        },
+        "security": "reality"
+      },
+      "tag": "proxy-RU-OB1"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "all212.harknmav.fun",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "ddcac6f4-e994-4b74-86e2-6723c36e6c9f"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "sMMDn89-fJAD7VgeTJbdQTmyyUoyRucoMLMvVMm8hAM",
+          "serverName": "ads.x5.ru",
+          "shortId": "cfdbaa7f996dd0e9"
+        },
+        "security": "reality"
+      },
+      "tag": "proxy-RU-OB2"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "reserve.harknmav.fun",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "ddcac6f4-e994-4b74-86e2-6723c36e6c9f"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "yKKs5x3f2ZGuPSnFlWPvskiQywmjSvu2CI06Jw67UyI",
+          "serverName": "max.ru",
+          "shortId": "ffdbaa7f996dd0e9"
+        },
+        "security": "reality"
+      },
+      "tag": "proxy-RU-OB4"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "most-jp.harknmav.fun",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "ddcac6f4-e994-4b74-86e2-6723c36e6c9f"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "0x0HiUs6KbweEd9ndPG1arMr1I-TbtB1Ok-D_hdlbWc",
+          "serverName": "ads.x5.ru",
+          "shortId": "bf3c4c10ca44241a"
+        },
+        "security": "reality"
+      },
+      "tag": "proxy-JP-OB19"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "most-ee.harknmav.fun",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "ddcac6f4-e994-4b74-86e2-6723c36e6c9f"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "kE4EZIN4WcOejRZGeNrzCuCZk22ebmMmq9YzOo1yC0k",
+          "serverName": "max.ru",
+          "shortId": "4e152b0d4d15e0f9"
+        },
+        "security": "reality"
+      },
+      "tag": "proxy-EE-OB20"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "most-fr.harknmav.fun",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "id": "ddcac6f4-e994-4b74-86e2-6723c36e6c9f"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "29Nj1TexJekHKphyU1kpPxV_VKMz2pgAZ96V1VKmYn0",
+          "serverName": "max.ru",
+          "shortId": "bd1c2c12ca44261a"
+        },
+        "security": "reality"
+      },
+      "tag": "proxy-FR-OB22"
+    },
+    {
+      "protocol": "freedom",
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "tag": "block"
+    }
+  ],
+  "remarks": "🌍 LTE | Global Mix | Авто ⚡",
+  "routing": {
+    "balancers": [
+      {
+        "selector": [
+          "proxy-"
+        ],
+        "strategy": {
+          "type": "leastLoad"
+        },
+        "tag": "Main_Balancer"
+      }
+    ],
+    "domainMatcher": "hybrid",
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "domain": [
+          "keyword:max.ru",
+          "keyword:oneme"
+        ],
+        "outboundTag": "block",
+        "type": "field"
+      },
+      {
+        "balancerTag": "Main_Balancer",
+        "network": "tcp,udp",
+        "type": "field"
+      }
+    ]
+  }
+}
