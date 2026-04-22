@@ -3,132 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VPN Service - MELVPN</title>
+    <title>VPN Connect | Вход</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
-        :root {
-            --bg-color: #0b0b0e;
-            --card-bg: #111116;
-            --accent-blue: #0088cc;
-            --accent-gradient: linear-gradient(45deg, #4b6ef5, #a35ef5);
-            --text-main: #ffffff;
-            --text-dim: #94949c;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Inter', -apple-system, sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-        }
-
-        /* Эффект снега */
-        .snowflake {
-            position: fixed; top: -10px; background: #fff; border-radius: 50%; opacity: 0.4; pointer-events: none; animation: fall linear infinite; z-index: 0;
-        }
-        @keyframes fall { to { transform: translateY(105vh) translateX(40px); } }
-
-        .container { position: relative; z-index: 1; width: 90%; max-width: 1100px; padding: 20px; }
-
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
-        .avatar { width: 50px; height: 50px; border-radius: 50%; cursor: pointer; border: 1px solid #333; transition: 0.3s; }
-        .avatar:hover { transform: scale(1.1); border-color: var(--accent-blue); }
-
-        .tg-btn { background: var(--accent-gradient); padding: 1px; border-radius: 20px; text-decoration: none; }
-        .tg-btn-inner { background: #111; padding: 8px 18px; border-radius: 19px; color: white; display: flex; align-items: center; gap: 8px; font-size: 14px; transition: 0.3s; }
-        .tg-btn-inner:hover { background: transparent; }
-
-        .hero { text-align: center; margin-top: 50px; margin-bottom: 50px; }
-        .badge { background: rgba(75, 110, 245, 0.1); color: #4b6ef5; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; display: inline-block; margin-bottom: 15px; }
-        h1 { font-size: 42px; margin: 0; font-weight: 800; letter-spacing: -1px; }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; justify-content: center; }
-        .card { background: var(--card-bg); padding: 30px; border-radius: 28px; border: 1px solid #1f1f27; transition: 0.3s; }
-        .card:hover { border-color: #333; transform: translateY(-5px); }
-        
-        .card-icon { background: rgba(0, 204, 136, 0.1); width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #00cc88; font-size: 20px; margin-bottom: 20px; }
-        .card h3 { margin: 0 0 10px 0; font-size: 26px; }
-        .card p { color: var(--text-dim); font-size: 15px; line-height: 1.6; margin-bottom: 25px; }
-
-        .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .btn { padding: 12px 5px; border-radius: 14px; border: none; cursor: pointer; font-weight: 600; text-align: center; text-decoration: none; font-size: 13px; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 5px; }
-        
-        .btn-accent { background: var(--accent-gradient); color: white; }
-        .btn-rezerv { background: #1a1a22; color: #a35ef5; border: 1px solid #333; }
-        .btn-copy { background: #1a1a22; color: white; border: 1px solid #333; }
-
-        /* Прокси */
-        .proxy-section { margin-top: 80px; text-align: center; }
-        .proxy-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 30px; }
-        .proxy-item { background: #1a1a22; border: 1px solid #333; padding: 12px 20px; border-radius: 16px; color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 14px; transition: 0.2s; }
-        .proxy-item:hover { border-color: var(--accent-blue); background: #22222a; }
-
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #0f0f0f; color: #fff; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .login-box { background: #1a1a1a; padding: 40px; border-radius: 12px; border: 1px solid #333; width: 350px; text-align: center; }
+        h1 { color: #00d4ff; margin-bottom: 25px; font-size: 24px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 6px; border: 1px solid #444; background: #222; color: #fff; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; margin-top: 20px; border: none; border-radius: 6px; background: #00d4ff; color: #000; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #0099bb; }
+        .g-recaptcha { margin-top: 15px; display: flex; justify-content: center; }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <header>
-            <a href="index.html"><img src="https://raw.githubusercontent.com/MELVPNBOT/MELVPN/main/ava.png" class="avatar"></a>
-            <a href="https://t.me/lol_vpn_robot" class="tg-btn">
-                <div class="tg-btn-inner">✈️ Telegram Bot</div>
-            </a>
-        </header>
-
-        <div class="hero">
-            <div class="badge">⚡ Полностью бесплатно</div>
-            <h1>Свободный интернет</h1>
-        </div>
-
-        <div class="grid">
-            <div class="card">
-                <div class="card-icon">🛡️</div>
-                <h3>LTE LITE</h3>
-                <p>Обход белых списков и глушилок. Скоростные сервера с автообновлением конфигурации.</p>
-                
-                <div class="btn-group">
-                    <a href="happ://add/https://raw.githubusercontent.com/MELVPNBOT/MELVPN/refs/heads/main/litevpn.txt" class="btn btn-accent">➕ Добавить</a>
-                    <button onclick="copy('https://raw.githubusercontent.com/MELVPNBOT/MELVPN/refs/heads/main/litevpn.txt')" class="btn btn-copy">🔗 Копировать</button>
-                    
-                    <a href="happ://add/https://storage.yandexcloud.net/12434343434/lol.txt" class="btn btn-rezerv">🔄 Добавить резерв</a>
-                    <button onclick="copy('https://storage.yandexcloud.net/12434343434/lol.txt')" class="btn btn-copy">🛡️ Резерв URL</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="proxy-section">
-            <h2>🚀 Прокси для Telegram</h2>
-            <div class="proxy-grid">
-                <a href="tg://proxy?server=84.201.175.61&port=443&secret=eead24ce88888cf6231e908ca911628e" class="proxy-item">🇩🇪 Германия</a>
-                <a href="tg://proxy?server=185.86.147.201&port=443&secret=e13a803e33fc25129e083d2bf3a81dcf" class="proxy-item">🇳🇱 Нидерланды</a>
-                <a href="tg://proxy?server=51.250.39.11&port=443&secret=c8d206c7720ee8d02b932e14a3714d88" class="proxy-item">🇷🇺 Россия</a>
-                <a href="tg://proxy?server=94.139.245.4&port=443&secret=faffb4eec19f3fce5f63acc248ce1c09" class="proxy-item">🇫🇮 Финляндия</a>
-            </div>
-        </div>
+    <div class="login-box">
+        <h1>VPN ACCESS</h1>
+        <form action="/login" method="POST">
+            <input type="text" name="username" placeholder="Имя пользователя" required>
+            <input type="password" name="password" placeholder="Пароль" required>
+            
+            <div class="g-recaptcha" data-sitekey="6Lf-0cQsAAAAANJW7cq3Vez0drU63zbRziSxZR1E"></div>
+            
+            <button type="submit">ПОДКЛЮЧИТЬСЯ</button>
+        </form>
     </div>
-
-    <script>
-        function copy(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Ссылка скопирована!");
-            });
-        }
-
-        function createSnow() {
-            for (let i = 0; i < 40; i++) {
-                let snow = document.createElement('div');
-                snow.className = 'snowflake';
-                snow.style.left = Math.random() * 100 + 'vw';
-                snow.style.width = snow.style.height = Math.random() * 4 + 2 + 'px';
-                snow.style.animationDuration = Math.random() * 3 + 5 + 's';
-                snow.style.animationDelay = Math.random() * 5 + 's';
-                document.body.appendChild(snow);
-            }
-        }
-        createSnow();
-    </script>
 </body>
 </html>
