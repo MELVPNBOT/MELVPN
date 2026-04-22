@@ -3,29 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VPN Connect | Вход</title>
+    <title>LOLVPN | Verification</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
-        body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #0f0f0f; color: #fff; display: flex; justify-content: center; align-items: center; height: 100vh; }
-        .login-box { background: #1a1a1a; padding: 40px; border-radius: 12px; border: 1px solid #333; width: 350px; text-align: center; }
-        h1 { color: #00d4ff; margin-bottom: 25px; font-size: 24px; }
-        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 6px; border: 1px solid #444; background: #222; color: #fff; box-sizing: border-box; }
-        button { width: 100%; padding: 12px; margin-top: 20px; border: none; border-radius: 6px; background: #00d4ff; color: #000; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        button:hover { background: #0099bb; }
-        .g-recaptcha { margin-top: 15px; display: flex; justify-content: center; }
+        body { 
+            background: #050505; 
+            color: #ffffff; 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0;
+        }
+        .card {
+            background: #111;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #00d4ff33;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            width: 360px;
+        }
+        .logo {
+            font-size: 32px;
+            font-weight: 800;
+            color: #00d4ff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        p { color: #aaa; font-size: 14px; margin-bottom: 30px; line-height: 1.5; }
+        
+        .g-recaptcha { 
+            display: flex; 
+            justify-content: center; 
+            margin-bottom: 30px; 
+        }
+
+        #btn-continue {
+            background: #222;
+            color: #555;
+            border: 1px solid #333;
+            padding: 16px 30px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: not-allowed;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            transition: all 0.4s ease;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Когда капча пройдена */
+        #btn-continue.active {
+            background: #00d4ff;
+            color: #000;
+            cursor: pointer;
+            border-color: #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+        
+        #btn-continue.active:hover {
+            background: #fff;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
-    <div class="login-box">
-        <h1>VPN ACCESS</h1>
-        <form action="/login" method="POST">
-            <input type="text" name="username" placeholder="Имя пользователя" required>
-            <input type="password" name="password" placeholder="Пароль" required>
-            
-            <div class="g-recaptcha" data-sitekey="6Lf-0cQsAAAAANJW7cq3Vez0drU63zbRziSxZR1E"></div>
-            
-            <button type="submit">ПОДКЛЮЧИТЬСЯ</button>
-        </form>
+
+    <div class="card">
+        <div class="logo">LOLVPN</div>
+        <p>Для перехода к вашей подписке и конфигам, пожалуйста, подтвердите, что вы человек.</p>
+        
+        <div class="g-recaptcha" 
+             data-sitekey="6Lf-0cQsAAAAANJW7cq3Vez0drU63zbRziSxZR1E" 
+             data-callback="onSuccess"></div>
+
+        <button id="btn-continue" onclick="redirect()" disabled>Продолжить в LOLVPN</button>
     </div>
+
+    <script>
+        // Функция, которая включается после галочки "Я не робот"
+        function onSuccess(token) {
+            const btn = document.getElementById('btn-continue');
+            btn.disabled = false;
+            btn.classList.add('active');
+            btn.innerText = "Войти в личный кабинет";
+        }
+
+        // Редирект на твой Vercel
+        function redirect() {
+            const btn = document.getElementById('btn-continue');
+            if (!btn.disabled) {
+                window.location.href = "https://lolvpnsub.vercel.app";
+            }
+        }
+    </script>
 </body>
 </html>
