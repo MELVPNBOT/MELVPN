@@ -1,9 +1,9 @@
-#profile-title:⚡️ЛолВПН||Free⚡️
+#profile-title:⚡️ЛолВПН||Private⚡️
 #profile-update-interval: 12
 #subscription-userinfo: upload=0; download=0; total=536870912000; expire=1798761600
 #support-url:https://t.me/lol_vpn_robot
 #profile-web-page-url: https://lolvpn.vercel.app/
-#announce:base64:0JXRgdC70Lgg0JLQn9CdINC/0LvQvtGF0L4g0YDQsNCx0L7RgtCw0LXRgiwg0YLQviDQvdCw0L/QuNGI0LjRgtC1INCyINCx0L7RgtCwIEBsb2xfdnBuX3JvYm90CtCd0LUg0LjRgdC/0L7Qu9GM0LfRg9C50YLQtSDQk9C+0YEu0YHQtdGA0LLQuNGB0Ysg0L3QsCDQvtCx0YXQvtC00LDRhSEK0KHQvtCy0LXRgjrQndCw0YHRgtGA0L7QudC60Lgt0L/QvtC00L/QuNGB0LrQuC3RgdC+0YDRgtC40YDQvtCy0LDRgtGMINC/0L4g0L/QuNC90LPRgwpGcmVlfNCR0LXRgdC/0LvQsNGC0L3QvtGPCuKaoS3Ql9C90LDRh9C40YIg0YHQtdGA0LLQtdGAINCx0YvRgdGC0YDRi9C5IQ==
+#announce:base64:4pqh0JvQvtC70JLQn9CdIHwg0J/RgNC40LLQsNGC0L3QsNGPINCy0LXRgNGB0LjRj+KaoQrQldGB0LvQuCDQktCf0J0g0L/Qu9C+0YXQviDRgNCw0LHQvtGC0LDQtdGCLCDRgtC+INC90LDQv9C40YjQuNGC0LUg0LIg0LHQvtGC0LAgQGxvbF92cG5fcm9ib3QK0J3QtSDQuNGB0L/QvtC70YzQt9GD0LnRgtC1INCT0L7RgS7RgdC10YDQstC40YHRiyDQvdCwINC+0LHRhdC+0LTQsNGFIQrQodC+0LLQtdGCOtCd0LDRgdGC0YDQvtC50LrQuC3Qv9C+0LTQv9C40YHQutC4LdGB0L7RgNGC0LjRgNC+0LLQsNGC0Ywg0L/QviDQv9C40L3Qs9GDCkZyZWV80JHQtdGB0L/Qu9Cw0YLQvdC+0Y8K4pqhLdCX0L3QsNGH0LjRgiDRgdC10YDQstC10YAg0LHRi9GB0YLRgNGL0Lkh
 
 vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@.0.0.0?encryption=none&flow=xtls-rprx-vision&security=reality&sni=eh.vk.com&fp=chrome&pbk=pf1yJnXtDLvBO9HmmB3tKE-eK8mwmhcFezYlzubLzT4&sid=bd3c4c10ca44241a&type=tcp#🇪🇺⬇️Сервера для нужд⬇️
 vless://ddcac6f4-e994-4b74-86e2-6723c36e6c9f@most-usa2.harknmav.fun:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=eh.vk.com&fp=chrome&pbk=pf1yJnXtDLvBO9HmmB3tKE-eK8mwmhcFezYlzubLzT4&sid=bd3c4c10ca44241a&type=tcp#🇺🇸 LTE | США | ИИ
