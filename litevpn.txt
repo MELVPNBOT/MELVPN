@@ -1,11 +1,391 @@
-#profile-title:⚡ЛолВПН||Free⚡
-#profile-update-interval: 12
-#subscription-userinfo: upload=0; download=0; total=536870912000; expire=1798761600
-#support-url:https://t.me/lol_vpn_robot
-#profile-web-page-url: https://lolvpn.vercel.app/
-#announce:base64:0JXRgdC70Lgg0JLQn9CdINC/0LvQvtGF0L4g0YDQsNCx0L7RgtCw0LXRgiwg0YLQviDQvdCw0L/QuNGI0LjRgtC1INCyINCx0L7RgtCwIEBsb2xfdnBuX3JvYm90CtCd0LUg0LjRgdC/0L7Qu9GM0LfRg9C50YLQtSDQk9C+0YEu0YHQtdGA0LLQuNGB0Ysg0L3QsCDQvtCx0YXQvtC00LDRhSEK0KHQvtCy0LXRgjrQndCw0YHRgtGA0L7QudC60Lgt0L/QvtC00L/QuNGB0LrQuC3RgdC+0YDRgtC40YDQvtCy0LDRgtGMINC/0L4g0L/QuNC90LPRgwpGcmVlfNCR0LXRgdC/0LvQsNGC0L3QvtGPCuKaoS3Ql9C90LDRh9C40YIg0YHQtdGA0LLQtdGAINCx0YvRgdGC0YDRi9C5IQ==
-
-vless://00000000-0000-0000-0000-000000000000@0000:0?encryption=none&security=none&type=tcp#🔒%20Подписка%20заблокирована!%20🚫
-vless://00000000-0000-0000-0000-000000000000@0000:0?encryption=none&security=none&type=tcp#📜%20Нарушены%20Правила%20🚨
-vless://00000000-0000-0000-0000-000000000000@0000:0?encryption=none&security=none&type=tcp#👨‍💼%20Обратитесь%20к%20создателю%20подписки%20💬
-vless://00000000-0000-0000-0000-000000000000@0000:0?encryption=none&security=none&type=tcp#🔨%20Заблокировано!%20🚷
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": 10810,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "userLevel": 8
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "socks"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 10811,
+      "protocol": "http",
+      "settings": {
+        "userLevel": 8
+      },
+      "tag": "http"
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "proxy-1",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "83.220.168.140",
+            "port": 8443,
+            "users": [
+              {
+                "id": "935ed92d-68c3-42c7-8c32-2db2595737e6",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.kinopoisk.ru",
+          "fingerprint": "qq",
+          "publicKey": "Dcb04OZydR58J8AhxcAl7khFbXp-WcCsuhnC1xJJKjA",
+          "shortId": "a987b6bd1781daa3",
+          "allowInsecure": true
+        },
+        "tcpSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "tag": "proxy-2",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "models.medic-ml.ru",
+            "port": 443,
+            "users": [
+              {
+                "id": "935ed92d-68c3-42c7-8c32-2db2595737e6",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "models.medic-ml.ru",
+          "fingerprint": "qq",
+          "publicKey": "660bDah5b-PtCfAbQ3g2tJySO41zsfaXCPb7L3nQCQc",
+          "shortId": "e1ac2faf5e5f309e",
+          "allowInsecure": true
+        },
+        "xhttpSettings": {
+          "host": "models.medic-ml.ru",
+          "path": "/api/v2/telemetry",
+          "mode": "auto"
+        }
+      }
+    },
+    {
+      "tag": "proxy-3",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "axial.medic-ml.ru",
+            "port": 443,
+            "users": [
+              {
+                "id": "935ed92d-68c3-42c7-8c32-2db2595737e6",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "axial.medic-ml.ru",
+          "fingerprint": "qq",
+          "publicKey": "660bDah5b-PtCfAbQ3g2tJySO41zsfaXCPb7L3nQCQc",
+          "shortId": "e1ac2faf5e5f309e",
+          "allowInsecure": true
+        },
+        "xhttpSettings": {
+          "host": "axial.medic-ml.ru",
+          "path": "/api/v2/telemetry",
+          "mode": "auto"
+        }
+      }
+    },
+    {
+      "tag": "proxy-4",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "scan.medic-ml.ru",
+            "port": 443,
+            "users": [
+              {
+                "id": "935ed92d-68c3-42c7-8c32-2db2595737e6",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "scan.medic-ml.ru",
+          "fingerprint": "qq",
+          "publicKey": "660bDah5b-PtCfAbQ3g2tJySO41zsfaXCPb7L3nQCQc",
+          "shortId": "e1ac2faf5e5f309e",
+          "allowInsecure": true
+        },
+        "xhttpSettings": {
+          "host": "scan.medic-ml.ru",
+          "path": "/api/v2/telemetry",
+          "mode": "auto"
+        }
+      }
+    },
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      }
+    }
+  ],
+  "routing": {
+    "domainStrategy": "AsIs",
+    "balancers": [
+      {
+        "tag": "auto-balancer-2",
+        "selector": ["proxy-1", "proxy-2", "proxy-3", "proxy-4"],
+        "strategy": {
+          "type": "leastLoad"
+        }
+      }
+    ],
+    "rules": [
+      {
+        "type": "field",
+        "ip": ["geoip:private"],
+        "outboundTag": "direct"
+      },
+      {
+        "type": "field",
+        "protocol": ["bittorrent"],
+        "outboundTag": "block"
+      },
+      {
+        "type": "field",
+        "balancerTag": "auto-balancer-2",
+        "network": "tcp,udp"
+      }
+    ]
+  },
+  "policy": {
+    "levels": {
+      "8": {
+        "connIdle": 300,
+        "handshake": 4
+      }
+    }
+  },
+  "remarks": "🔄 Авто 2 (4 узла) 🌍"
+}
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": 10808,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "userLevel": 8
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "socks"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 10809,
+      "protocol": "http",
+      "settings": {
+        "userLevel": 8
+      },
+      "tag": "http"
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "proxy-1",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "83.220.169.26",
+            "port": 443,
+            "users": [
+              {
+                "id": "935ed92d-68c3-42c7-8c32-2db2595737e6",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.max.ru",
+          "fingerprint": "firefox",
+          "publicKey": "w42qluNCHvJAkqCCjg_BHu7eTr2qRQYn93OKUSfmHEI",
+          "shortId": "",
+          "allowInsecure": true
+        },
+        "xhttpSettings": {
+          "host": "www.max.ru",
+          "path": "/",
+          "mode": "auto",
+          "extra": {
+            "xmux": {
+              "cMaxReuseTimes": "64-128",
+              "maxConcurrency": "16-32",
+              "hKeepAlivePeriod": 0,
+              "hMaxRequestTimes": "800-1200",
+              "hMaxReusableSecs": "1800-3600"
+            },
+            "xPaddingBytes": "100-1000"
+          }
+        }
+      }
+    },
+    {
+      "tag": "proxy-2",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "worklist.medic-ml.ru",
+            "port": 443,
+            "users": [
+              {
+                "id": "935ed92d-68c3-42c7-8c32-2db2595737e6",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "worklist.medic-ml.ru",
+          "fingerprint": "qq",
+          "publicKey": "660bDah5b-PtCfAbQ3g2tJySO41zsfaXCPb7L3nQCQc",
+          "shortId": "e1ac2faf5e5f309e",
+          "allowInsecure": true
+        },
+        "xhttpSettings": {
+          "host": "worklist.medic-ml.ru",
+          "path": "/api/v2/telemetry",
+          "mode": "auto"
+        }
+      }
+    },
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      }
+    }
+  ],
+  "routing": {
+    "domainStrategy": "AsIs",
+    "balancers": [
+      {
+        "tag": "auto-balancer",
+        "selector": ["proxy-1", "proxy-2"],
+        "strategy": {
+          "type": "leastLoad"
+        }
+      }
+    ],
+    "rules": [
+      {
+        "type": "field",
+        "ip": ["geoip:private"],
+        "outboundTag": "direct"
+      },
+      {
+        "type": "field",
+        "protocol": ["bittorrent"],
+        "outboundTag": "block"
+      },
+      {
+        "type": "field",
+        "balancerTag": "auto-balancer",
+        "network": "tcp,udp"
+      }
+    ]
+  },
+  "policy": {
+    "levels": {
+      "8": {
+        "connIdle": 300,
+        "handshake": 4
+      }
+    }
+  },
+  "remarks": "🔄 Автовыбор сервера (2 узла) 🚀"
+}
