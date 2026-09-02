@@ -1,2 +1,165 @@
-vless://04e3c63c-a015-45d8-9fa5-02e46d040303@91.185.83.49:10443?encryption=none&security=reality&sni=5post-gate.x5.ru&fp=qq&pbk=ivgTfLR13A6xBsicIA28OPoav2tXlsstTTmGuETfnSk&sid=5c766813929a1fdd&type=grpc&serviceName=grpc&flow=#%F0%9F%87%AA%F0%9F%87%BA%20F7768798243%20%7C%20%D0%91%D1%8B%D1%81%D1%82%D1%80%D1%8B%D0%B9
-vless://04e3c63c-a015-45d8-9fa5-02e46d040303@91.185.83.49:10443?encryption=none&security=reality&sni=5post-gate.x5.ru&fp=qq&pbk=ivgTfLR13A6xBsicIA28OPoav2tXlsstTTmGuETfnSk&sid=5c766813929a1fdd&type=grpc&serviceName=grpc&flow=#%F0%9F%87%BB%F0%9F%87%B3%F0%9F%93%A1%20LTE%20%D0%9E%D0%B1%D1%85%D0%BE%D0%B4%20%7C%20%D0%93%D0%BB%D1%83%D1%88%D0%B8%D0%BB%D0%BA%D0%B8%202
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": 10808,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "userLevel": 8
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "socks"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 10809,
+      "protocol": "http",
+      "settings": {
+        "userLevel": 8
+      },
+      "tag": "http"
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "proxy-1",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "83.220.169.26",
+            "port": 443,
+            "users": [
+              {
+                "id": "935ed92d-68c3-42c7-8c32-2db2595737e6",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "www.max.ru",
+          "fingerprint": "firefox",
+          "publicKey": "w42qluNCHvJAkqCCjg_BHu7eTr2qRQYn93OKUSfmHEI",
+          "shortId": "",
+          "allowInsecure": true
+        },
+        "xhttpSettings": {
+          "host": "www.max.ru",
+          "path": "/",
+          "mode": "auto",
+          "extra": {
+            "xmux": {
+              "cMaxReuseTimes": "64-128",
+              "maxConcurrency": "16-32",
+              "hKeepAlivePeriod": 0,
+              "hMaxRequestTimes": "800-1200",
+              "hMaxReusableSecs": "1800-3600"
+            },
+            "xPaddingBytes": "100-1000"
+          }
+        }
+      }
+    },
+    {
+      "tag": "proxy-2",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "worklist.medic-ml.ru",
+            "port": 443,
+            "users": [
+              {
+                "id": "935ed92d-68c3-42c7-8c32-2db2595737e6",
+                "encryption": "none",
+                "level": 8
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "worklist.medic-ml.ru",
+          "fingerprint": "qq",
+          "publicKey": "660bDah5b-PtCfAbQ3g2tJySO41zsfaXCPb7L3nQCQc",
+          "shortId": "e1ac2faf5e5f309e",
+          "allowInsecure": true
+        },
+        "xhttpSettings": {
+          "host": "worklist.medic-ml.ru",
+          "path": "/api/v2/telemetry",
+          "mode": "auto"
+        }
+      }
+    },
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      }
+    }
+  ],
+  "routing": {
+    "domainStrategy": "AsIs",
+    "balancers": [
+      {
+        "tag": "auto-balancer",
+        "selector": ["proxy-1", "proxy-2"],
+        "strategy": {
+          "type": "leastLoad"
+        }
+      }
+    ],
+    "rules": [
+      {
+        "type": "field",
+        "ip": ["geoip:private"],
+        "outboundTag": "direct"
+      },
+      {
+        "type": "field",
+        "protocol": ["bittorrent"],
+        "outboundTag": "block"
+      },
+      {
+        "type": "field",
+        "balancerTag": "auto-balancer",
+        "network": "tcp,udp"
+      }
+    ]
+  },
+  "policy": {
+    "levels": {
+      "8": {
+        "connIdle": 300,
+        "handshake": 4
+      }
+    }
+  },
+  "remarks": "🔄 Автовыбор сервера (2 узла) 🚀"
+}
